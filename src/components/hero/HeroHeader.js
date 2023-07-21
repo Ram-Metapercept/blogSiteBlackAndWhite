@@ -30,7 +30,7 @@ const HeroHeader = ({ backImage, backColor, title }) => {
             transform-origin: bottom left;
            transition: 0.5s transform ease-out;
           z-index: -1;
-           background-color: #324da0;
+           background-color: #324DA0;
          }
            .bg-panel-glass:hover::after {
            transform: translate(0, 0);
