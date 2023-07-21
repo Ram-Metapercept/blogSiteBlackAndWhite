@@ -1,0 +1,28 @@
+@media (max-width: 768px) {
+  img {
+    width: 50%;
+  }
+}
+
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
+  border-width: 1px !important;
+}
+.wpo-blog-single-section .more-posts {
+  overflow: hidden;
+  border: 1px solid #eef0fc;
+  padding: 0 25px;
+  margin-top: 5vh;
+}
+.wpo-blog-single-section .entry-meta ul li {
+  font-weight: 500;
+  font-size: 14px;
+  font-size: 0.9333333333rem;
+  float: left;
+  text-transform: none !important;
+
+}

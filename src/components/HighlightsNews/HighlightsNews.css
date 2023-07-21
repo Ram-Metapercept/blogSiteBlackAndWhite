@@ -1,0 +1,297 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700&display=swap");
+p,
+h1,
+h2,
+h3,
+h4,
+Link,
+span {
+  font-family: "Roboto", sans-serif !important;
+}
+.wpo-blog-highlights-section {
+  padding: 40px 0;
+}
+/* 
+.wpo-section-title {
+  margin-bottom: 30px;
+}
+
+.wpo-blog-items .wpo-blog-item {
+  margin-bottom: 30px;
+}
+
+.wpo-blog-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.wpo-blog-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+} */
+
+.thumb {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+}
+
+.wpo-blog-content h2 {
+  font-size: 22px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.wpo-blog-content ul li:not(:last-child):after {
+  padding-top: 15px;
+
+  margin: 10px 8px;
+}
+
+.wpo-blog-content p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.ca-service__item-title {
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  color: #032b5f !important;
+}
+.pagination-button {
+  padding: 8px 12px;
+  margin-right: 5px;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+.pagination-button.active {
+  background-color: #45a049;
+  border-color: #45a049;
+  color: #fff;
+}
+
+.widget h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+.pagination-button:hover {
+  background-color: #45a049;
+}
+
+.widget ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.widget li {
+  margin-bottom: 10px;
+}
+
+.widget a {
+  color: #333;
+  text-decoration: none;
+}
+
+.widget a:hover {
+  color: #4caf50;
+}
+
+.widget span {
+  padding: 2px 6px;
+  margin-left: 5px;
+  border-radius: 4px;
+}
+
+/* Styling for the pagination container */
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+
+/* Responsive styles for HighlightsNews component */
+@media (max-width: 991px) {
+  .col-lg-8 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .col-lg-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .wpo-blog-item {
+    margin-bottom: 20px;
+  }
+
+  .wpo-blog-img img {
+    height: auto;
+    max-width: 100%;
+  }
+
+  .thumb {
+    top: -15px;
+    left: 5px;
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+
+  .wpo-blog-content h2 {
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+
+  .wpo-blog-content ul li:not(:last-child):after {
+    margin: 0 4px;
+  }
+
+  .wpo-blog-content p {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .pagination-container {
+    margin-top: 20px;
+  }
+
+  .widget h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  img {
+    width: 50%;
+  }
+}
+
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pg-pagination {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.page-item {
+  cursor: pointer;
+  padding: 5px;
+}
+
+.page-item button {
+  background-color: #f2f2f2;
+  border: none;
+  padding: 8px 12px;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+.page-item button:hover {
+  background-color: #ddd;
+}
+
+.active button {
+  background-color: #333;
+  color: #fff;
+}
+
+.prev-next-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: #f2f2f2;
+  border: none;
+  color: #333;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.prev-next-button:hover {
+  background-color: #ddd;
+}
+
+.blog-image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+@media (max-width: 767px) {
+  .wpo-subscribe-section
+    .wpo-subscribe-wrap
+    .subscribe-form
+    .input-field
+    button {
+    height: 45px;
+    width: 130px;
+    padding-left: 10px;
+  }
+}
+
+.ca-service__item-title {
+  color: #474f62 !important;
+}
+
+/* -------------------load more button related css -------------------------*/
+
+.tp-common-btn {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 700;
+
+  color: var(--tp-common-white);
+  padding: 15px 15px !important;
+  border-radius: 8px;
+  display: inline-block;
+  background-color: #3756f7 !important;
+}
+.tp-common-btn:hover,
+.tp-pf-btn-group button.active {
+  color: #fff;
+  background-color: #ff3c58 !important;
+  overflow: hidden;
+}
+
+.tp-common-btn span svg:first-child,
+.tp-common-btn span i:first-child {
+  position: static !important;
+  left: 0 !important;
+  top: 10px !important;
+}
+
+.button-space {
+  display: flex !important;
+  justify-content: center !;
+  align-items: center !important;
+  padding: 0px 0px !important;
+}

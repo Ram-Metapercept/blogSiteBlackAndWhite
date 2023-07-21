@@ -1,0 +1,40 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination .pagination-item {
+  margin: 10 5px !important;
+  padding: 10px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination .pagination-item.active {
+  background-color: yellowgreen;
+  color: white;
+}
+
+.list {
+  list-style: none !important;
+}
+
+.custom-list li {
+  list-style: disc !important;
+}
+
+/* 
+.wpo-blog-pg-section .entry-meta ul li + li:before {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 7px;
+  height: 7px;
+  content: "";
+  background:white !important;
+  border-radius: 50%;
+} */
