@@ -7,7 +7,7 @@ import headerBg from "../../images/heroHeaderBg.png";
 const Hero = () => {
   return (
     <>
-      <HeroHeader backImage={headerBg} backColor="#c9e0d7" title="Blog" />
+      <HeroHeader backImage={headerBg} backColor="#d7dbea" title="Blog" />
     </>
   );
 };
