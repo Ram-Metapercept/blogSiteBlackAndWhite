@@ -1,21 +1,22 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import BlogSidebar from "../BlogSidebar/BlogSidebar.js";
 import globalEnv from "../../api/globalenv.js";
-import Pagination from "react-bootstrap/Pagination";
 
+import { AiOutlinePlus } from "react-icons/ai";
 const ClickHandler = () => {
   window.scrollTo(10, 0);
 };
 
 const BlogListTag = ({ slug }, props) => {
   const [articles, setArticles] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const articlesPerPage = 2;
+
+  const [visibleItems, setVisibleItems] = useState(2);
+  const [loadMoreVisible, setLoadMoreVisible] = useState(true);
+  const [hasMoreContent, setHasMoreContent] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,14 +47,22 @@ const BlogListTag = ({ slug }, props) => {
       <li style={{ listStyle: "disc !important" }}>{children}</li>
     ),
   };
+  const totalItems = articles.length;
+  console.log(totalItems);
   const currentArticles = useMemo(() => {
-    const indexOfLastArticle = currentPage * articlesPerPage;
-    const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
-    return articles.slice(indexOfFirstArticle, indexOfLastArticle);
-  }, [articles, currentPage]);
+    return articles.slice(0, visibleItems);
+  }, [visibleItems]);
+  console.log(currentArticles);
 
-  const handlePageChange = (pageNumber) => setCurrentPage(pageNumber);
-
+  const loadMoreItems = () => {
+    if (visibleItems + 6 >= totalItems) {
+      setVisibleItems(totalItems);
+      setLoadMoreVisible(true);
+      setHasMoreContent(false);
+    } else {
+      setVisibleItems(visibleItems + 6);
+    }
+  };
   return (
     <section className="wpo-blog-pg-section section-padding">
       <div className="container">
@@ -131,47 +140,24 @@ const BlogListTag = ({ slug }, props) => {
             </div>
 
             <div className="pagination-wrapper">
-              <Pagination>
-                <Pagination.Prev
-                  onClick={() => {
-                    if (currentPage > 1) {
-                      handlePageChange(currentPage - 1);
-                    }
-                  }}
-                  disabled={currentPage === 1}
-                >
-                  <FaChevronLeft />
-                </Pagination.Prev>
-                {Array.from({
-                  length: Math.ceil(articles.length / articlesPerPage),
-                }).map((_, index) => (
-                  <Pagination.Item
-                    key={index}
-                    active={index + 1 === currentPage}
-                    onClick={() => handlePageChange(index + 1)}
-                  >
-                    {index + 1}
-                  </Pagination.Item>
-                ))}
-                <Pagination.Next
-                  onClick={() => {
-                    if (
-                      currentPage < Math.ceil(articles.length / articlesPerPage)
-                    ) {
-                      handlePageChange(currentPage + 1);
-                    }
-                  }}
-                  disabled={
-                    currentPage === Math.ceil(articles.length / articlesPerPage)
-                  }
-                >
-                  <FaChevronRight />
-                </Pagination.Next>
-              </Pagination>
+            {loadMoreVisible && hasMoreContent && (
+        <div className="pt-istop-btn-wrapper text-center mt-30">
+          <button
+            className="tp-common-btn text-center"
+            onClick={loadMoreItems}
+          >
+            <span className="text-center button-space">
+              <span>Load More</span>
+              <span>
+                <AiOutlinePlus />
+              </span>
+            </span>
+          </button>
+        </div>
+      )}
             </div>
           </div>
 
-          {/* BlogSidebar component */}
           <BlogSidebar blLeft={props?.blLeft} />
         </div>
       </div>
