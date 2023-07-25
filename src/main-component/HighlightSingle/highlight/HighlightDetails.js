@@ -5,11 +5,15 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import globalEnv from "../../../api/globalenv";
 import "./HighlightDetails.css";
+import { useEffect } from "react";
 const HighlightDetails = ({ article }, props) => {
-
   function countWords(str) {
     return str?.trim().split(/\s+/).length;
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div>
@@ -24,7 +28,11 @@ const HighlightDetails = ({ article }, props) => {
                       src={`${globalEnv.api}${article?.attributes?.Image?.data[0]?.attributes?.url}`}
                       alt=""
                       key={article?.id}
-                      style={{ width: "100%", height: "auto",borderRadius:"10px"}}
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                        borderRadius: "10px",
+                      }}
                     />
                   </div>
                   <div className="entry-meta">
@@ -53,15 +61,15 @@ const HighlightDetails = ({ article }, props) => {
                   </div>
                   {/* <h1>{article?.attributes?.Title}</h1> */}
                   <div className="custom-list">
-                  <ReactMarkdown
-                    children={article?.attributes?.Description}
-                    remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeRaw]}
-                    transformImageUri={(uri) =>
-                      uri.startsWith("http") ? uri : `${globalEnv.api}${uri}`
-                    }
-                    className="markdown"
-                  />{" "}
+                    <ReactMarkdown
+                      children={article?.attributes?.Description}
+                      remarkPlugins={[remarkGfm]}
+                      rehypePlugins={[rehypeRaw]}
+                      transformImageUri={(uri) =>
+                        uri.startsWith("http") ? uri : `${globalEnv.api}${uri}`
+                      }
+                      className="markdown"
+                    />{" "}
                   </div>
                 </div>
               </div>

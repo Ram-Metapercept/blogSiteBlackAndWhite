@@ -24,8 +24,6 @@ const filterUniqueTags = (articles) => {
 };
 
 const BlogSidebar = (props) => {
-
-
   const [latest, setLatest] = useState([]);
   const [article, setArticle] = useState([]);
   const [category, setCategory] = useState([]);
@@ -109,6 +107,10 @@ const BlogSidebar = (props) => {
                   />
                 </div>
                 <div className="details">
+                  <i
+                    className="fi flaticon-calendar"
+                    style={{ fontSize: "13px", marginRight: "3px" }}
+                  ></i>
                   <span className="date">
                     {new Date(blog?.attributes?.createdAt).toLocaleDateString(
                       "en-GB"

@@ -12,9 +12,7 @@ const HighlightsNews = (props) => {
   const [articles, setArticles] = useState([]);
   const [latest, setLatest] = useState([]);
   const [category, setCategory] = useState([]);
-  // const [currentPage, setCurrentPage] = useState(1);
   const [currentPage] = useState(1);
-  // const [itemsPerPage] = useState(6);
   const [archived, setArchived] = useState([]);
   const [visibleItems, setVisibleItems] = useState(6);
   const [loadMoreVisible, setLoadMoreVisible] = useState(true);
@@ -64,16 +62,6 @@ const HighlightsNews = (props) => {
   }, [currentPage]);
 
   const totalItems = articles.length;
-  // const totalPages = Math.ceil(totalItems / itemsPerPage);
-
-  // const displayData = articles.slice(
-  //   (currentPage - 1) * itemsPerPage,
-  //   currentPage * itemsPerPage
-  // );
-
-  // const handlePageChange = (pageNumber) => {
-  //   setCurrentPage(pageNumber);
-  // };
 
   const uniqueTags = new Set();
   const objectsWithUniqueTags = [];
@@ -102,7 +90,7 @@ const HighlightsNews = (props) => {
   const loadMoreItems = () => {
     if (visibleItems + 6 >= totalItems) {
       setVisibleItems(totalItems);
-      setLoadMoreVisible(true);
+      setLoadMoreVisible(false);
     } else {
       setVisibleItems(visibleItems + 6);
     }
@@ -173,7 +161,7 @@ const HighlightsNews = (props) => {
                               </div>
                             </div>
                             <div className="it-blog-info white-bg">
-                              <button
+                              {/* <button
                                 style={{
                                   border: "1px solid #3756f7",
                                   padding: "2px 5px",
@@ -181,13 +169,35 @@ const HighlightsNews = (props) => {
                                   marginBottom: "15px",
                                   color: "black",
                                   fontSize: "12px",
+                                  cursor: "default",
                                 }}
                               >
                                 {
                                   item?.attributes?.Category?.data?.attributes
                                     ?.Title
                                 }
-                              </button>
+                              </button> */}
+
+                              {item?.attributes?.Category?.data?.attributes
+                                ?.Title && (
+                                <button
+                                  style={{
+                                    border: "1px solid #3756f7",
+                                    padding: "2px 5px",
+                                    borderRadius: "25px",
+                                    marginBottom: "15px",
+                                    color: "black",
+                                    fontSize: "12px",
+                                    cursor: "default",
+                                  }}
+                                >
+                                  {
+                                    item?.attributes?.Category?.data?.attributes
+                                      ?.Title
+                                  }
+                                </button>
+                              )}
+
                               <h3 className="ca-service__item-title mb-30">
                                 <Link
                                   to={`/highlight-single/${item?.id}`}
@@ -219,41 +229,16 @@ const HighlightsNews = (props) => {
                   </div>
                 </div>
               </div>
-              {/* <Pagination>
-                <Pagination.Prev
-                  disabled={currentPage === 1}
-                  onClick={() => handlePageChange(currentPage - 1)}
-                >
-                  <FaChevronLeft />
-                </Pagination.Prev>
-
-                {Array.from({ length: totalPages }, (_, index) => (
-                  <Pagination.Item
-                    key={index}
-                    active={currentPage === index + 1}
-                    onClick={() => handlePageChange(index + 1)}
-                  >
-                    {index + 1}
-                  </Pagination.Item>
-                ))}
-
-                <Pagination.Next
-                  disabled={currentPage === totalPages}
-                  onClick={() => handlePageChange(currentPage + 1)}
-                >
-                  <FaChevronRight />
-                </Pagination.Next>
-              </Pagination> */}
               {loadMoreVisible && (
                 <div className="pt-istop-btn-wrapper  text-center mt-30 ">
-                  <button className="tp-common-btn text-center " onClick={loadMoreItems}>
-                
+                  <button
+                    className="tp-common-btn text-center "
+                    onClick={loadMoreItems}
+                  >
                     <span className="text-center button-space">
+                      <span>Load More</span>
                       <span>
-                    Load More
-                    </span>
-                    <span>
-                      <AiOutlinePlus />
+                        <AiOutlinePlus />
                       </span>
                     </span>
                   </button>

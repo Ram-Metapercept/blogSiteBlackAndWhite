@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const SubscribeEmailValidation = (e) => {
   let value = e.target.value;
   const errorMessage = document.getElementById("errorSubscribeEmail");
-  const emailRegex = "^[A-Za-z0-9_]{3,}@[A-za-z]{3,}[.]{1}[A-Za-z.]{2,6}$";
+  const emailRegex = "^[A-Za-z0-9_.]{3,}@[A-za-z]{3,}[.]{1}[A-Za-z.]{2,6}$";
 
   errorMessage.style.display = "block";
   if (value < 1) {
@@ -68,7 +68,7 @@ const Footer = ({ tp_border }) => {
 
   return (
     <>
-      <style jsx>
+      <style jsx="true">
         {`
           .errorMessage {
             display: none;
@@ -146,7 +146,7 @@ const Footer = ({ tp_border }) => {
                         </span>
                         <input
                           type="email"
-                          placeholder="Enter your mail"
+                          placeholder="Enter your email"
                           id="EMAIL"
                           name="EMAIL"
                           autoComplete="off"

@@ -49,18 +49,22 @@ const BlogListTag = ({ slug }, props) => {
   };
   const totalItems = articles.length;
   console.log(totalItems);
-  const currentArticles = useMemo(() => {
-    return articles.slice(0, visibleItems);
-  }, [visibleItems]);
-  console.log(currentArticles);
+  const currentArticles = useMemo(
+    (totalItems) => {
+      return articles.slice(0, visibleItems);
+    },
+    [visibleItems, totalItems]
+  );
+  console.log(visibleItems);
 
   const loadMoreItems = () => {
     if (visibleItems + 6 >= totalItems) {
       setVisibleItems(totalItems);
-      setLoadMoreVisible(true);
+      setLoadMoreVisible(false);
       setHasMoreContent(false);
     } else {
       setVisibleItems(visibleItems + 6);
+      setHasMoreContent(false);
     }
   };
   return (
@@ -140,21 +144,21 @@ const BlogListTag = ({ slug }, props) => {
             </div>
 
             <div className="pagination-wrapper">
-            {loadMoreVisible && hasMoreContent && (
-        <div className="pt-istop-btn-wrapper text-center mt-30">
-          <button
-            className="tp-common-btn text-center"
-            onClick={loadMoreItems}
-          >
-            <span className="text-center button-space">
-              <span>Load More</span>
-              <span>
-                <AiOutlinePlus />
-              </span>
-            </span>
-          </button>
-        </div>
-      )}
+              {loadMoreVisible && hasMoreContent && (
+                <div className="pt-istop-btn-wrapper text-center mt-30">
+                  <button
+                    className="tp-common-btn text-center"
+                    onClick={loadMoreItems}
+                  >
+                    <span className="text-center button-space">
+                      <span>Load More</span>
+                      <span>
+                        <AiOutlinePlus />
+                      </span>
+                    </span>
+                  </button>
+                </div>
+              )}
             </div>
           </div>
 

@@ -17,10 +17,9 @@ function countWords(str) {
 const BlogList = ({ slug }, props) => {
   const [category, setCategory] = useState([]);
 
-
   const [visibleItems, setVisibleItems] = useState(2);
   const [loadMoreVisible, setLoadMoreVisible] = useState(true);
-
+  const [hasMoreContent, setHasMoreContent] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,25 +34,27 @@ const BlogList = ({ slug }, props) => {
       }
     };
 
-
     fetchData();
   }, [slug]);
- const currentArticles = category
+  const currentArticles = category
     .flatMap((blog) => blog?.attributes?.Articles?.data)
     .slice(0, visibleItems);
-
 
   const propsToPass = {
     prop1: slug,
   };
 
-  const totalItems = category.flatMap((blog) => blog?.attributes?.Articles?.data)
-const loadMoreItems = (totalItems) => {
+  const totalItems = category.flatMap(
+    (blog) => blog?.attributes?.Articles?.data
+  );
+  const loadMoreItems = (totalItems) => {
     if (visibleItems + 6 >= totalItems) {
       setVisibleItems(totalItems);
-      setLoadMoreVisible(true);
+      setLoadMoreVisible(false);
+      setHasMoreContent(false);
     } else {
       setVisibleItems(visibleItems + 6);
+      setHasMoreContent(false);
     }
   };
   return (
@@ -130,15 +131,14 @@ const loadMoreItems = (totalItems) => {
                 </div>
               ))}
               <div className="pagination-wrapper">
-                {loadMoreVisible && (
+                {loadMoreVisible && hasMoreContent && (
                   <div className="pt-istop-btn-wrapper  text-center mt-30 ">
-                    <button className="tp-common-btn text-center " onClick={loadMoreItems}>
-
-
+                    <button
+                      className="tp-common-btn text-center "
+                      onClick={loadMoreItems}
+                    >
                       <span className="text-center button-space">
-                        <span>
-                          Load More
-                        </span>
+                        <span>Load More</span>
                         <span>
                           <AiOutlinePlus />
                         </span>
@@ -156,5 +156,3 @@ const loadMoreItems = (totalItems) => {
   );
 };
 export default BlogList;
-
-

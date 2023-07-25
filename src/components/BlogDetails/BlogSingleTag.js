@@ -55,10 +55,12 @@ const BlogSingleTag = ({ data, ...props }) => {
 
   const handleNext = () => {
     setCurrentIndex(currentIndex + 1);
+    window.scrollTo(0, 0);
   };
 
   const handlePrevious = () => {
     setCurrentIndex(currentIndex - 1);
+    window.scrollTo(0, 0);
   };
 
   const currentData = tagItem[currentIndex];
@@ -77,12 +79,15 @@ const BlogSingleTag = ({ data, ...props }) => {
                     src={`${globalEnv.api}${currentData?.attributes?.Image?.data[0]?.attributes?.url}`}
                     alt=""
                     key={currentData?.id}
-                    style={{ width: "100%", height: "auto",borderRadius:"10px" }}
+                    style={{
+                      width: "100%",
+                      height: "auto",
+                      borderRadius: "10px",
+                    }}
                   />
                 </div>
                 <div className="entry-meta">
                   <ul>
-                 
                     <li>
                       <i className="fi flaticon-user"> </i> By{" "}
                       {
@@ -101,22 +106,21 @@ const BlogSingleTag = ({ data, ...props }) => {
                       {Math.ceil(
                         countWords(currentData?.attributes?.Description) / 200
                       )}{" "}
-                        &nbsp;min read
+                      &nbsp;min read
                     </li>
-               
                   </ul>
                 </div>
                 {/* <h1>{currentData?.attributes?.Title}</h1> */}
                 <div className="custom-list">
-                <ReactMarkdown
-                  remarkPlugins={[remarkGfm]}
-                  children={currentData?.attributes?.Description}
-                  rehypePlugins={[rehypeRaw]}
-                  transformImageUri={(uri) =>
-                    uri.startsWith("http") ? uri : `${globalEnv.api}${uri}`
-                  }
-                />
-                  </div>
+                  <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    children={currentData?.attributes?.Description}
+                    rehypePlugins={[rehypeRaw]}
+                    transformImageUri={(uri) =>
+                      uri.startsWith("http") ? uri : `${globalEnv.api}${uri}`
+                    }
+                  />
+                </div>
               </div>
               <div className="more-posts">
                 <div className="previous-post">
