@@ -26,15 +26,10 @@
   list-style: disc !important;
 }
 
-/* 
-.wpo-blog-pg-section .entry-meta ul li + li:before {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 7px;
-  height: 7px;
-  content: "";
-  background:white !important;
-  border-radius: 50%;
-} */
+.wpo-blog-pg-section .entry-meta ul li {
+  font-weight: 500;
+  font-size: 14px;
+  font-size: 0.9333333333rem;
+  float: left;
+  text-transform: none !important;
+}

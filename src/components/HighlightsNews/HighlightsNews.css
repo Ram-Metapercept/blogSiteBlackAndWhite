@@ -114,8 +114,8 @@ span {
 }
 
 .widget span {
-  padding: 2px 6px;
-  margin-left: 5px;
+  padding: 2px 0px;
+  /* margin-left: 5px; */
   border-radius: 4px;
 }
 

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import BlogSidebar from "../BlogSidebar/BlogSidebar.js";
-import Pagination from "react-bootstrap/Pagination";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { AiOutlinePlus } from "react-icons/ai";
 import "./BlogList.css";
 import globalEnv from "../../api/globalenv.js";
 import ReactMarkdown from "react-markdown";
@@ -17,8 +16,10 @@ function countWords(str) {
 }
 const BlogList = ({ slug }, props) => {
   const [category, setCategory] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [articlesPerPage] = useState(2);
+
+  const [visibleItems, setVisibleItems] = useState(2);
+  const [loadMoreVisible, setLoadMoreVisible] = useState(true);
+  const [hasMoreContent, setHasMoreContent] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,24 +36,27 @@ const BlogList = ({ slug }, props) => {
 
     fetchData();
   }, [slug]);
-
-  const totalPages = Math.ceil(
-    category.flatMap((blog) => blog?.attributes?.Articles?.data).length /
-      articlesPerPage
-  );
-
-  const isFirstPage = currentPage === 1;
-  const isLastPage = currentPage === totalPages;
-  const indexOfLastArticle = currentPage * articlesPerPage;
-  const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
   const currentArticles = category
     .flatMap((blog) => blog?.attributes?.Articles?.data)
-    .slice(indexOfFirstArticle, indexOfLastArticle);
+    .slice(0, visibleItems);
 
   const propsToPass = {
     prop1: slug,
   };
 
+  const totalItems = category.flatMap(
+    (blog) => blog?.attributes?.Articles?.data
+  );
+  const loadMoreItems = (totalItems) => {
+    if (visibleItems + 6 >= totalItems) {
+      setVisibleItems(totalItems);
+      setLoadMoreVisible(false);
+      setHasMoreContent(false);
+    } else {
+      setVisibleItems(visibleItems + 6);
+      setHasMoreContent(false);
+    }
+  };
   return (
     <section className="wpo-blog-pg-section section-padding">
       <div className="container">
@@ -127,29 +131,21 @@ const BlogList = ({ slug }, props) => {
                 </div>
               ))}
               <div className="pagination-wrapper">
-                <Pagination className="list">
-                  <Pagination.Prev
-                    onClick={() => setCurrentPage(currentPage - 1)}
-                    disabled={isFirstPage}
-                  >
-                    <FaChevronLeft />
-                  </Pagination.Prev>
-                  {Array.from({ length: totalPages }).map((_, index) => (
-                    <Pagination.Item
-                      key={index}
-                      active={index + 1 === currentPage}
-                      onClick={() => setCurrentPage(index + 1)}
+                {loadMoreVisible && hasMoreContent && (
+                  <div className="pt-istop-btn-wrapper  text-center mt-30 ">
+                    <button
+                      className="tp-common-btn text-center "
+                      onClick={loadMoreItems}
                     >
-                      {index + 1}
-                    </Pagination.Item>
-                  ))}
-                  <Pagination.Next
-                    onClick={() => setCurrentPage(currentPage + 1)}
-                    disabled={isLastPage}
-                  >
-                    <FaChevronRight />
-                  </Pagination.Next>
-                </Pagination>
+                      <span className="text-center button-space">
+                        <span>Load More</span>
+                        <span>
+                          <AiOutlinePlus />
+                        </span>
+                      </span>
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -159,5 +155,4 @@ const BlogList = ({ slug }, props) => {
     </section>
   );
 };
-
 export default BlogList;

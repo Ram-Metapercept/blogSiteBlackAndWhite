@@ -59,11 +59,13 @@ const BlogSingle = (props) => {
     if (currentIndex < item[0]?.attributes?.Articles?.data?.length - 1) {
       setCurrentIndex((currentIndex) => currentIndex + 1);
     }
+    window.scrollTo(0, 0);
   };
 
   const handlePrevious = () => {
     if (currentIndex > 0) {
       setCurrentIndex((currentIndex) => currentIndex - 1);
+      window.scrollTo(0, 0);
     }
   };
 
@@ -79,6 +81,7 @@ const BlogSingle = (props) => {
       <li style={{ listStyle: "disc" }}>{children}</li>
     ),
   };
+
   return (
     <section className="wpo-blog-single-section section-padding">
       <div className="container">
@@ -118,7 +121,7 @@ const BlogSingle = (props) => {
                       {Math.ceil(
                         countWords(currentData?.attributes?.Description) / 200
                       )}{" "}
-                      &nbsp;min read
+                      min read
                     </li>
                   </ul>
                 </div>

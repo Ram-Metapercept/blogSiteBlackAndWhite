@@ -72,3 +72,11 @@
     width: 50%;
   }
 }
+.wpo-blog-single-section .entry-meta ul li {
+  font-weight: 500;
+  font-size: 14px;
+  font-size: 0.9333333333rem;
+  float: left;
+  text-transform: none !important;
+
+}

@@ -55,10 +55,9 @@ export default CommonFooter;
 const footer_content = {
   copy_right_info: (
     <>
-      {" "}
-      Copyright © {new Date().getFullYear()}{" "}
-      <Link href="/">Metapercept Technology Services LLP</Link> All Rights
-      Reserved{" "}
+      Copyright © {new Date().getFullYear()}
+      <Link to="/"> Metapercept Technology Services LLP</Link> All Rights
+      Reserved
     </>
   ),
 };
