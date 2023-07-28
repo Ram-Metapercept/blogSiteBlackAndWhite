@@ -92,6 +92,7 @@ const BlogSingle = (props) => {
                         height: "auto",
                         objectFit: "cover",
                         aspectRatio: "1.5 / 1",
+                        borderRadius:"10px"
                       }}
                       loading="lazy"
                       onError={(e) => {

@@ -9,9 +9,19 @@ const footer_links = [
     col: "col-xl-3",
     links: [
       { title: "About us", link: "https://metapercept.com/aboutus" },
+      { title: "Our Team", link: "https://metapercept.com/aboutus/company" },
       { title: "Services", link: "https://metapercept.com/services" },
+      {
+        title: "Membership",
+        link: "https://metapercept.com/aboutus/company#membership",
+      },
       { title: "Solutions", link: "https://metapercept.com/solutions" },
+      {
+        title: "Affiliation",
+        link: "https://metapercept.com/aboutus/company#affiliation",
+      },
       { title: "News", link: "https://blog.metapercept.com/" },
+      { title: "Get In Touch", link: "https://metapercept.com/contact" },
       { title: "Event", link: "https://blog.metapercept.com/category/events/" },
       { title: "Blog", link: "https://blog.metapercept.com/" },
     ],
@@ -33,13 +43,13 @@ const CommonFooter = () => {
 
   return (
     <>
-    <style>
-      {`
+      <style>
+        {`
       .tp-footer__widget ul#company li {
         width: 48%;
     }
       `}
-    </style>
+      </style>
       {footer_links.map((item, i) => (
         <div key={i} className={`${item.col} col-md-6`}>
           <div className="tp-footer__widget mb-40">
@@ -63,7 +73,7 @@ const footer_content = {
   copy_right_info: (
     <>
       Copyright © {new Date().getFullYear()}
-      <Link to="/"> Metapercept Technology Services LLP</Link> All Rights
+      <Link to="https://techpubconnect.org/"> Metapercept Technology Services LLP</Link> All Rights
       Reserved
     </>
   ),

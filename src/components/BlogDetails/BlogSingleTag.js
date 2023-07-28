@@ -16,7 +16,7 @@ const BlogSingleTag = ({ data, ...props }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const ids = parseInt(slug);
+  
         const response = await fetch(
           `${globalEnv.api}/api/articles?filters[Slug][$eq]=${slug}&populate=*`
         );
@@ -54,7 +54,7 @@ const BlogSingleTag = ({ data, ...props }) => {
       return item.map((p) => p?.id)?.includes(x?.id);
     });
     setCurrentIndex(index);
-  }, [slug, tagItem, data]);
+  }, [slug, tagItem, data,item]);
 
   const handleNext = () => {
     setCurrentIndex(currentIndex + 1);
@@ -89,6 +89,7 @@ const BlogSingleTag = ({ data, ...props }) => {
                         height: "auto",
                         objectFit: "cover",
                         aspectRatio: "1.5 / 1",
+                        borderRadius:"10px"
                       }}
                       loading="lazy"
                       onError={(e) => {

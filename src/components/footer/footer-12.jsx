@@ -90,6 +90,12 @@ const Footer = ({ tp_border }) => {
               width: 100%;
             }
           }
+
+          #footer3{
+            @media(min-width:1400px){
+                 max-width: 1340px !important;
+            }
+        }
         `}
       </style>
 
@@ -98,7 +104,7 @@ const Footer = ({ tp_border }) => {
           className={`bs-footer ${tp_border && "tp-border-top"}`}
           style={{ backgroundColor: "rgb(248,252,252)" }}
         >
-          <div className="container">
+          <div className="container" id="footer3">
             <div className="bs-footer__top fotter-btn-bottom pt-50 pb-40 d-md-block">
               <div className="row align-items-center">
                 <div className="col-12 pb-20 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start">

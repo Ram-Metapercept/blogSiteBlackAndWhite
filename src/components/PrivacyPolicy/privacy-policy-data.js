@@ -463,7 +463,7 @@ const sale_of_personal_information = {
           collect Personal Information about you when you interact with
           Metapercept or our service providers or contractors in the context of
           exploring or applying for job openings at{" "}
-          <a href="http://careers.metapercept.com/" target="_blank">
+          <a href="http://careers.metapercept.com/" target="_blank" rel="noreferrer">
             careers.metapercept.com
           </a>
           , submitting applications for employment, attending job fairs or
@@ -1066,7 +1066,7 @@ const title_description_part_2 = [
       <>
         A cookie is a piece of Electronic Network Information that is stored on
         your computer’s hard drive by your Web browser. When you revisit{" "}
-        <a href="http://www.metapercept.com" target="_blank">
+        <a href="http://www.metapercept.com" target="_blank" rel="noreferrer">
           www.metapercept.com
         </a>
         , our server recognizes the cookie, giving us information about your
@@ -1090,6 +1090,7 @@ const title_description_part_2 = [
         <a
           href="https://policies.google.com/technologies/partner-sites"
           target="_blank"
+          rel="noreferrer"
         >
           Privacy & Terms
         </a>
@@ -1200,6 +1201,7 @@ const title_description_part_2 = [
         <a
           href="https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/adequacy-decisions_en"
           target="_blank"
+          rel="noreferrer"
         >
           non-EEA countries
         </a>{" "}

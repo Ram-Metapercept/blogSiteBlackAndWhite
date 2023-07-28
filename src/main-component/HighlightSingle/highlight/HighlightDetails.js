@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo,useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
@@ -15,6 +15,10 @@ const HighlightDetails = ({ article }, props) => {
     return str?.trim().split(/\s+/).length;
   }
 
+
+  useEffect(() => {
+  window.scrollTo(0, 0);
+    }, []);
   const imageUrl = article?.attributes?.Image?.data[0]?.attributes?.url;
 
   return (
@@ -36,6 +40,7 @@ const HighlightDetails = ({ article }, props) => {
                           height: "auto",
                           objectFit: "cover",
                           aspectRatio: "1.5 / 1",
+                          borderRadius:"10px"
                         }}
                         loading="lazy"
                         onError={(e) => {
