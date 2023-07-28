@@ -3,7 +3,7 @@ import React from "react";
 const HeroHeader = ({ backImage, backColor, title }) => {
   return (
     <>
-      <style jsx>
+      <style jsx="true">
         {`
           .bg-panel-glass {
             box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2),

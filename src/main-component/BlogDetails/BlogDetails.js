@@ -14,7 +14,7 @@ const BlogDetails = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch(`${globalEnv.api}/api/articles/${slug}?&populate=*`)
+    fetch(`${globalEnv.api}/api/articles?filters[Slug][$eq]=${slug}&populate=*`)
       .then((response) => response.json())
       .then((data) => {
         setData(data.data);
@@ -25,7 +25,11 @@ const BlogDetails = () => {
   return (
     <Fragment>
       <Navbar />
-      <PageTitle pageTitle={data?.attributes?.Title} pagesub={"Blog"} />
+      <PageTitle
+        pageTitle={data.map((item) => item?.attributes?.Title).find(Boolean)}
+        pagesub={"Blog"}
+      />
+
       <BlogSingle data={data} />
       <Footer />
       <Scrollbar />

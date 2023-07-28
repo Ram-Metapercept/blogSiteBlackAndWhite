@@ -5,13 +5,13 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import BlogSidebar from "../BlogSidebar/BlogSidebar.js";
 import globalEnv from "../../api/globalenv.js";
-
 import { AiOutlinePlus } from "react-icons/ai";
+
 const ClickHandler = () => {
   window.scrollTo(10, 0);
 };
 
-const BlogListTag = ({ slug }, props) => {
+const BlogListTag = ({ slug, blRight }) => {
   const [articles, setArticles] = useState([]);
 
   const [visibleItems, setVisibleItems] = useState(2);
@@ -39,39 +39,39 @@ const BlogListTag = ({ slug }, props) => {
   const propsToPass = {
     prop1: slug,
   };
+
   function countWords(str) {
     return str?.trim().split(/\s+/).length;
   }
-  const renderers = {
-    listItem: ({ children }) => (
+
+  const components = {
+    li: ({ children }) => (
       <li style={{ listStyle: "disc !important" }}>{children}</li>
     ),
   };
+
   const totalItems = articles.length;
-  console.log(totalItems);
-  const currentArticles = useMemo(
-    (totalItems) => {
-      return articles.slice(0, visibleItems);
-    },
-    [visibleItems, totalItems]
-  );
-  console.log(visibleItems);
+
+  const currentArticles = useMemo(() => {
+    return articles.slice(0, visibleItems);
+  }, [articles, visibleItems]);
 
   const loadMoreItems = () => {
-    if (visibleItems + 6 >= totalItems) {
+    if (visibleItems + 2 >= totalItems) {
       setVisibleItems(totalItems);
       setLoadMoreVisible(false);
       setHasMoreContent(false);
     } else {
-      setVisibleItems(visibleItems + 6);
-      setHasMoreContent(false);
+      setVisibleItems(visibleItems + 2);
+      setHasMoreContent(true);
     }
   };
+
   return (
     <section className="wpo-blog-pg-section section-padding">
       <div className="container">
         <div className="row">
-          <div className={`col col-lg-8 col-12 ${props.blRight}`}>
+          <div className={`col col-lg-8 col-12 ${blRight}`}>
             <div className="wpo-blog-content">
               {currentArticles.map((blog, bitem) => (
                 <div className={`post ${blog.blClass}`} key={bitem}>
@@ -91,23 +91,18 @@ const BlogListTag = ({ slug }, props) => {
                     <ul>
                       <li>
                         <i className="fi flaticon-user"> </i>By{" "}
-                        {
-                          blog?.attributes?.Author?.data[0]?.attributes
-                            ?.fullname
-                        }
+                        {blog?.attributes?.Author?.data[0]?.attributes?.fullname}
                       </li>
                       <li>
                         <i className="fi flaticon-calendar"></i>{" "}
-                        {new Date(
-                          blog?.attributes?.createdAt
-                        ).toLocaleDateString("en-GB")}
+                        {new Date(blog?.attributes?.createdAt).toLocaleDateString(
+                          "en-GB"
+                        )}
                       </li>
                       <li>
-                        <i className="fa-regular fa-clock-desk"></i> &nbsp;
-                        {Math.ceil(
-                          countWords(blog?.attributes?.Description) / 200
-                        )}{" "}
-                        &nbsp;min read
+                        <i className="fa-regular fa-clock"></i>&nbsp;
+                        {Math.ceil(countWords(blog?.attributes?.Description) / 200)}{" "}
+                        min read
                       </li>
                     </ul>
                   </div>
@@ -116,7 +111,7 @@ const BlogListTag = ({ slug }, props) => {
                     <div className="custom-list">
                       <ReactMarkdown
                         children={
-                          blog?.attributes?.Description.slice(0, 250) + "...."
+                          blog?.attributes?.Description.slice(0, 350) + "...."
                         }
                         remarkPlugins={[remarkGfm]}
                         rehypePlugins={[rehypeRaw]}
@@ -126,13 +121,12 @@ const BlogListTag = ({ slug }, props) => {
                             : `${globalEnv.api}${uri}`
                         }
                         className="markdown"
-                        renderers={renderers}
+                        components={components} 
                       />
                     </div>
-
                     <Link
                       onClick={ClickHandler}
-                      to={`/blog-single/tag/${blog?.id}`}
+                      to={`/blog-single/tag/${blog?.attributes?.Slug}`}
                       state={propsToPass}
                       className="read-more"
                     >
@@ -142,9 +136,8 @@ const BlogListTag = ({ slug }, props) => {
                 </div>
               ))}
             </div>
-
             <div className="pagination-wrapper">
-              {loadMoreVisible && hasMoreContent && (
+              {loadMoreVisible && hasMoreContent && totalItems > visibleItems && (
                 <div className="pt-istop-btn-wrapper text-center mt-30">
                   <button
                     className="tp-common-btn text-center"
@@ -161,8 +154,7 @@ const BlogListTag = ({ slug }, props) => {
               )}
             </div>
           </div>
-
-          <BlogSidebar blLeft={props?.blLeft} />
+          <BlogSidebar blLeft={blRight} />
         </div>
       </div>
     </section>

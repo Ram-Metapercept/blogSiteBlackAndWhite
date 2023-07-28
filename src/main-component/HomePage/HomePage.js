@@ -5,7 +5,6 @@ import Hero from "../../components/hero/hero";
 import Scrollbar from "../../components/scrollbar/scrollbar";
 import HighlightsNews from "../../components/HighlightsNews/HighlightsNews";
 import Footer from "../../components/footer/footer-12";
-// import Subscribe from "../../components/Subscribe/Subscribe";
 
 const HomePage = () => {
   return (
@@ -14,7 +13,6 @@ const HomePage = () => {
       <Hero />
       <Container>
         <HighlightsNews />
-        {/* <Subscribe /> */}
       </Container>
       <Footer />
       <Scrollbar />

@@ -15,7 +15,7 @@ const BlogDetailsTag = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${globalEnv.api}/api/articles/${slug}?populate=*`
+          `${globalEnv.api}/api/articles?filters[Slug][$eq]=${slug}&populate=*`
         );
         const responseData = await response.json();
         setData(responseData.data);
@@ -30,7 +30,10 @@ const BlogDetailsTag = () => {
   return (
     <Fragment>
       <Navbar />
-      <PageTitle pageTitle={data?.attributes?.Title} pagesub={"Blog"} />
+      <PageTitle
+        pageTitle={data.map((item) => item?.attributes?.Title).find(Boolean)}
+        pagesub={"Blog"}
+      />
       <BlogSingleTag data={data} slug={slug} />
       <Footer />
       <Scrollbar />

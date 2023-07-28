@@ -12,21 +12,32 @@ const HighlightSingle = () => {
   const { slug } = useParams();
 
   useEffect(() => {
-    fetch(`${globalEnv.api}/api/articles/${slug}?populate=*`)
+    fetch(`${globalEnv.api}/api/articles?filters[Slug][$eq]=${slug}&populate=*`)
       .then((response) => response.json())
       .then((data) => {
-        setArticle(data.data);
+        if (Array.isArray(data.data) && data.data.length > 0) {
+          setArticle(data.data[0]);
+        } else {
+          setArticle(null);
+        }
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        setArticle(null); 
+      });
   }, [slug]);
+
+  const pageTitle = article && article.attributes && article.attributes.Title;
+
   return (
     <Fragment>
       <Navbar />
-      <PageTitle pageTitle={article?.attributes?.Title} />
+      <PageTitle pageTitle={pageTitle} />
       <HighlightDetails article={article} slug={slug} />
       <Footer />
       <Scrollbar />
     </Fragment>
   );
 };
+
 export default HighlightSingle;

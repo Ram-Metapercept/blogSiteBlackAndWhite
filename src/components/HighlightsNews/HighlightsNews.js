@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../HighlightsNews/HighlightsNews.css"; // Import the CSS file for styling
 import globalEnv from "../../api/globalenv.js";
-
 import "./HighlightsNews.css";
 import { AiOutlinePlus } from "react-icons/ai";
-
 const truncate = require("truncate");
 
 const HighlightsNews = (props) => {
@@ -22,7 +20,7 @@ const HighlightsNews = (props) => {
   };
 
   useEffect(() => {
-    fetch(`${globalEnv.api}/api/articles?populate=*`)
+    fetch(`${globalEnv.api}/api/articles?filters[Archived][$eq]=false&populate=*`)
       .then((response) => response.json())
       .then((data) => {
         setArticles(data.data);
@@ -52,7 +50,7 @@ const HighlightsNews = (props) => {
 
   useEffect(() => {
     fetch(
-      `${globalEnv.api}/api/articles?pagination[page]=1&pagination[pageSize]=6&sort[0]=createdAt:desc&populate=*`
+      `${globalEnv.api}/api/articles?filters[Archived][$eq]=false&pagination[page]=1&pagination[pageSize]=6&sort[0]=createdAt:desc&populate=*`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -130,8 +128,9 @@ const HighlightsNews = (props) => {
                           >
                             <div className="it-blog__thumb w-img">
                               <div className="fix">
+                                
                                 <img
-                                  src={`${globalEnv.api}${item?.attributes?.Image?.data[0]?.attributes?.url}`}
+                                  src={`${globalEnv?.api}${item?.attributes?.Image?.data[0]?.attributes?.url}`}
                                   alt="them-pure"
                                   effect="blur"
                                   style={{
@@ -161,23 +160,6 @@ const HighlightsNews = (props) => {
                               </div>
                             </div>
                             <div className="it-blog-info white-bg">
-                              {/* <button
-                                style={{
-                                  border: "1px solid #3756f7",
-                                  padding: "2px 5px",
-                                  borderRadius: "25px",
-                                  marginBottom: "15px",
-                                  color: "black",
-                                  fontSize: "12px",
-                                  cursor: "default",
-                                }}
-                              >
-                                {
-                                  item?.attributes?.Category?.data?.attributes
-                                    ?.Title
-                                }
-                              </button> */}
-
                               {item?.attributes?.Category?.data?.attributes
                                 ?.Title && (
                                 <button
@@ -200,10 +182,10 @@ const HighlightsNews = (props) => {
 
                               <h3 className="ca-service__item-title mb-30">
                                 <Link
-                                  to={`/highlight-single/${item?.id}`}
+                                  to={`/highlight-single/${item?.attributes?.Slug}`}
                                   style={{ color: "#032B5F" }}
                                 >
-                                  {truncate(item.attributes.Title, 60)}
+                                  {truncate(item?.attributes?.Title, 60)}
                                 </Link>
                               </h3>
                               <div
@@ -211,7 +193,7 @@ const HighlightsNews = (props) => {
                                 style={{ "--tp-theme-redical": "#3756f7" }}
                               >
                                 <Link
-                                  to={`/highlight-single/${item?.id}`}
+                                  to={`/highlight-single/${item?.attributes?.Slug}`}
                                   className="it-portfolio-item__btn"
                                 >
                                   Read More
@@ -229,7 +211,7 @@ const HighlightsNews = (props) => {
                   </div>
                 </div>
               </div>
-              {loadMoreVisible && (
+              {loadMoreVisible && totalItems > visibleItems && (
                 <div className="pt-istop-btn-wrapper  text-center mt-30 ">
                   <button
                     className="tp-common-btn text-center "
@@ -256,9 +238,10 @@ const HighlightsNews = (props) => {
                       <li key={blog?.id}>
                         <Link
                           onClick={ClickHandler}
-                          to={`/blog/${blog?.attributes?.Title}`}
+                          to={`/blog/category/${blog?.attributes?.Slug}`}
                         >
-                          {blog?.attributes?.Title}
+                          
+                          {truncate(blog.attributes.Title, 40)}
                           <span>
                             ({blog?.attributes?.Articles?.data?.length})
                           </span>
@@ -281,6 +264,10 @@ const HighlightsNews = (props) => {
                           />
                         </div>
                         <div className="details">
+                          <i
+                            className="fi flaticon-calendar"
+                            style={{ fontSize: "13px", marginRight: "3px" }}
+                          ></i>
                           <span className="date">
                             {new Date(
                               blog?.attributes?.createdAt
@@ -289,7 +276,7 @@ const HighlightsNews = (props) => {
                           <h4>
                             <Link
                               onClick={ClickHandler}
-                              to={`/highlight-single/${blog.id}`}
+                              to={`/highlight-single/${blog?.attributes?.Slug}`}
                             >
                               {truncate(blog.attributes.Title, 60)}
                             </Link>
@@ -317,7 +304,7 @@ const HighlightsNews = (props) => {
                           <h4>
                             <Link
                               onClick={ClickHandler}
-                              to={`/highlight-single/${blog?.id}`}
+                              to={`/highlight-single/${blog?.attributes.Slug}`}
                             >
                               {truncate(blog?.attributes?.Title, 60)}
                             </Link>

@@ -23,11 +23,9 @@ const SubscribeEmailValidation = (e) => {
 };
 
 const clearError = (e) => {
-  // console.log(e)
   const removeError = document.getElementById(e);
   removeError.style.display = "none";
 };
-// footer_links data
 
 const footer_content = {
   footer_logo: Logo1,
@@ -82,9 +80,6 @@ const Footer = ({ tp_border }) => {
             background-color: rgb(108, 96, 254);
           }
           @media (max-width: 768px) {
-            .footerContent {
-              text-align: center;
-            }
             .subscribeDiv {
               padding-right: 0;
             }
@@ -122,7 +117,7 @@ const Footer = ({ tp_border }) => {
             </div>
             <div className="bs-footer__main pb-10 pt-50 tp-border-bottom footerContent">
               <div className="row justify-content-center">
-                <div className="col-xl-4 col-md-6">
+                <div className="col-xl-3 col-md-6">
                   <div className="tp-footer__widget mb-40">
                     <h3 className="tp-footer__widget-title mb-35">{about}</h3>
                     <p className="pr-40" style={{ textAlign: "justify" }}>
@@ -183,7 +178,7 @@ const Footer = ({ tp_border }) => {
                     >
                       Contact Numbers
                     </p>
-                    <ul>
+                    <ul style={{ margin: "0" }}>
                       <li>
                         <a href="tel:8390905726">
                           <strong>Consulting:</strong> +91-(839)-090-5726
@@ -237,9 +232,8 @@ const Footer = ({ tp_border }) => {
                   <div className="tp-footer__widget  mb-40 locationDiv">
                     <h3 className="tp-footer__widget-title mb-35">Location</h3>
 
-                    <div className="tp-footer-cta d-flex align-items-center justify-content-center justify-content-md-start">
+                    <div className="tp-footer-cta d-flex align-items-center justify-content-start">
                       <span className="call-icon">
-                        {/* <img src={phone_icon} alt="" /> */}
                         <i
                           className="fa-solid fa-location-dot mr-20"
                           style={{ color: "rgb(12,84,173)", fontSize: "2rem" }}
@@ -266,9 +260,8 @@ const Footer = ({ tp_border }) => {
                 </div>
               </div>
             </div>
-            {/* footer copy right start */}
+
             <FooterCopyRight />
-            {/* footer copy right end */}
           </div>
         </div>
       </footer>

@@ -8,12 +8,15 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 const truncate = require("truncate");
+
 const ClickHandler = () => {
   window.scrollTo(10, 0);
 };
+
 function countWords(str) {
   return str?.trim().split(/\s+/).length;
 }
+
 const BlogList = ({ slug }, props) => {
   const [category, setCategory] = useState([]);
 
@@ -25,8 +28,8 @@ const BlogList = ({ slug }, props) => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${globalEnv.api}/api/categories?filters[Title][$eq]=${slug}&populate[Articles][populate]=*`
-        );
+          `${globalEnv.api}/api/categories?filters[Slug][$eq]=${slug}&populate[Articles][populate]=*`
+        )
         const data = await response.json();
         setCategory(data.data);
       } catch (error) {
@@ -36,6 +39,19 @@ const BlogList = ({ slug }, props) => {
 
     fetchData();
   }, [slug]);
+ 
+  const totalItems = category.flatMap((blog) => blog?.attributes?.Articles?.data);
+  const loadMoreItems = () => {
+    if (visibleItems + 2 >= totalItems.length) {
+      setVisibleItems(totalItems.length);
+      setLoadMoreVisible(false);
+      setHasMoreContent(false);
+    } else {
+      setVisibleItems(visibleItems + 2);
+      setHasMoreContent(true); 
+    }
+  };
+
   const currentArticles = category
     .flatMap((blog) => blog?.attributes?.Articles?.data)
     .slice(0, visibleItems);
@@ -44,19 +60,6 @@ const BlogList = ({ slug }, props) => {
     prop1: slug,
   };
 
-  const totalItems = category.flatMap(
-    (blog) => blog?.attributes?.Articles?.data
-  );
-  const loadMoreItems = (totalItems) => {
-    if (visibleItems + 6 >= totalItems) {
-      setVisibleItems(totalItems);
-      setLoadMoreVisible(false);
-      setHasMoreContent(false);
-    } else {
-      setVisibleItems(visibleItems + 6);
-      setHasMoreContent(false);
-    }
-  };
   return (
     <section className="wpo-blog-pg-section section-padding">
       <div className="container">
@@ -81,33 +84,30 @@ const BlogList = ({ slug }, props) => {
                     <ul>
                       <li>
                         <i className="fi flaticon-user"> </i> By{" "}
-                        {
-                          blog?.attributes?.Author?.data[0]?.attributes
-                            ?.fullname
-                        }
+                        {blog?.attributes?.Author?.data[0]?.attributes?.fullname}
                       </li>
                       <li className="custom-list">
                         <i className="fi flaticon-calendar"></i>{" "}
-                        {new Date(
-                          blog?.attributes?.createdAt
-                        ).toLocaleDateString("en-GB")}
+                        {new Date(blog?.attributes?.createdAt).toLocaleDateString(
+                          "en-GB"
+                        )}
                       </li>
                       <li>
-                        <i className="fa-regular fa-clock-desk"></i> &nbsp;
-                        {Math.ceil(
-                          countWords(blog?.attributes?.Description) / 200
-                        )}{" "}
-                        &nbsp;min read
+                        <i className="fa-regular fa-clock"></i>&nbsp;
+                        {Math.ceil(countWords(blog?.attributes?.Description) / 200)}{" "}
+                        min read
                       </li>
                     </ul>
                   </div>
                   <div className="entry-details">
-                    <Link onClick={ClickHandler} to={`/blog-single/${blog.id}`}>
+                    <Link onClick={ClickHandler} to={`/blog-single/${blog?.attributes?.Slug}`}>
                       <h1>{blog?.attributes?.Title}</h1>
-                      <ReactMarkdown
+                      
+                    </Link>
+                    <ReactMarkdown
                         children={
-                          // blog?.attributes?.Description.slice(0, 250) + "...."
-                          truncate(blog?.attributes?.Description, 450)
+                        
+                          truncate(blog?.attributes?.Description, 350)
                         }
                         remarkPlugins={[remarkGfm]}
                         rehypePlugins={[rehypeRaw]}
@@ -120,23 +120,19 @@ const BlogList = ({ slug }, props) => {
                       />
                       <Link
                         onClick={ClickHandler}
-                        to={`/blog-single/${blog?.id}`}
+                        to={`/blog-single/${blog?.attributes?.Slug}`}
                         className="read-more"
                         state={propsToPass}
                       >
                         READ MORE...
                       </Link>
-                    </Link>
                   </div>
                 </div>
               ))}
               <div className="pagination-wrapper">
-                {loadMoreVisible && hasMoreContent && (
-                  <div className="pt-istop-btn-wrapper  text-center mt-30 ">
-                    <button
-                      className="tp-common-btn text-center "
-                      onClick={loadMoreItems}
-                    >
+                {loadMoreVisible && hasMoreContent && totalItems.length > visibleItems && (
+                  <div className="pt-istop-btn-wrapper text-center mt-30">
+                    <button className="tp-common-btn text-center" onClick={loadMoreItems}>
                       <span className="text-center button-space">
                         <span>Load More</span>
                         <span>
@@ -155,4 +151,5 @@ const BlogList = ({ slug }, props) => {
     </section>
   );
 };
+
 export default BlogList;

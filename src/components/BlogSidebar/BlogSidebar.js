@@ -84,7 +84,7 @@ const BlogSidebar = (props) => {
               <li key={blog.id}>
                 <Link
                   onClick={ClickHandler}
-                  to={`/blog/${blog?.attributes?.Title}`}
+                  to={`/blog/category/${blog?.attributes?.Slug}`}
                 >
                   {blog.attributes.Title}
                   <span>({blog?.attributes?.Articles?.data?.length})</span>
@@ -119,7 +119,7 @@ const BlogSidebar = (props) => {
                   <h4>
                     <Link
                       onClick={ClickHandler}
-                      to={`/highlight-single/${blog.id}`}
+                      to={`/highlight-single/${blog?.attributes?.Slug}`}
                     >
                       {truncate(blog?.attributes?.Title, 40)}
                     </Link>

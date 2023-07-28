@@ -7,6 +7,9 @@ import ErrorPage from "../ErrorPage/ErrorPage";
 import HighlightSingle from "../HighlightSingle/HighlightSingle";
 import BlogPageTag from "../BlogPage/BlogPageTag";
 import BlogDetailsTag from "../BlogDetails/BlogDetailsTag";
+import SiteMap from "../../components/SiteMap";
+import PrivacyPolicy from "../../components/PrivacyPolicy";
+
 
 const AllRoute = () => {
   return (
@@ -16,10 +19,12 @@ const AllRoute = () => {
           <Route path="/" element={<Homepage />} />
           <Route path="home" element={<Homepage />} />
           <Route path="highlight-single/:slug" element={<HighlightSingle />} />
-          <Route path="blog/:slug" element={<BlogPage />} />
+          <Route path="blog/category/:slug" element={<BlogPage />} />
           <Route path="blog/tag/:slug" element={<BlogPageTag />} />
           <Route path="blog-single/:slug" element={<BlogDetails />} />
           <Route path="blog-single/tag/:slug" element={<BlogDetailsTag />} />
+          <Route path="sitemap" element={<SiteMap />} />
+          <Route path="privacy-policy" element={<PrivacyPolicy />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>

@@ -1,19 +1,21 @@
-import React from "react";
-import BlogSidebar from "../../../components/BlogSidebar/BlogSidebar";
+import React, { useMemo } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
+import BlogSidebar from "../../../components/BlogSidebar/BlogSidebar";
 import globalEnv from "../../../api/globalenv";
 import "./HighlightDetails.css";
-import { useEffect } from "react";
+
 const HighlightDetails = ({ article }, props) => {
+  const wordCount = useMemo(() => {
+    return countWords(article?.attributes?.Description);
+  }, [article]);
+
   function countWords(str) {
     return str?.trim().split(/\s+/).length;
   }
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const imageUrl = article?.attributes?.Image?.data[0]?.attributes?.url;
 
   return (
     <div>
@@ -24,16 +26,25 @@ const HighlightDetails = ({ article }, props) => {
               <div className="wpo-blog-content">
                 <div className="post format-standard-image">
                   <div className="entry-media">
-                    <img
-                      src={`${globalEnv.api}${article?.attributes?.Image?.data[0]?.attributes?.url}`}
-                      alt=""
-                      key={article?.id}
-                      style={{
-                        width: "100%",
-                        height: "auto",
-                        borderRadius: "10px",
-                      }}
-                    />
+                    {imageUrl ? (
+                      <img
+                        src={`${globalEnv?.api}${imageUrl}`}
+                        alt="them-pure"
+                        effect="blur"
+                        style={{
+                          width: "100%",
+                          height: "auto",
+                          objectFit: "cover",
+                          aspectRatio: "1.5 / 1",
+                        }}
+                        loading="lazy"
+                        onError={(e) => {
+                          e.target.src = "/fallback-image.jpg";
+                        }}
+                      />
+                    ) : (
+                      <span>Image loading........</span>
+                    )}
                   </div>
                   <div className="entry-meta">
                     <ul>
@@ -51,15 +62,12 @@ const HighlightDetails = ({ article }, props) => {
                         ).toLocaleDateString("en-GB")}
                       </li>
                       <li>
-                        <i className="fa-regular fa-clock-desk"></i> &nbsp;
-                        {Math.ceil(
-                          countWords(article?.attributes?.Description) / 200
-                        )}{" "}
-                        &nbsp;min read
+                        <i className="fa-regular fa-clock"></i>&nbsp;
+                        {Math.ceil(wordCount / 200)} min read
                       </li>
                     </ul>
                   </div>
-                  {/* <h1>{article?.attributes?.Title}</h1> */}
+
                   <div className="custom-list">
                     <ReactMarkdown
                       children={article?.attributes?.Description}
@@ -69,11 +77,12 @@ const HighlightDetails = ({ article }, props) => {
                         uri.startsWith("http") ? uri : `${globalEnv.api}${uri}`
                       }
                       className="markdown"
-                    />{" "}
+                    />
                   </div>
                 </div>
               </div>
             </div>
+
             <BlogSidebar blLeft={props.blLeft} />
           </div>
         </div>
@@ -82,4 +91,4 @@ const HighlightDetails = ({ article }, props) => {
   );
 };
 
-export default HighlightDetails;
+export default React.memo(HighlightDetails);

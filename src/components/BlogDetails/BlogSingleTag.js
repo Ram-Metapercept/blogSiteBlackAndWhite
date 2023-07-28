@@ -18,7 +18,7 @@ const BlogSingleTag = ({ data, ...props }) => {
       try {
         const ids = parseInt(slug);
         const response = await fetch(
-          `${globalEnv.api}/api/articles/${ids}?populate=*`
+          `${globalEnv.api}/api/articles?filters[Slug][$eq]=${slug}&populate=*`
         );
         const data = await response.json();
         setItem(data.data);
@@ -35,9 +35,10 @@ const BlogSingleTag = ({ data, ...props }) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      let url = item.map((item1) => item1.attributes.Tag);
       try {
         const response = await fetch(
-          `${globalEnv.api}/api/articles?filters[tag][$eq]=${item?.attributes?.Tag}&populate=*`
+          `${globalEnv.api}/api/articles?filters[tag][$eq]=${url}&populate=*`
         );
         const data = await response.json();
         setTagItem(data.data);
@@ -49,7 +50,9 @@ const BlogSingleTag = ({ data, ...props }) => {
   }, [item]);
 
   useEffect(() => {
-    const index = tagItem.findIndex((x) => x?.id === data?.id);
+    const index = tagItem.findIndex((x) => {
+      return item.map((p) => p?.id)?.includes(x?.id);
+    });
     setCurrentIndex(index);
   }, [slug, tagItem, data]);
 
@@ -67,6 +70,7 @@ const BlogSingleTag = ({ data, ...props }) => {
   const nextData = tagItem[currentIndex + 1];
   const prevData = tagItem[currentIndex - 1];
 
+  const imageUrl = currentData?.attributes?.Image?.data[0]?.attributes?.url;
   return (
     <section className="wpo-blog-single-section section-padding">
       <div className="container">
@@ -75,16 +79,25 @@ const BlogSingleTag = ({ data, ...props }) => {
             <div className="wpo-blog-content">
               <div className="post format-standard-image">
                 <div className="entry-media">
-                  <img
-                    src={`${globalEnv.api}${currentData?.attributes?.Image?.data[0]?.attributes?.url}`}
-                    alt=""
-                    key={currentData?.id}
-                    style={{
-                      width: "100%",
-                      height: "auto",
-                      borderRadius: "10px",
-                    }}
-                  />
+                  {imageUrl ? (
+                    <img
+                      src={`${globalEnv?.api}${imageUrl}`}
+                      alt="them-pure"
+                      effect="blur"
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                        objectFit: "cover",
+                        aspectRatio: "1.5 / 1",
+                      }}
+                      loading="lazy"
+                      onError={(e) => {
+                        e.target.src = "/fallback-image.jpg";
+                      }}
+                    />
+                  ) : (
+                    <span>image loading....</span>
+                  )}
                 </div>
                 <div className="entry-meta">
                   <ul>
@@ -102,15 +115,15 @@ const BlogSingleTag = ({ data, ...props }) => {
                       ).toLocaleDateString("en-GB")}
                     </li>
                     <li>
-                      <i className="fa-regular fa-clock-desk"></i> &nbsp;
+                      <i className="fa-regular fa-clock"></i>&nbsp;
                       {Math.ceil(
                         countWords(currentData?.attributes?.Description) / 200
                       )}{" "}
-                      &nbsp;min read
+                      min read
                     </li>
                   </ul>
                 </div>
-                {/* <h1>{currentData?.attributes?.Title}</h1> */}
+
                 <div className="custom-list">
                   <ReactMarkdown
                     remarkPlugins={[remarkGfm]}
@@ -125,7 +138,7 @@ const BlogSingleTag = ({ data, ...props }) => {
               <div className="more-posts">
                 <div className="previous-post">
                   {prevData ? (
-                    <Link to={`/blog-single/tag/${prevData?.id}`}>
+                    <Link to={`/blog-single/tag/${prevData?.attributes.Slug}`}>
                       <span
                         className="post-control-link"
                         onClick={handlePrevious}
@@ -147,7 +160,7 @@ const BlogSingleTag = ({ data, ...props }) => {
                 </div>
                 <div className="next-post">
                   {nextData ? (
-                    <Link to={`/blog-single/tag/${nextData?.id}`}>
+                    <Link to={`/blog-single/tag/${nextData?.attributes?.Slug}`}>
                       <span className="post-control-link" onClick={handleNext}>
                         Next Post
                       </span>

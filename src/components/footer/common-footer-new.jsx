@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 // footer_links data
 const footer_links = [
   {
-    id: 1,
+    id: "company",
     title: "Quick Links",
-    col: "col-xl-2",
+    col: "col-xl-3",
     links: [
       { title: "About us", link: "https://metapercept.com/aboutus" },
       { title: "Services", link: "https://metapercept.com/services" },
@@ -33,6 +33,13 @@ const CommonFooter = () => {
 
   return (
     <>
+    <style>
+      {`
+      .tp-footer__widget ul#company li {
+        width: 48%;
+    }
+      `}
+    </style>
       {footer_links.map((item, i) => (
         <div key={i} className={`${item.col} col-md-6`}>
           <div className="tp-footer__widget mb-40">
@@ -92,10 +99,10 @@ export const FooterCopyRight = ({ style_3, style_7, style_9 }) => {
               {/* <ul> */}
               <ul className="d-flex justify-content-center">
                 <li>
-                  <Link href="/privacy-policy">Privacy Policy</Link>
+                  <Link to="/privacy-policy">Privacy Policy</Link>
                 </li>
                 <li>
-                  <Link href="/sitemap">View Sitemap</Link>
+                  <Link to="/sitemap">View Sitemap</Link>
                 </li>
               </ul>
             </div>

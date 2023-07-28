@@ -12,7 +12,6 @@ const Error = () => {
         <div className="error_page">
           <img style={{ width: "100%" }} src={error} alt="error" />
           <Link href="/" style={{ display: "flex", justifyContent: "center" }}>
-   
             <Link onClick={ClickHandler} to="/home" className="theme-btn">
               {" "}
               Go to home
