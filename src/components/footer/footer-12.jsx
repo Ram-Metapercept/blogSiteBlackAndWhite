@@ -91,11 +91,11 @@ const Footer = ({ tp_border }) => {
             }
           }
 
-          #footer3{
-            @media(min-width:1400px){
-                 max-width: 1340px !important;
+          #footer3 {
+            @media (min-width: 1400px) {
+              max-width: 1340px !important;
             }
-        }
+          }
         `}
       </style>
 
@@ -126,12 +126,15 @@ const Footer = ({ tp_border }) => {
                 <div className="col-xl-3 col-md-6">
                   <div className="tp-footer__widget mb-40">
                     <h3 className="tp-footer__widget-title mb-35">{about}</h3>
-                    <p className="pr-40" style={{ textAlign: "justify" }}>
+                    <p
+                      className="pe-xl-0 pe-md-5"
+                      // style={{ textAlign: "justify" }}
+                    >
                       {about_des}
                     </p>
                   </div>
 
-                  <div className="tp-footer__widget pr-40 mb-40 subscribeDiv">
+                  <div className="tp-footer__widget pe-xl-0 pe-md-5 mb-40 subscribeDiv">
                     <h3 className="tp-footer__widget-title mb-15">
                       Subscribe Now
                     </h3>
@@ -147,7 +150,7 @@ const Footer = ({ tp_border }) => {
                         </span>
                         <input
                           type="email"
-                          placeholder="Enter your email"
+                          placeholder="Enter you email"
                           id="EMAIL"
                           name="EMAIL"
                           autoComplete="off"

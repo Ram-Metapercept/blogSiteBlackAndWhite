@@ -16,7 +16,6 @@ const BlogSingleTag = ({ data, ...props }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-  
         const response = await fetch(
           `${globalEnv.api}/api/articles?filters[Slug][$eq]=${slug}&populate=*`
         );
@@ -54,7 +53,7 @@ const BlogSingleTag = ({ data, ...props }) => {
       return item.map((p) => p?.id)?.includes(x?.id);
     });
     setCurrentIndex(index);
-  }, [slug, tagItem, data,item]);
+  }, [slug, tagItem, data, item]);
 
   const handleNext = () => {
     setCurrentIndex(currentIndex + 1);
@@ -89,7 +88,7 @@ const BlogSingleTag = ({ data, ...props }) => {
                         height: "auto",
                         objectFit: "cover",
                         aspectRatio: "1.5 / 1",
-                        borderRadius:"10px"
+                        borderRadius: "10px",
                       }}
                       loading="lazy"
                       onError={(e) => {
@@ -102,13 +101,17 @@ const BlogSingleTag = ({ data, ...props }) => {
                 </div>
                 <div className="entry-meta">
                   <ul>
-                    <li>
-                      <i className="fi flaticon-user"> </i> By{" "}
-                      {
-                        currentData?.attributes?.Author?.data[0]?.attributes
-                          ?.fullname
-                      }
-                    </li>
+                    {currentData?.attributes?.Author?.data[0]?.attributes
+                      ?.fullname && (
+                      <li>
+                        <i className="fi flaticon-user"> </i> By{" "}
+                        {
+                          currentData?.attributes?.Author?.data[0]?.attributes
+                            ?.fullname
+                        }
+                      </li>
+                    )}
+
                     <li>
                       <i className="fi flaticon-calendar"></i>
                       {new Date(
@@ -136,16 +139,14 @@ const BlogSingleTag = ({ data, ...props }) => {
                   />
                 </div>
               </div>
-              <div className="more-posts">
-                <div className="previous-post">
+              <div className="more-posts d-flex align-items-stretch flex-wrap p-0">
+                <div className="previous-post" style={{ padding: "40px 25px" }}>
                   {prevData ? (
-                    <Link to={`/blog-single/tag/${prevData?.attributes.Slug}`}>
-                      <span
-                        className="post-control-link"
-                        onClick={handlePrevious}
-                      >
-                        Previous Post
-                      </span>
+                    <Link
+                      to={`/blog-single/tag/${prevData?.attributes.Slug}`}
+                      onClick={handlePrevious}
+                    >
+                      <span className="post-control-link">Previous Post</span>
                       <span className="post-name">
                         {prevData?.attributes?.Title}
                       </span>
@@ -159,12 +160,13 @@ const BlogSingleTag = ({ data, ...props }) => {
                     </>
                   )}
                 </div>
-                <div className="next-post">
+                <div className="next-post" style={{ padding: "40px 25px" }}>
                   {nextData ? (
-                    <Link to={`/blog-single/tag/${nextData?.attributes?.Slug}`}>
-                      <span className="post-control-link" onClick={handleNext}>
-                        Next Post
-                      </span>
+                    <Link
+                      to={`/blog-single/tag/${nextData?.attributes?.Slug}`}
+                      onClick={handleNext}
+                    >
+                      <span className="post-control-link">Next Post</span>
                       <span className="post-name">
                         {nextData?.attributes?.Title}
                       </span>

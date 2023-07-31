@@ -1,4 +1,4 @@
-import React, { useMemo,useEffect } from "react";
+import React, { useMemo, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
@@ -15,10 +15,9 @@ const HighlightDetails = ({ article }, props) => {
     return str?.trim().split(/\s+/).length;
   }
 
-
   useEffect(() => {
-  window.scrollTo(0, 0);
-    }, []);
+    window.scrollTo(0, 0);
+  }, []);
   const imageUrl = article?.attributes?.Image?.data[0]?.attributes?.url;
 
   return (
@@ -40,7 +39,7 @@ const HighlightDetails = ({ article }, props) => {
                           height: "auto",
                           objectFit: "cover",
                           aspectRatio: "1.5 / 1",
-                          borderRadius:"10px"
+                          borderRadius: "10px",
                         }}
                         loading="lazy"
                         onError={(e) => {
@@ -53,13 +52,17 @@ const HighlightDetails = ({ article }, props) => {
                   </div>
                   <div className="entry-meta">
                     <ul>
-                      <li>
-                        <i className="fi flaticon-user"> </i> By{" "}
-                        {
-                          article?.attributes?.Author?.data[0]?.attributes
-                            ?.fullname
-                        }
-                      </li>
+                      {article?.attributes?.Author?.data[0]?.attributes
+                        ?.fullname && (
+                        <li>
+                          <i className="fi flaticon-user"> </i> By{" "}
+                          {
+                            article?.attributes?.Author?.data[0]?.attributes
+                              ?.fullname
+                          }
+                        </li>
+                      )}
+
                       <li>
                         <i className="fi flaticon-calendar"></i>{" "}
                         {new Date(

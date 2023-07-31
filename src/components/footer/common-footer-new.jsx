@@ -73,8 +73,11 @@ const footer_content = {
   copy_right_info: (
     <>
       Copyright © {new Date().getFullYear()}
-      <Link to="https://techpubconnect.org/"> Metapercept Technology Services LLP</Link> All Rights
-      Reserved
+      <Link to="https://techpubconnect.org/">
+        {" "}
+        Metapercept Technology Services LLP
+      </Link>{" "}
+      All Rights Reserved
     </>
   ),
 };
@@ -84,7 +87,18 @@ const { copy_right_info } = footer_content;
 export const FooterCopyRight = ({ style_3, style_7, style_9 }) => {
   return (
     <>
+      <style jsx="true">
+        {`
+          .tp-footer-menu li a {
+            color: var(--tp-common-black) !important;
+          }
+          .tp-footer-menu li a:hover {
+            color: #324da0 !important;
+          }
+        `}
+      </style>
       <div
+        style={{ "--tp-theme-redical": "#324da0" }}
         className={`tp-footer__bottom pt-25 pb-25 ${
           style_3 ? "da-ft-copyright-bg" : ""
         } ${style_7 ? "law-footer__bottom red-bg" : ""} ${

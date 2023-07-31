@@ -29,7 +29,7 @@ const BlogList = ({ slug }, props) => {
       try {
         const response = await fetch(
           `${globalEnv.api}/api/categories?filters[Slug][$eq]=${slug}&populate[Articles][populate]=*`
-        )
+        );
         const data = await response.json();
         setCategory(data.data);
       } catch (error) {
@@ -39,8 +39,10 @@ const BlogList = ({ slug }, props) => {
 
     fetchData();
   }, [slug]);
- 
-  const totalItems = category.flatMap((blog) => blog?.attributes?.Articles?.data);
+
+  const totalItems = category.flatMap(
+    (blog) => blog?.attributes?.Articles?.data
+  );
   const loadMoreItems = () => {
     if (visibleItems + 2 >= totalItems.length) {
       setVisibleItems(totalItems.length);
@@ -48,7 +50,7 @@ const BlogList = ({ slug }, props) => {
       setHasMoreContent(false);
     } else {
       setVisibleItems(visibleItems + 2);
-      setHasMoreContent(true); 
+      setHasMoreContent(true);
     }
   };
 
@@ -82,66 +84,78 @@ const BlogList = ({ slug }, props) => {
                   </div>
                   <div className="entry-meta">
                     <ul>
-                      <li>
-                        <i className="fi flaticon-user"> </i> By{" "}
-                        {blog?.attributes?.Author?.data[0]?.attributes?.fullname}
-                      </li>
+                      {blog?.attributes?.Author?.data[0]?.attributes
+                        ?.fullname && (
+                        <li>
+                          <i className="fi flaticon-user"> </i> By{" "}
+                          {
+                            blog?.attributes?.Author?.data[0]?.attributes
+                              ?.fullname
+                          }
+                        </li>
+                      )}
                       <li className="custom-list">
                         <i className="fi flaticon-calendar"></i>{" "}
-                        {new Date(blog?.attributes?.createdAt).toLocaleDateString(
-                          "en-GB"
-                        )}
+                        {new Date(
+                          blog?.attributes?.createdAt
+                        ).toLocaleDateString("en-GB")}
                       </li>
                       <li>
                         <i className="fa-regular fa-clock"></i>&nbsp;
-                        {Math.ceil(countWords(blog?.attributes?.Description) / 200)}{" "}
+                        {Math.ceil(
+                          countWords(blog?.attributes?.Description) / 200
+                        )}{" "}
                         min read
                       </li>
                     </ul>
                   </div>
                   <div className="entry-details">
-                    <Link onClick={ClickHandler} to={`/blog-single/${blog?.attributes?.Slug}`}>
+                    <Link
+                      onClick={ClickHandler}
+                      to={`/blog-single/${blog?.attributes?.Slug}`}
+                    >
                       <h1>{blog?.attributes?.Title}</h1>
-                      
                     </Link>
                     <ReactMarkdown
-                        children={
-                        
-                          truncate(blog?.attributes?.Description, 350)
-                        }
-                        remarkPlugins={[remarkGfm]}
-                        rehypePlugins={[rehypeRaw]}
-                        transformImageUri={(uri) =>
-                          uri.startsWith("http")
-                            ? uri
-                            : ` ${globalEnv.api}``${uri}`
-                        }
-                        className="markdown"
-                      />
-                      <Link
-                        onClick={ClickHandler}
-                        to={`/blog-single/${blog?.attributes?.Slug}`}
-                        className="read-more"
-                        state={propsToPass}
-                      >
-                        READ MORE...
-                      </Link>
+                      children={truncate(blog?.attributes?.Description, 350)}
+                      remarkPlugins={[remarkGfm]}
+                      rehypePlugins={[rehypeRaw]}
+                      transformImageUri={(uri) =>
+                        uri.startsWith("http")
+                          ? uri
+                          : ` ${globalEnv.api}``${uri}`
+                      }
+                      className="markdown"
+                    />
+                    <Link
+                      onClick={ClickHandler}
+                      to={`/blog-single/${blog?.attributes?.Slug}`}
+                      className="read-more"
+                      state={propsToPass}
+                    >
+                      READ MORE...
+                    </Link>
                   </div>
                 </div>
               ))}
               <div className="pagination-wrapper">
-                {loadMoreVisible && hasMoreContent && totalItems.length > visibleItems && (
-                  <div className="pt-istop-btn-wrapper text-center mt-30">
-                    <button className="tp-common-btn text-center" onClick={loadMoreItems}>
-                      <span className="text-center button-space">
-                        <span>Load More</span>
-                        <span>
-                          <AiOutlinePlus />
+                {loadMoreVisible &&
+                  hasMoreContent &&
+                  totalItems.length > visibleItems && (
+                    <div className="pt-istop-btn-wrapper text-center mt-30">
+                      <button
+                        className="tp-common-btn text-center"
+                        onClick={loadMoreItems}
+                      >
+                        <span className="text-center button-space">
+                          <span>Load More</span>
+                          <span>
+                            <AiOutlinePlus />
+                          </span>
                         </span>
-                      </span>
-                    </button>
-                  </div>
-                )}
+                      </button>
+                    </div>
+                  )}
               </div>
             </div>
           </div>

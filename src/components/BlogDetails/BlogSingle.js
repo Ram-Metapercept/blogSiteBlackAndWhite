@@ -82,7 +82,7 @@ const BlogSingle = (props) => {
             <div className="wpo-blog-content">
               <div className="post format-standard-image">
                 <div className="entry-media">
-            {imageUrl ? (
+                  {imageUrl ? (
                     <img
                       src={`${globalEnv?.api}${imageUrl}`}
                       alt="them-pure"
@@ -92,7 +92,7 @@ const BlogSingle = (props) => {
                         height: "auto",
                         objectFit: "cover",
                         aspectRatio: "1.5 / 1",
-                        borderRadius:"10px"
+                        borderRadius: "10px",
                       }}
                       loading="lazy"
                       onError={(e) => {
@@ -105,13 +105,17 @@ const BlogSingle = (props) => {
                 </div>
                 <div className="entry-meta">
                   <ul style={{ listStyle: "none !important" }}>
-                    <li>
-                      <i className="fi flaticon-user"> </i> By{" "}
-                      {
-                        currentData?.attributes?.Author?.data[0]?.attributes
-                          ?.fullname
-                      }
-                    </li>
+                    {currentData?.attributes?.Author?.data[0]?.attributes
+                      ?.fullname && (
+                      <li>
+                        <i className="fi flaticon-user"> </i> By{" "}
+                        {
+                          currentData?.attributes?.Author?.data[0]?.attributes
+                            ?.fullname
+                        }
+                      </li>
+                    )}
+
                     <li>
                       <i className="fi flaticon-calendar"></i>{" "}
                       {new Date(
@@ -141,16 +145,14 @@ const BlogSingle = (props) => {
                 </div>
               </div>
 
-              <div className="more-posts">
-                <div className="previous-post">
+              <div className="more-posts d-flex align-items-stretch flex-wrap p-0">
+                <div className="previous-post" style={{ padding: "40px 25px" }}>
                   {prevData ? (
-                    <Link to={`/blog-single/${prevData?.attributes?.Slug}`}>
-                      <span
-                        className="post-control-link"
-                        onClick={handlePrevious}
-                      >
-                        Previous Post
-                      </span>
+                    <Link
+                      to={`/blog-single/${prevData?.attributes?.Slug}`}
+                      onClick={handlePrevious}
+                    >
+                      <span className="post-control-link">Previous Post</span>
                       <span className="post-name">
                         {prevData?.attributes?.Title}
                       </span>
@@ -163,12 +165,13 @@ const BlogSingle = (props) => {
                     </div>
                   )}
                 </div>
-                <div className="next-post">
+                <div className="next-post" style={{ padding: "40px 25px" }}>
                   {nextData ? (
-                    <Link to={`/blog-single/${nextData?.attributes?.Slug}`}>
-                      <span className="post-control-link" onClick={handleNext}>
-                        Next Post
-                      </span>
+                    <Link
+                      to={`/blog-single/${nextData?.attributes?.Slug}`}
+                      onClick={handleNext}
+                    >
+                      <span className="post-control-link">Next Post</span>
                       <span className="post-name">
                         {nextData?.attributes?.Title}
                       </span>

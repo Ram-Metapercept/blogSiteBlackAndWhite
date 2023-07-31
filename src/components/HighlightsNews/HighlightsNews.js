@@ -20,7 +20,9 @@ const HighlightsNews = (props) => {
   };
 
   useEffect(() => {
-    fetch(`${globalEnv.api}/api/articles?filters[Archived][$eq]=false&populate=*`)
+    fetch(
+      `${globalEnv.api}/api/articles?filters[Archived][$eq]=false&populate=*`
+    )
       .then((response) => response.json())
       .then((data) => {
         setArticles(data.data);
@@ -95,7 +97,6 @@ const HighlightsNews = (props) => {
   };
 
   const filteredItems = articles.slice(0, visibleItems);
- 
 
   return (
     <>
@@ -119,96 +120,93 @@ const HighlightsNews = (props) => {
               <div className="wpo-blog-highlights-wrap">
                 <div className="wpo-blog-items">
                   <div className="row">
-                    <div className="row">
-                      {filteredItems.map((item, i) => (
-                        <div key={i} className="col-lg-6">
-                          <div
-                            className="it-blog tp-lasted-blog mb-30 aos-init aos-animate it-blog-wrapper"
-                            data-aos="fade-up"
-                            data-aos-duration="1000"
-                          >
-                            <div className="it-blog__thumb w-img">
-                              <div className="fix">
-                                
-                                <img
-                                  src={`${globalEnv?.api}${item?.attributes.Image.data[0].attributes.formats.thumbnail.url}`}
-                                  alt="them-pure"
-                                  effect="blur"
-                                  style={{
-                                    width: "100%",
-                                    height: "auto",
-                                    objectFit: "cover",
-                                    aspectRatio: "1.5 / 1",
-                                  }}
-                                />
-                              </div>
-
-                              <div className="it-blog-date">
-                                <span className="date">
-                                  <b>
-                                    {new Date(
-                                      item?.attributes?.createdAt
-                                    ).getDate()}
-                                  </b>
-                                  {
-                                    months[
-                                      new Date(
-                                        item?.attributes?.createdAt
-                                      ).getMonth()
-                                    ]
-                                  }
-                                </span>
-                              </div>
+                    {filteredItems.map((item, i) => (
+                      <div key={i} className="col-lg-6">
+                        <div
+                          className="it-blog tp-lasted-blog mb-30 aos-init aos-animate it-blog-wrapper"
+                          data-aos="fade-up"
+                          data-aos-duration="1000"
+                        >
+                          <div className="it-blog__thumb w-img">
+                            <div className="fix">
+                              <img
+                                src={`${globalEnv?.api}${item?.attributes.Image.data[0].attributes.formats.thumbnail.url}`}
+                                alt="them-pure"
+                                effect="blur"
+                                style={{
+                                  width: "100%",
+                                  height: "auto",
+                                  objectFit: "cover",
+                                  aspectRatio: "1.5 / 1",
+                                }}
+                              />
                             </div>
-                            <div className="it-blog-info white-bg">
-                              {item?.attributes?.Category?.data?.attributes
-                                ?.Title && (
-                                <button
-                                  style={{
-                                    border: "1px solid #3756f7",
-                                    padding: "2px 5px",
-                                    borderRadius: "25px",
-                                    marginBottom: "15px",
-                                    color: "black",
-                                    fontSize: "12px",
-                                    cursor: "default",
-                                  }}
-                                >
-                                  {
-                                    item?.attributes?.Category?.data?.attributes
-                                      ?.Title
-                                  }
-                                </button>
-                              )}
 
-                              <h3 className="ca-service__item-title mb-30">
-                                <Link
-                                  to={`/highlight-single/${item?.attributes?.Slug}`}
-                                  style={{ color: "#032B5F" }}
-                                >
-                                  {truncate(item?.attributes?.Title, 60)}
-                                </Link>
-                              </h3>
-                              <div
-                                className="tp-seo-full-btn"
-                                style={{ "--tp-theme-redical": "#3756f7" }}
+                            <div className="it-blog-date">
+                              <span className="date">
+                                <b>
+                                  {new Date(
+                                    item?.attributes?.createdAt
+                                  ).getDate()}
+                                </b>
+                                {
+                                  months[
+                                    new Date(
+                                      item?.attributes?.createdAt
+                                    ).getMonth()
+                                  ]
+                                }
+                              </span>
+                            </div>
+                          </div>
+                          <div className="it-blog-info white-bg">
+                            {item?.attributes?.Category?.data?.attributes
+                              ?.Title && (
+                              <button
+                                style={{
+                                  border: "1px solid #3756f7",
+                                  padding: "2px 5px",
+                                  borderRadius: "25px",
+                                  marginBottom: "15px",
+                                  color: "black",
+                                  fontSize: "12px",
+                                  cursor: "default",
+                                }}
                               >
-                                <Link
-                                  to={`/highlight-single/${item?.attributes?.Slug}`}
-                                  className="it-portfolio-item__btn"
-                                >
-                                  Read More
-                                  <span className="mt-1">
-                                    <i className="fal fa-long-arrow-right"></i>
-                                    <i className="fal fa-long-arrow-right"></i>
-                                  </span>
-                                </Link>
-                              </div>
+                                {
+                                  item?.attributes?.Category?.data?.attributes
+                                    ?.Title
+                                }
+                              </button>
+                            )}
+
+                            <h3 className="ca-service__item-title mb-30">
+                              <Link
+                                to={`/highlight-single/${item?.attributes?.Slug}`}
+                                style={{ color: "#032B5F" }}
+                              >
+                                {truncate(item?.attributes?.Title, 60)}
+                              </Link>
+                            </h3>
+                            <div
+                              className="tp-seo-full-btn"
+                              style={{ "--tp-theme-redical": "#3756f7" }}
+                            >
+                              <Link
+                                to={`/highlight-single/${item?.attributes?.Slug}`}
+                                className="it-portfolio-item__btn"
+                              >
+                                Read More
+                                <span className="mt-1">
+                                  <i className="fal fa-long-arrow-right"></i>
+                                  <i className="fal fa-long-arrow-right"></i>
+                                </span>
+                              </Link>
                             </div>
                           </div>
                         </div>
-                      ))}
-                    </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -241,7 +239,6 @@ const HighlightsNews = (props) => {
                           onClick={ClickHandler}
                           to={`/blog/category/${blog?.attributes?.Slug}`}
                         >
-                          
                           {truncate(blog.attributes.Title, 40)}
                           <span>
                             ({blog?.attributes?.Articles?.data?.length})

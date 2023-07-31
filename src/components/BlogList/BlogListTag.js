@@ -89,19 +89,28 @@ const BlogListTag = ({ slug, blRight }) => {
                   </div>
                   <div className="entry-meta">
                     <ul>
-                      <li>
-                        <i className="fi flaticon-user"> </i>By{" "}
-                        {blog?.attributes?.Author?.data[0]?.attributes?.fullname}
-                      </li>
+                      {blog?.attributes?.Author?.data[0]?.attributes
+                        ?.fullname && (
+                        <li>
+                          <i className="fi flaticon-user"> </i>By{" "}
+                          {
+                            blog?.attributes?.Author?.data[0]?.attributes
+                              ?.fullname
+                          }
+                        </li>
+                      )}
+
                       <li>
                         <i className="fi flaticon-calendar"></i>{" "}
-                        {new Date(blog?.attributes?.createdAt).toLocaleDateString(
-                          "en-GB"
-                        )}
+                        {new Date(
+                          blog?.attributes?.createdAt
+                        ).toLocaleDateString("en-GB")}
                       </li>
                       <li>
                         <i className="fa-regular fa-clock"></i>&nbsp;
-                        {Math.ceil(countWords(blog?.attributes?.Description) / 200)}{" "}
+                        {Math.ceil(
+                          countWords(blog?.attributes?.Description) / 200
+                        )}{" "}
                         min read
                       </li>
                     </ul>
@@ -121,7 +130,7 @@ const BlogListTag = ({ slug, blRight }) => {
                             : `${globalEnv.api}${uri}`
                         }
                         className="markdown"
-                        components={components} 
+                        components={components}
                       />
                     </div>
                     <Link
@@ -137,21 +146,23 @@ const BlogListTag = ({ slug, blRight }) => {
               ))}
             </div>
             <div className="pagination-wrapper">
-              {loadMoreVisible && hasMoreContent && totalItems > visibleItems && (
-                <div className="pt-istop-btn-wrapper text-center mt-30">
-                  <button
-                    className="tp-common-btn text-center"
-                    onClick={loadMoreItems}
-                  >
-                    <span className="text-center button-space">
-                      <span>Load More</span>
-                      <span>
-                        <AiOutlinePlus />
+              {loadMoreVisible &&
+                hasMoreContent &&
+                totalItems > visibleItems && (
+                  <div className="pt-istop-btn-wrapper text-center mt-30">
+                    <button
+                      className="tp-common-btn text-center"
+                      onClick={loadMoreItems}
+                    >
+                      <span className="text-center button-space">
+                        <span>Load More</span>
+                        <span>
+                          <AiOutlinePlus />
+                        </span>
                       </span>
-                    </span>
-                  </button>
-                </div>
-              )}
+                    </button>
+                  </div>
+                )}
             </div>
           </div>
           <BlogSidebar blLeft={blRight} />
