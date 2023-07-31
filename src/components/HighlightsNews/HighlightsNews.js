@@ -95,7 +95,7 @@ const HighlightsNews = (props) => {
   };
 
   const filteredItems = articles.slice(0, visibleItems);
-  console.log(filteredItems,"hi")
+ 
 
   return (
     <>
