@@ -109,7 +109,7 @@ const Footer = ({ tp_border }) => {
               <div className="row align-items-center">
                 <div className="col-12 pb-20 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start">
                   <div className="bs-footer__top-logo">
-                    <Link href="/">
+                    <Link to="/">
                       <img src={footer_logo} alt="brand-logo" />
                     </Link>
                   </div>
@@ -142,7 +142,7 @@ const Footer = ({ tp_border }) => {
                     <div className="tp-footer-from p-relative">
                       <form
                         method="post"
-                        action="https://ea7cf473.sibforms.com/serve/MUIFAHlj8FMTEajUXnHHmpV-yj2s937Twuev74LN2CfwE6MMj2Kss3SaAmUWkGvPKRUB99qd1RfJZFbLpn5JIvbtTN5w5EYtOGU5SXqzNjgTrY_BiCxRB5ve408X2PJ61BwmTB7Waehutu0pIO38TlBINyZDbr2Phyms9ynJcu7M_A6wzReQ-OIbOS8iP79iiW7iODjJ2vLw4d8k"
+                        action="https://f3d3e616.sibforms.com/serve/MUIFALT2NLdmHiBMEwxaijF5c_KwfVa1-Ca1ch-z_g1by1Q6rKLFbsWya-kC_Cuq6JZZZ-BTWgZ8f3KBPkyI5SraPee8Tnd3KDfYE4PDwSVJrd6K__Zibfm8ZhkIYIacnI2ToFp-TxTSPXixZGkfth1XqqGhwZSt_wDehm_lQEXMdRXrXOS7ZSa7M_pD9Mtz0MBYBWz_ASpzP2bx"
                         onSubmit={isFormValid}
                       >
                         <span>

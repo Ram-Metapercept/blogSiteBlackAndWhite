@@ -1,6 +1,7 @@
 import React from "react";
 import { sitemap_data } from "./sitemap-data"
 import {Link} from "react-router-dom";
+import "./siteMap.css"
 function SitemapArea() {
   return (
     <>
@@ -34,7 +35,7 @@ function SitemapArea() {
                   {sitemap_data.map((data, i) => {
                     return (
                       <li className="position-relative pl-20" key={i}>
-                        <h5>
+                        <h5 className="sitemap-links">
                           <Link to={data.link}>{data.title}</Link>
                         </h5>
                         {data.subMenu && (
@@ -45,7 +46,7 @@ function SitemapArea() {
                               const targetAttr = isUrl ? `"_blank"` : "";
                               return (
                                 <li className="position-relative pl-20" key={i}>
-                                  <h5>
+                                  <h5 className="sitemap-links">
                                     <Link
                                       to={subMenuData.link}
                                       target={targetAttr}
@@ -69,7 +70,7 @@ function SitemapArea() {
                                               className="position-relative pl-20"
                                               key={i}
                                             >
-                                              <h5>
+                                              <h5 className="sitemap-links">
                                                 <Link
                                                   to={subMenuData.link}
                                                   target={targetAttr}

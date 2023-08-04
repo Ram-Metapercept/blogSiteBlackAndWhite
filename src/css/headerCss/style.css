@@ -183,9 +183,9 @@ p {
   line-height: 26px;
 }
 
-li {
+/* li {
   list-style: none;
-}
+} */
 
 a,
 .btn,
@@ -3525,7 +3525,7 @@ input[type=color] {
   background-position: bottom;
 }
 .breadcrumb__title {
-  font-size: 70px;
+  font-size: 50px;
   color: var(--tp-common-black);
 }
 .breadcrumb__title-2 {

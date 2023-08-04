@@ -7,7 +7,6 @@ import globalEnv from "../../api/globalenv.js";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-const truncate = require("truncate");
 
 const ClickHandler = () => {
   window.scrollTo(10, 0);
@@ -116,8 +115,9 @@ const BlogList = ({ slug }, props) => {
                     >
                       <h1>{blog?.attributes?.Title}</h1>
                     </Link>
+                    <div className="listing" id="cutoffText1">
                     <ReactMarkdown
-                      children={truncate(blog?.attributes?.Description, 350)}
+                      children={blog?.attributes?.Description}
                       remarkPlugins={[remarkGfm]}
                       rehypePlugins={[rehypeRaw]}
                       transformImageUri={(uri) =>
@@ -127,6 +127,7 @@ const BlogList = ({ slug }, props) => {
                       }
                       className="markdown"
                     />
+                    </div>
                     <Link
                       onClick={ClickHandler}
                       to={`/blog-single/${blog?.attributes?.Slug}`}

@@ -11,14 +11,14 @@ const HighlightsNews = (props) => {
   const [latest, setLatest] = useState([]);
   const [category, setCategory] = useState([]);
   const [currentPage] = useState(1);
-  const [archived, setArchived] = useState([]);
+
   const [visibleItems, setVisibleItems] = useState(6);
   const [loadMoreVisible, setLoadMoreVisible] = useState(true);
 
   const ClickHandler = () => {
     window.scrollTo(10, 0);
   };
-
+ 
   useEffect(() => {
     fetch(
       `${globalEnv.api}/api/articles?filters[Archived][$eq]=false&populate=*`
@@ -29,18 +29,7 @@ const HighlightsNews = (props) => {
       })
       .catch((error) => console.error(error));
   }, []);
-
-  useEffect(() => {
-    fetch(
-      `${globalEnv.api}/api/articles?filters[Archived][$eq]=true&populate=*`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setArchived(data.data);
-      })
-      .catch((error) => console.error(error));
-  }, []);
-
+console.log(articles)
   useEffect(() => {
     fetch(`${globalEnv.api}/api/categories?populate=*`)
       .then((response) => response.json())
@@ -61,7 +50,7 @@ const HighlightsNews = (props) => {
       .catch((error) => console.error(error));
   }, [currentPage]);
 
-  const totalItems = articles.length;
+  const totalItems = articles?.length;
 
   const uniqueTags = new Set();
   const objectsWithUniqueTags = [];
@@ -73,18 +62,18 @@ const HighlightsNews = (props) => {
     }
   }
   const months = [
-    "January",
-    "February",
-    "March",
-    "April",
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
     "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
   ];
 
   const loadMoreItems = () => {
@@ -160,7 +149,7 @@ const HighlightsNews = (props) => {
                             </div>
                           </div>
                           <div className="it-blog-info white-bg">
-                            {item?.attributes?.Category?.data?.attributes
+                            {/* {item?.attributes?.Category?.data?.attributes
                               ?.Title && (
                               <button
                                 style={{
@@ -178,14 +167,34 @@ const HighlightsNews = (props) => {
                                     ?.Title
                                 }
                               </button>
-                            )}
+                            )} */}
+
+<button
+  style={{
+    border: `1px solid ${
+      item?.attributes?.Category?.data?.attributes?.Title ? "#3756f7" : "#fff"
+    }`,
+    padding: "2px 5px",
+    borderRadius: "25px",
+    marginBottom: "15px",
+    color: "black",
+    fontSize: "12px",
+    cursor: "default",
+  }}
+>
+  {item?.attributes?.Category?.data?.attributes?.Title}
+</button>
+
 
                             <h3 className="ca-service__item-title mb-30">
                               <Link
                                 to={`/highlight-single/${item?.attributes?.Slug}`}
                                 style={{ color: "#032B5F" }}
                               >
-                                {truncate(item?.attributes?.Title, 60)}
+                                <span className="cutoffText">
+                                  {" "}
+                                  {item?.attributes?.Title}
+                                </span>
                               </Link>
                             </h3>
                             <div
@@ -276,7 +285,10 @@ const HighlightsNews = (props) => {
                               onClick={ClickHandler}
                               to={`/highlight-single/${blog?.attributes?.Slug}`}
                             >
-                              {truncate(blog.attributes.Title, 60)}
+                              <span className="cutofftext">
+                                {" "}
+                                {blog.attributes.Title}
+                              </span>
                             </Link>
                           </h4>
                         </div>
@@ -284,33 +296,20 @@ const HighlightsNews = (props) => {
                     </div>
                   ))}
                 </div>
-
-                <div className="widget recent-post-widget">
-                  <h3 style={{ fontWeight: "700", color: "#070707" }}>
-                    Archived Content
-                  </h3>
-                  {archived.slice(0, 5).map((blog, bitem) => (
-                    <div className="posts" key={bitem}>
-                      <div className="post">
-                        <div className="img-holder">
-                          <img
-                            src={`${globalEnv.api}${blog?.attributes.Image.data[0].attributes.formats.thumbnail.url}`}
-                            alt=""
-                          />
-                        </div>
-                        <div className="details">
-                          <h4>
-                            <Link
-                              onClick={ClickHandler}
-                              to={`/highlight-single/${blog?.attributes.Slug}`}
-                            >
-                              {truncate(blog?.attributes?.Title, 60)}
-                            </Link>
-                          </h4>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+                <div className="widget tag-widget">
+                  <h3 style={{ fontWeight: "700", color: "#070707" }}>Tags</h3>
+                  <ul>
+                    {objectsWithUniqueTags.map((blog) => (
+                      <li key={blog.id}>
+                        <Link
+                          onClick={ClickHandler}
+                          to={`/blog/tag/${blog?.attributes?.Tag}`}
+                        >
+                          {blog.attributes.Tag}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </div>

@@ -82,7 +82,7 @@ const BlogListTag = ({ slug, blRight }) => {
                       key={blog.id}
                       style={{
                         width: "100%",
-                        height: "auto",
+                        height: "40vh",
                         borderRadius: "10px",
                       }}
                     />
@@ -118,9 +118,10 @@ const BlogListTag = ({ slug, blRight }) => {
                   <h1>{blog?.attributes?.Title}</h1>
                   <div className="entry-details">
                     <div className="custom-list">
+                    <div className="listing" id="cutoffText1">
                       <ReactMarkdown
                         children={
-                          blog?.attributes?.Description.slice(0, 350) + "...."
+                          blog?.attributes?.Description+ "...."
                         }
                         remarkPlugins={[remarkGfm]}
                         rehypePlugins={[rehypeRaw]}
@@ -132,6 +133,7 @@ const BlogListTag = ({ slug, blRight }) => {
                         className="markdown"
                         components={components}
                       />
+                      </div>
                     </div>
                     <Link
                       onClick={ClickHandler}

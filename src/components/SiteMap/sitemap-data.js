@@ -1,57 +1,59 @@
-
+import siteMapUrl from "../../api/siteMapUrl";
+import portfolioUrl from "../../api/portfolioUrl";
+import careerUrl from "../../api/careerUrl";
 const sitemap_data = [
   {
     link: "/",
     title: "Home",
   },
   {
-    link: "/services",
+    link: `${siteMapUrl.url}/services`,
     title: "Services",
     subMenu: [
       {
-        link: "/services/softwaredevelopment",
+        link: `${siteMapUrl.url}/services/softwaredevelopment`,
         title: "Software Development",
         subMenu: [
           {
-            link: "/services/softwaredevelopment/webdevelopment",
+            link: `${siteMapUrl.url}/services/softwaredevelopment/webdevelopment`,
             title: "Web Development",
           },
           {
-            link: "/services/softwaredevelopment/devops",
+            link: `${siteMapUrl.url}/services/softwaredevelopment/devops`,
             title: "DevOps",
           },
           {
-            link: "/services/softwaredevelopment/integration",
+            link: `${siteMapUrl.url}/services/softwaredevelopment/integration`,
             title: "Application integration",
           },
         ],
       },
       {
-        link: "/services/technicalwriting",
+        link: `${siteMapUrl.url}/services/technicalwriting`,
         title: "Technical Writing",
         subMenu: [
           {
-            link: "/services/technicalwriting/docmigration",
+            link: `${siteMapUrl.url}/services/technicalwriting/docmigration`,
             title: "Document Migration",
           },
           {
-            link: "/services/technicalwriting/structureauth",
+            link: `${siteMapUrl.url}/services/technicalwriting/structureauth`,
             title: "Structured Authoring",
           },
           {
-            link: "/services/technicalwriting/contentconversion",
+            link: `${siteMapUrl.url}/services/technicalwriting/contentconversion`,
             title: "Content Conversion",
           },
           {
-            link: "/services/technicalwriting/edit_proof",
+            link: `${siteMapUrl.url}/services/technicalwriting/edit_proof`,
             title: "Editing & Proofreading",
           },
           {
-            link: "/services/technicalwriting/templatedesign",
+            link: `${siteMapUrl.url}/services/technicalwriting/templatedesign`,
             title: "Template Design & Development",
           },
           {
-            link: "/services/technicalwriting/knowledge",
+            link: `${siteMapUrl.url}/services/technicalwriting/knowledge`,
             title: "Knowledge Management",
           },
         ],
@@ -63,87 +65,59 @@ const sitemap_data = [
     ],
   },
   {
-    link: "/solutions",
+    link: `${siteMapUrl.url}/solutions`,
     title: "Solutions",
     subMenu: [
       {
-        link: "/solutions/softwareengineering",
+        link: `${siteMapUrl.url}/solutions/softwareengineering`,
         title: "Software Engineering",
       },
       {
-        link: "/solutions/technicalpublication",
+        link: `${siteMapUrl.url}/solutions/technicalpublication`,
         title: "Technical Publication",
       },
       {
-        link: "/solutions/informationarchitecture",
+        link: `${siteMapUrl.url}/solutions/informationarchitecture`,
         title: "Information Architecture",
       },
       {
-        link: "/solutions/staffaugmentation",
+        link: `${siteMapUrl.url}/solutions/staffaugmentation`,
         title: "Staff Augmentation",
       },
-      // {
-      //   link: "#",
-      //   title: "Consulting",
-      //   subMenu: [
-      //     {
-      //       link: "/solutions/contentmigration",
-      //       title: "Content Migration",
-      //     },
-      //     {
-      //       link: "/solutions/informationarchitecture",
-      //       title: "Information Architecture",
-      //     },
-      //     {
-      //       link: "/solutions/contentstrategy",
-      //       title: "Content Strategy",
-      //     },
-      //     {
-      //       link: "/solutions/staffaugmentation",
-      //       title: "Staff Augmentation",
-      //     },
-      //   ],
-      // },
+
     ],
   },
   {
-    link: "/aboutus",
+    link: `${siteMapUrl.url}/aboutus`,
     title: "About Us",
     subMenu: [
       {
-        link: "/aboutus/company",
+        link: `${siteMapUrl.url}/aboutus/company`,
         title: "Company",
         subMenu: [
           {
-            link: "#",
+            link: `${careerUrl.url}`,
             title: "Our Team",
           },
         ],
       },
-      // {
-      //   link: "/aboutus",
-      //   title: "Business Partners",
-      // },
-      // {
-      //   link: "/aboutus",
-      //   title: "Industries",
-      // },
+  
       {
-        link: "#",
+        link: `${portfolioUrl.url}`,
         title: "Portfolio",
       },
       {
-        link: "#",
+        link: `${careerUrl.url}`,
         title: "Careers",
       },
     ],
   },
   {
-    link: "/contact",
+    link: `${siteMapUrl.url}/contact`,
     title: "Contact Us",
   },
   {
-    link: "/privacy-policy",
+    link: `${siteMapUrl.url}/privacy-policy`,
     title: "Privacy Policy",
   },
 ];

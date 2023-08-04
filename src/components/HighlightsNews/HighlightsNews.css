@@ -22,7 +22,23 @@ span {
   padding: 6px 10px;
   border-radius: 4px;
 }
+.cutoffText {
+  --max-lines: 2;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--max-lines);
 
+}
+
+#cutoffText1{
+  --max-lines: 5;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--max-lines);
+
+}
 .wpo-blog-content h2 {
   font-size: 22px;
   margin-top: 20px;

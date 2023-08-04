@@ -18,13 +18,14 @@
   color: white;
 }
 
-.list {
+/* .list {
   list-style: none !important;
-}
+} */
 
-.custom-list li {
+/* .custom-list li {
   list-style: disc !important;
-}
+} */
+
 
 .wpo-blog-pg-section .entry-meta ul li {
   font-weight: 500;

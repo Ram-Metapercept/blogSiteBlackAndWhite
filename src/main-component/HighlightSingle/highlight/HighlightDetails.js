@@ -36,7 +36,7 @@ const HighlightDetails = ({ article }, props) => {
                         effect="blur"
                         style={{
                           width: "100%",
-                          height: "auto",
+                          height: "40vh",
                           objectFit: "cover",
                           aspectRatio: "1.5 / 1",
                           borderRadius: "10px",
