@@ -96,6 +96,7 @@ const Footer = ({ tp_border }) => {
               max-width: 1340px !important;
             }
           }
+
         `}
       </style>
 
@@ -104,7 +105,7 @@ const Footer = ({ tp_border }) => {
           className={`bs-footer ${tp_border && "tp-border-top"}`}
           style={{ backgroundColor: "rgb(248,252,252)" }}
         >
-          <div className="container" id="footer3">
+          <div className="container " id="footer3" >
             <div className="bs-footer__top fotter-btn-bottom pt-50 pb-40 d-md-block">
               <div className="row align-items-center">
                 <div className="col-12 pb-20 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start">
@@ -178,7 +179,7 @@ const Footer = ({ tp_border }) => {
                 <CommonFooter />
 
                 <div className="col-xl-3 col-md-6">
-                  <div className="tp-footer__widget  mb-40">
+                  <div className="tp-footer__widget  mb-40" >
                     <h3 className="tp-footer__widget-title mb-35">
                       Contact Details
                     </h3>
@@ -187,7 +188,7 @@ const Footer = ({ tp_border }) => {
                     >
                       Contact Numbers
                     </p>
-                    <ul style={{ margin: "0" }}>
+                    <ul style={{ margin: "0",listStyleType:"none" }}>
                       <li>
                         <a href="tel:8390905726">
                           <strong>Consulting:</strong> +91-(839)-090-5726
@@ -217,7 +218,7 @@ const Footer = ({ tp_border }) => {
                     >
                       Emails
                     </p>
-                    <ul>
+                    <ul style={{listStyleType:"none "}}>
                       <li>
                         <a href="mailto:sales@metapercept.com">
                           sales@metapercept.com

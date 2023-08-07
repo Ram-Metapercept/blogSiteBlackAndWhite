@@ -36,7 +36,7 @@ tr {
 
   margin: 0;
   padding-left: 10px !important;
-
+/* list-style: none !important; */
   align-items: center;
   font-size: 14px;
   color: #888;

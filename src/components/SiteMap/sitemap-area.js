@@ -16,6 +16,10 @@ function SitemapArea() {
             color: #0c54ad;
             font-weight: 700;
           }
+          .position-relative{
+            list-style-type:none;
+          }
+         
         `}
       </style>
       <div className="tp-job-details pt-50 pb-50 tpfadeUp">
@@ -39,7 +43,7 @@ function SitemapArea() {
                           <Link to={data.link}>{data.title}</Link>
                         </h5>
                         {data.subMenu && (
-                          <ul className="list-arrow ml-25 marker-list-site">
+                          <ul className="list-arrow ml-25 marker-list-site" style={{listStyleType:"none"}}>
                             {data.subMenu.map((subMenuData, i) => {
                               const isUrl =
                                 subMenuData.link.startsWith("https://");

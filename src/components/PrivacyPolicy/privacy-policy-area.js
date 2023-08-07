@@ -34,6 +34,9 @@ const PrivacyPolicyArea = () => {
               font-size: 16px;
             }
           }
+          ul{
+            list-style-type:none;
+          }
         `}
       </style>
       <div className="tp-job-details pt-50 pb-50  tpfadeUp privacyPolicyDiv">

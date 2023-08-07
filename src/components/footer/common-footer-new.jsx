@@ -47,6 +47,7 @@ const CommonFooter = () => {
         {`
       .tp-footer__widget ul#company li {
         width: 48%;
+        list-style-type:none;
     }
       `}
       </style>
@@ -54,9 +55,9 @@ const CommonFooter = () => {
         <div key={i} className={`${item.col} col-md-6`}>
           <div className="tp-footer__widget mb-40">
             <h3 className="tp-footer__widget-title mb-35">{item.title}</h3>
-            <ul id={item.id}>
+            <ul id={item.id} style={{listStyleType:"none !important"}}>
               {item.links?.map((link, id) => (
-                <li key={id}>{generateLink(link)}</li>
+                <li key={id} style={{listStyleType:"none !important"}}>{generateLink(link)}</li>
               ))}
             </ul>
           </div>
@@ -121,7 +122,7 @@ export const FooterCopyRight = ({ style_3, style_7, style_9 }) => {
             {/* <div className="tp-footer-menu text-end"> */}
             <div className="tp-footer-menu text-center">
               {/* <ul> */}
-              <ul className="d-flex justify-content-center">
+              <ul className="d-flex justify-content-center" >
                 <li>
                   <Link to="/privacy-policy">Privacy Policy</Link>
                 </li>
