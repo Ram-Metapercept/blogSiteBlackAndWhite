@@ -19,12 +19,17 @@ const sitemap_data = [
             title: "Web Development",
           },
           {
-            link: `${siteMapUrl.url}/services/softwaredevelopment/devops`,
-            title: "DevOps",
+            link: `${siteMapUrl.url}/services/softwaredevelopment/customengineering`,
+            title: "Custom Engineering",
           },
+        
           {
             link: `${siteMapUrl.url}/services/softwaredevelopment/integration`,
             title: "Application integration",
+          },
+          {
+            link: `${siteMapUrl.url}/services/softwaredevelopment/docops`,
+            title: "DocOps",
           },
         ],
       },
@@ -50,7 +55,7 @@ const sitemap_data = [
           },
           {
             link: `${siteMapUrl.url}/services/technicalwriting/templatedesign`,
-            title: "Template Design & Development",
+            title: "XSLT, DTD Designing",
           },
           {
             link: `${siteMapUrl.url}/services/technicalwriting/knowledge`,
@@ -59,7 +64,7 @@ const sitemap_data = [
         ],
       },
       {
-        link: "#",
+        link: "https://training.techpubconnect.org/",
         title: "Training & certification",
       },
     ],
@@ -84,7 +89,6 @@ const sitemap_data = [
         link: `${siteMapUrl.url}/solutions/staffaugmentation`,
         title: "Staff Augmentation",
       },
-
     ],
   },
   {
@@ -101,7 +105,7 @@ const sitemap_data = [
           },
         ],
       },
-  
+
       {
         link: `${portfolioUrl.url}`,
         title: "Portfolio",

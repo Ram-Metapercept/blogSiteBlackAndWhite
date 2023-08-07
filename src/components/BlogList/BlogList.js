@@ -121,9 +121,7 @@ const BlogList = ({ slug }, props) => {
                       remarkPlugins={[remarkGfm]}
                       rehypePlugins={[rehypeRaw]}
                       transformImageUri={(uri) =>
-                        uri.startsWith("http")
-                          ? uri
-                          : ` ${globalEnv.api}``${uri}`
+                        uri.startsWith("http") ? uri : `${globalEnv.api}${uri}`
                       }
                       className="markdown"
                     />

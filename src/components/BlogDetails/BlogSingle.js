@@ -70,6 +70,13 @@ const BlogSingle = (props) => {
     listItem: ({ children }) => (
       <li style={{ listStyle: "disc" }}>{children}</li>
     ),
+    img: ({ src, alt }) => (
+      <img
+        src={src}
+        alt={alt}
+        style={{ maxWidth: '100%',maxHeight: '50vh', width: 'auto', height: 'auto' }}
+      />
+    ),
   };
 
   const imageUrl = currentData?.attributes?.Image?.data[0]?.attributes?.url;
