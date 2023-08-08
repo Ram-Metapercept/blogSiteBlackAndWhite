@@ -23,6 +23,8 @@ const filterUniqueTags = (articles) => {
   return objectsWithUniqueTags;
 };
 
+
+
 const BlogSidebar = (props) => {
   const [latest, setLatest] = useState([]);
   const [article, setArticle] = useState([]);
@@ -72,6 +74,20 @@ const BlogSidebar = (props) => {
 
   const objectsWithUniqueTags = filterUniqueTags(article);
 
+  const uniqueCats = new Set();
+  const objectsWithUniqueCats = [];
+
+
+  for (const obj of category) {
+
+
+    if (!uniqueCats.has(obj?.attributes?.Title)) {
+      uniqueCats.add(obj?.attributes?.Title);
+      objectsWithUniqueCats.push(obj);
+    }
+  }
+
+
   return (
     <Col lg={4} xs={12} className={`col col-lg-4 col-12 ${props.blLeft}`}>
       <div className="blog-sidebar">
@@ -80,7 +96,7 @@ const BlogSidebar = (props) => {
             Post Categories
           </h3>
           <ul>
-            {category.map((blog) => (
+            {objectsWithUniqueCats.map((blog) => (
               <li key={blog.id}>
                 <Link
                   onClick={ClickHandler}
@@ -100,7 +116,7 @@ const BlogSidebar = (props) => {
               <div className="post">
                 <div className="img-holder">
                   <img
-                    src={`${globalEnv.api}${blog.attributes.Image.data[0].attributes.formats.thumbnail.url}`}
+                    src={`${globalEnv.api}${blog.attributes.Image.data[0].attributes.url}`}
                     alt=""
                     key={blog.id}
                     style={{ width: "70px", height: "70px" }}

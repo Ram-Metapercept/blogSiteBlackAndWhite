@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import MainSiteUrl from "../../api/MainSiteUrl";
+
 
 // footer_links data
 const footer_links = [
@@ -8,21 +10,21 @@ const footer_links = [
     title: "Quick Links",
     col: "col-xl-3",
     links: [
-      { title: "About us", link: "https://metapercept.com/aboutus" },
-      { title: "Our Team", link: "https://metapercept.com/aboutus/company" },
-      { title: "Services", link: "https://metapercept.com/services" },
+      { title: "About us", link: `${MainSiteUrl.url}/aboutus` },
+      { title: "Our Team", link: `${MainSiteUrl.url}/aboutus/company` },
+      { title: "Services", link: `${MainSiteUrl.url}/services` },
       {
         title: "Membership",
-        link: "https://metapercept.com/aboutus/company#membership",
+        link: `${MainSiteUrl.url}/aboutus/company#membership`,
       },
-      { title: "Solutions", link: "https://metapercept.com/solutions" },
+      { title: "Solutions", link: `${MainSiteUrl.url}/solutions` },
       {
         title: "Affiliation",
-        link: "https://metapercept.com/aboutus/company#affiliation",
+        link: `${MainSiteUrl.url}/aboutus/company#affiliation`,
       },
       { title: "News", link: "https://blog.metapercept.com/" },
-      { title: "Get In Touch", link: "https://metapercept.com/contact" },
-      { title: "Event", link: "https://blog.metapercept.com/category/events/" },
+      { title: "Get In Touch", link: `${MainSiteUrl.url}/contact` },
+      { title: "Event", link: "https://blog.metapercept.com/" },
       { title: "Blog", link: "https://blog.metapercept.com/" },
     ],
   },
@@ -74,7 +76,7 @@ const footer_content = {
   copy_right_info: (
     <>
       Copyright © {new Date().getFullYear()}
-      <Link to="https://techpubconnect.org/">
+      <Link to="https://techpubconnect.org/" target="_blank">
         {" "}
         Metapercept Technology Services LLP
       </Link>{" "}
@@ -124,10 +126,10 @@ export const FooterCopyRight = ({ style_3, style_7, style_9 }) => {
               {/* <ul> */}
               <ul className="d-flex justify-content-center" >
                 <li>
-                  <Link to="/privacy-policy">Privacy Policy</Link>
+                  <Link to="https://techpubconnect.org/privacy-policy/" target="_blank">Privacy Policy</Link>
                 </li>
                 <li>
-                  <Link to="/sitemap">View Sitemap</Link>
+                  <Link to="https://techpubconnect.org/sitemap" target="_blank">View Sitemap</Link>
                 </li>
               </ul>
             </div>

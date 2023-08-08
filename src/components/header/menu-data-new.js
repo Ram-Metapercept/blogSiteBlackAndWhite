@@ -1,3 +1,5 @@
+import MainSiteUrl from "../../api/MainSiteUrl";
+
 const menu_data = [
   {
     id: 1,
@@ -11,28 +13,28 @@ const menu_data = [
     mega_menu: false,
     has_dropdown: false,
     title: "services",
-    link: "https://metapercept.com/services",
+    link: `${MainSiteUrl.url}/services`,
   },
   {
     id: 3,
     mega_menu: false,
     has_dropdown: false,
     title: "solutions",
-    link: "https://metapercept.com/solutions",
+    link: `${MainSiteUrl.url}/solutions`,
   },
   {
     id: 4,
     mega_menu: false,
     has_dropdown: false,
     title: "About Us",
-    link: "https://metapercept.com/aboutus",
+    link: `${MainSiteUrl.url}/aboutus`,
   },
   {
     id: 5,
     mega_menu: false,
     has_dropdown: false,
     title: "Contact Us",
-    link: "https://metapercept.com/contact",
+    link: `${MainSiteUrl.url}/contact`,
   },
 ];
 export default menu_data;

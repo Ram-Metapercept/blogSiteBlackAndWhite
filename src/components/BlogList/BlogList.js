@@ -69,7 +69,17 @@ const BlogList = ({ slug }, props) => {
             <div className="wpo-blog-content">
               {currentArticles.map((blog) => (
                 <div className="post" key={blog.id}>
-                  <div className="entry-media video-holder">
+                  <div className="entry-media video-holder"
+                  
+                  style={{
+                    width: "100%",
+                    maxWidth: "100%",
+                    height: "auto",
+                    maxHeight: "50vh",
+                    overflow: "hidden",
+                    borderRadius: "10px",
+                  }}
+  >
                     <img
                       src={`${globalEnv.api}${blog.attributes.Image.data[0].attributes.url}`}
                       alt=""

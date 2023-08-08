@@ -88,28 +88,38 @@ const BlogSingle = (props) => {
           <div className={`col col-lg-8 col-12 ${props.blRight}`}>
             <div className="wpo-blog-content">
               <div className="post format-standard-image">
-                <div className="entry-media">
-                  {imageUrl ? (
-                    <img
-                      src={`${globalEnv?.api}${imageUrl}`}
-                      alt="them-pure"
-                      effect="blur"
-                      style={{
-                        width: "100%",
-                        height: "40vh",
-                        objectFit: "cover",
-                        aspectRatio: "1.5 / 1",
-                        borderRadius: "10px",
-                      }}
-                      loading="lazy"
-                      onError={(e) => {
-                        e.target.src = "/fallback-image.jpg";
-                      }}
-                    />
-                  ) : (
-                    <span>image loading....</span>
-                  )}
-                </div>
+              <div className="entry-media"
+                style={{
+                  width: "100%",
+                  maxWidth: "100%",
+                  height: "auto",
+                  maxHeight: "50vh",
+                  overflow: "hidden",
+                  borderRadius: "10px",
+                }}
+              >
+                {imageUrl ? (
+                  <img
+                    src={`${globalEnv?.api}${imageUrl}`}
+                    alt="them-pure"
+                    effect="blur"
+                    style={{
+                      width: "100%",
+                      height: "auto",
+                      objectFit: "cover",
+                      borderRadius: "10px",
+                    }}
+                    loading="lazy"
+                    onError={(e) => {
+                      e.target.src = "/fallback-image.jpg";
+                    }}
+                  />
+                ) : (
+                  <span>Image loading........</span>
+                )}
+              </div>
+
+
                 <div className="entry-meta">
                   <ul style={{ listStyle: "none !important" }}>
                     {currentData?.attributes?.Author?.data[0]?.attributes

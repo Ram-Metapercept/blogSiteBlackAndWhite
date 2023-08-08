@@ -18,7 +18,7 @@ const HighlightsNews = (props) => {
   const ClickHandler = () => {
     window.scrollTo(10, 0);
   };
- 
+
   useEffect(() => {
     fetch(
       `${globalEnv.api}/api/articles?filters[Archived][$eq]=false&populate=*`
@@ -29,7 +29,7 @@ const HighlightsNews = (props) => {
       })
       .catch((error) => console.error(error));
   }, []);
-console.log(articles)
+  console.log(articles);
   useEffect(() => {
     fetch(`${globalEnv.api}/api/categories?populate=*`)
       .then((response) => response.json())
@@ -84,6 +84,19 @@ console.log(articles)
       setVisibleItems(visibleItems + 6);
     }
   };
+  const uniqueCats = new Set();
+  const objectsWithUniqueCats = [];
+
+
+  for (const obj of category) {
+
+
+    if (!uniqueCats.has(obj?.attributes?.Title)) {
+      uniqueCats.add(obj?.attributes?.Title);
+      objectsWithUniqueCats.push(obj);
+    }
+  }
+
 
   const filteredItems = articles.slice(0, visibleItems);
 
@@ -117,9 +130,10 @@ console.log(articles)
                           data-aos-duration="1000"
                         >
                           <div className="it-blog__thumb w-img">
-                            <div className="fix">
+                            <div className="fix"
+                            >
                               <img
-                                src={`${globalEnv?.api}${item?.attributes.Image.data[0].attributes.formats.thumbnail.url}`}
+                                src={`${globalEnv?.api}${item?.attributes.Image.data[0].attributes.url}`}
                                 alt="them-pure"
                                 effect="blur"
                                 style={{
@@ -149,42 +163,27 @@ console.log(articles)
                             </div>
                           </div>
                           <div className="it-blog-info white-bg">
-                            {/* {item?.attributes?.Category?.data?.attributes
-                              ?.Title && (
-                              <button
-                                style={{
-                                  border: "1px solid #3756f7",
-                                  padding: "2px 5px",
-                                  borderRadius: "25px",
-                                  marginBottom: "15px",
-                                  color: "black",
-                                  fontSize: "12px",
-                                  cursor: "default",
-                                }}
-                              >
-                                {
+                            <button
+                              style={{
+                                border: `1px solid ${
                                   item?.attributes?.Category?.data?.attributes
                                     ?.Title
-                                }
-                              </button>
-                            )} */}
-
-<button
-  style={{
-    border: `1px solid ${
-      item?.attributes?.Category?.data?.attributes?.Title ? "#3756f7" : "#fff"
-    }`,
-    padding: "2px 5px",
-    borderRadius: "25px",
-    marginBottom: "15px",
-    color: "black",
-    fontSize: "12px",
-    cursor: "default",
-  }}
->
-  {item?.attributes?.Category?.data?.attributes?.Title}
-</button>
-
+                                    ? "#3756f7"
+                                    : "#fff"
+                                }`,
+                                padding: "2px 5px",
+                                borderRadius: "25px",
+                                marginBottom: "15px",
+                                color: "black",
+                                fontSize: "12px",
+                                cursor: "default",
+                              }}
+                            >
+                              {
+                                item?.attributes?.Category?.data?.attributes
+                                  ?.Title
+                              }
+                            </button>
 
                             <h3 className="ca-service__item-title mb-30">
                               <Link
@@ -242,7 +241,7 @@ console.log(articles)
                     Post Categories
                   </h3>
                   <ul>
-                    {category.map((blog) => (
+                    {objectsWithUniqueCats.map((blog) => (
                       <li key={blog?.id}>
                         <Link
                           onClick={ClickHandler}
@@ -266,7 +265,7 @@ console.log(articles)
                       <div className="post">
                         <div className="img-holder">
                           <img
-                            src={`${globalEnv.api}${blog?.attributes.Image.data[0].attributes.formats.thumbnail.url}`}
+                            src={`${globalEnv.api}${blog?.attributes.Image.data[0].attributes.url}`}
                             alt=""
                           />
                         </div>

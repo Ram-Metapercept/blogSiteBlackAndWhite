@@ -75,14 +75,23 @@ const BlogListTag = ({ slug, blRight }) => {
             <div className="wpo-blog-content">
               {currentArticles.map((blog, bitem) => (
                 <div className={`post ${blog.blClass}`} key={bitem}>
-                  <div className="entry-media video-holder">
+                  <div className="entry-media video-holder"
+                   style={{
+                    width: "100%",
+                    maxWidth: "100%",
+                    height: "auto",
+                    maxHeight: "50vh",
+                    overflow: "hidden",
+                    borderRadius: "10px",
+                  }}
+  >
                     <img
                       src={`${globalEnv.api}${blog.attributes.Image.data[0].attributes.url}`}
                       alt=""
                       key={blog.id}
                       style={{
                         width: "100%",
-                        height: "40vh",
+                        height: "auto",
                         borderRadius: "10px",
                       }}
                     />
