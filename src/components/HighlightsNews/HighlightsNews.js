@@ -181,7 +181,7 @@ const HighlightsNews = (props) => {
                             >
                               {
                                 item?.attributes?.Category?.data?.attributes
-                                  ?.Title
+                                  ?.Title.trim()
                               }
                             </button>
 

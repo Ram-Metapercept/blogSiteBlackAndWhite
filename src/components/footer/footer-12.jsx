@@ -184,7 +184,7 @@ const Footer = ({ tp_border }) => {
                       Contact Details
                     </h3>
                     <p
-                      style={{ color: "rgb(12,84,173)", marginBottom: "10px" }}
+                      style={{ color: "rgb(12,84,173)", marginBottom: "4px" }}
                     >
                       Contact Numbers
                     </p>
@@ -213,7 +213,7 @@ const Footer = ({ tp_border }) => {
                     <p
                       style={{
                         color: "rgb(12,84,173)",
-                        marginBottom: "10px",
+                        marginBottom: "4px",
                       }}
                     >
                       Emails

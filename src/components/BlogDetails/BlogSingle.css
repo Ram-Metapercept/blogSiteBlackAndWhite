@@ -77,6 +77,12 @@ li {
   border-radius: 10px;
 }
 
-.image img{
+.markdown .image img{
+  border-radius: 10px !important;
+}
+
+.markdown p .image_resized {
+  max-width: 100%; 
+  height: auto; 
   border-radius: 10px !important;
 }

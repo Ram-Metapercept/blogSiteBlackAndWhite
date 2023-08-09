@@ -16306,7 +16306,7 @@ p.checkout-coupon input[type=text]:focus {
 }
 .tp-footer__widget ul li a {
   font-size: 16px;
-  margin-bottom: 15px;
+  margin-bottom: 4px;
   display: inline-block;
   color: var(--tp-grey-1);
   position: relative;
