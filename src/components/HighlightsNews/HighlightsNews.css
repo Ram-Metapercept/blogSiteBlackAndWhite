@@ -293,3 +293,6 @@ span {
   align-items: center !important;
   padding: 0px 0px !important;
 }
+.image img{
+  border-radius: 10px !important;
+}
