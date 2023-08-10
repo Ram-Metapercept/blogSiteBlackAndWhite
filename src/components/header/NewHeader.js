@@ -6,7 +6,7 @@ import Sidebar from "./sidebar-new";
 import "../../css/mainHeader.css";
 import { useState } from "react";
 import { useEffect } from "react";
-
+import MainSiteUrl from "../../api/MainSiteUrl";
 const useSticky = () => {
   const [sticky, setSticky] = useState(false);
 
@@ -49,7 +49,7 @@ const NewHeader = (style_home_one) => {
                   {/* <div className="col-xxl-3 col-xl-3 col-6"> */}
                   <div className="col-xxl-3 col-xl-2 col-6">
                     <div className="logo border-right">
-                      <Link to="/">
+                      <Link to={`${MainSiteUrl.url}`} target="_blank">
                         <img
                           src={Logo1}
                           alt="logo"
