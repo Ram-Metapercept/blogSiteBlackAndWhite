@@ -4,7 +4,6 @@ import Logo1 from "../../images/Metapercept_footer_logo2.svg";
 import React from "react";
 import CommonFooter, { FooterCopyRight } from "./common-footer-new";
 
-import { Link } from "react-router-dom";
 
 const SubscribeEmailValidation = (e) => {
   let value = e.target.value;
@@ -110,9 +109,9 @@ const Footer = ({ tp_border }) => {
               <div className="row align-items-center">
                 <div className="col-12 pb-20 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start">
                   <div className="bs-footer__top-logo">
-                    <Link to="/">
+                    <a href="/">
                       <img src={footer_logo} alt="brand-logo" />
-                    </Link>
+                    </a>
                   </div>
                 </div>
                 <div className="col-12 col-md-6 text-md-end d-flex align-items-center justify-content-center justify-content-md-end">
