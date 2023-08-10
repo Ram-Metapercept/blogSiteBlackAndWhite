@@ -116,7 +116,7 @@ const BlogSidebar = (props) => {
               <div className="post">
                 <div className="img-holder">
                   <img
-                    src={`${globalEnv.api}${blog.attributes.Image.data[0].attributes.url}`}
+                    src={`${globalEnv.api}${blog?.attributes?.Image?.data[0]?.attributes?.formats?.thumbnail?.url}`}
                     alt=""
                     key={blog.id}
                     style={{ width: "70px", height: "70px" }}

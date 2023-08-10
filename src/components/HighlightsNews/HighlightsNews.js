@@ -33,7 +33,6 @@ const HighlightsNews = (props) => {
       })
       .catch((error) => console.error(error));
   }, []);
-  console.log(articles);
   useEffect(() => {
     fetch(`${globalEnv.api}/api/categories?populate=*`)
       .then((response) => response.json())
@@ -114,7 +113,7 @@ const HighlightsNews = (props) => {
 
 
   const filteredItems = articles.slice(0, visibleItems);
-
+console.log(filteredItems)
 
   return (
     <>
@@ -150,7 +149,7 @@ const HighlightsNews = (props) => {
                             <div className="fix"
                             >
                               <img
-                                src={`${globalEnv?.api}${item?.attributes.Image.data[0].attributes.url}`}
+                                src={`${globalEnv?.api}${item?.attributes?.Image?.data[0]?.attributes?.formats?.thumbnail?.url}`}
                                 alt="them-pure"
                                 effect="blur"
                                 style={{
@@ -289,7 +288,7 @@ const HighlightsNews = (props) => {
                       <div className="post">
                         <div className="img-holder">
                           <img
-                            src={`${globalEnv.api}${blog?.attributes.Image.data[0].attributes.url}`}
+                            src={`${globalEnv.api}${blog?.attributes?.Image?.data[0]?.attributes?.formats?.thumbnail?.url}`}
                             alt=""
                           />
                         </div>
