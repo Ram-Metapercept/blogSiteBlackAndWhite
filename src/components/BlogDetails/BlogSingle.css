@@ -72,17 +72,29 @@ li {
 }
 
 .markdown img{
-  width:100%;
+  max-width: 100%; 
+  height: auto; 
+  max-height: 50vh;
   
   border-radius: 10px;
 }
 
 .markdown .image img{
   border-radius: 10px !important;
+  max-width: 100%; 
+  height: auto; 
+  max-height: 50vh;
 }
 
 .markdown p .image_resized {
   max-width: 100%; 
   height: auto; 
+  max-height: 50vh;
   border-radius: 10px !important;
+}
+.custom-list p img{
+  border-radius: 10px !important;
+  max-width: 100%; 
+  height: auto; 
+  max-height: 50vh;
 }
