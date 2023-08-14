@@ -6,22 +6,18 @@ import "./HighlightsNews.css";
 import { AiOutlinePlus } from "react-icons/ai";
 const truncate = require("truncate");
 
-
 const HighlightsNews = (props) => {
   const [articles, setArticles] = useState([]);
   const [latest, setLatest] = useState([]);
   const [category, setCategory] = useState([]);
   const [currentPage] = useState(1);
 
-
   const [visibleItems, setVisibleItems] = useState(6);
   const [loadMoreVisible, setLoadMoreVisible] = useState(true);
-
 
   const ClickHandler = () => {
     window.scrollTo(10, 0);
   };
-
 
   useEffect(() => {
     fetch(
@@ -42,7 +38,6 @@ const HighlightsNews = (props) => {
       .catch((error) => console.error(error));
   }, []);
 
-
   useEffect(() => {
     fetch(
       `${globalEnv.api}/api/articles?filters[Archived][$eq]=false&pagination[page]=1&pagination[pageSize]=6&sort[0]=createdAt:desc&populate=*`
@@ -54,13 +49,10 @@ const HighlightsNews = (props) => {
       .catch((error) => console.error(error));
   }, [currentPage]);
 
-
   const totalItems = articles?.length;
-
 
   const uniqueTags = new Set();
   const objectsWithUniqueTags = [];
-
 
   for (const obj of articles) {
     if (!uniqueTags.has(obj?.attributes?.Tag)) {
@@ -83,7 +75,6 @@ const HighlightsNews = (props) => {
     "Dec",
   ];
 
-
   const loadMoreItems = () => {
     if (visibleItems + 6 >= totalItems) {
       setVisibleItems(totalItems);
@@ -95,25 +86,14 @@ const HighlightsNews = (props) => {
   const uniqueCats = new Set();
   const objectsWithUniqueCats = [];
 
-
-
-
   for (const obj of category) {
-
-
-
-
     if (!uniqueCats.has(obj?.attributes?.Title)) {
       uniqueCats.add(obj?.attributes?.Title);
       objectsWithUniqueCats.push(obj);
     }
   }
 
-
-
-
   const filteredItems = articles.slice(0, visibleItems);
-console.log(filteredItems)
 
   return (
     <>
@@ -126,7 +106,6 @@ console.log(filteredItems)
         }
        
       `}</style>
-
 
       <section className="wpo-blog-highlights-section">
         <div className="container">
@@ -145,9 +124,8 @@ console.log(filteredItems)
                           data-aos="fade-up"
                           data-aos-duration="1000"
                         >
-                          <div className="it-blog__thumb w-img" >
-                            <div className="fix"
-                            >
+                          <div className="it-blog__thumb w-img">
+                            <div className="fix">
                               <img
                                 src={`${globalEnv?.api}${item?.attributes?.Image?.data[0]?.attributes?.formats?.thumbnail?.url}`}
                                 alt="them-pure"
@@ -160,7 +138,6 @@ console.log(filteredItems)
                                 }}
                               />
                             </div>
-
 
                             <div className="it-blog-date">
                               <span className="date">
@@ -179,49 +156,64 @@ console.log(filteredItems)
                               </span>
                             </div>
                           </div>
-                          <div className="it-blog-info white-bg  " >
-                          <div>
-                            <button
-                              style={{
-                                border: `1px solid ${
+                          <div className="it-blog-info white-bg  ">
+                            <div>
+                              <button
+                                style={{
+                                  border: `1px solid ${
+                                    item?.attributes?.Category?.data?.attributes
+                                      ?.Title
+                                      ? "#3756f7"
+                                      : "#fff"
+                                  }`,
+                                  padding: "2px 5px",
+                                  borderRadius: "25px",
+                                  marginBottom: "15px",
+                                  color: "black",
+                                  fontSize: "12px",
+                                  cursor: "default",
+                                }}
+                              >
+                                {
                                   item?.attributes?.Category?.data?.attributes
                                     ?.Title
-                                    ? "#3756f7"
-                                    : "#fff"
-                                }`,
-                                padding: "2px 5px",
-                                borderRadius: "25px",
-                                marginBottom: "15px",
-                                color: "black",
-                                fontSize: "12px",
-                                cursor: "default",
-                       
-                              }}
-                            >
-                              {
-                                item?.attributes?.Category?.data?.attributes
-                                  ?.Title
-                              }
-                            </button>
+                                }
+                              </button>
                             </div>
-                            <div>
-                            <div className="p-abosolute pt-4" style={{ bottom: "10px", maxHeight: "120px", minHeight: "120px" }}>
-                            <h3 className="ca-service__item-title mb-30 "   >
-                              <Link
-                                to={`/highlight-single/${item?.attributes?.Slug}`}
-                                style={{ color: "#032B5F" }}
+                            <div >
+                              <div
+                                className="p-abosolute pt-3"
+                                style={{
+                                  bottom: "10px",
+                                  maxHeight: "120px",
+                                  minHeight: "120px",
+                                }}
                               >
-                                <span className="cutoffText">
-                                  {" "}
-                                  {item?.attributes?.Title.trim()}
-                                </span>
-                              </Link>
-                            </h3>
+                                <h3
+                                  className="ca-service__item-title mb-30"
+                                  style={{
+                                    maxHeight: "3em",
+                                    overflow: "hidden",
+                                    display: "-webkit-box",
+                                    WebkitLineClamp: 2,
+                                    WebkitBoxOrient: "vertical",
+                                  }}
+                                >
+                                  <Link
+                                    to={`/highlight-single/${item?.attributes?.Slug}`}
+                                    style={{ color: "#032B5F" }}
+                                  >
+                                    {item?.attributes?.Title.trim()}
+                                  </Link>
+                                </h3>
+                              </div>
                             </div>
-                           </div>
                             <div
                               className="tp-seo-full-btn"
-                              style={{ "--tp-theme-redical": "#3756f7",position:"relative" }}
+                              style={{
+                                "--tp-theme-redical": "#3756f7",
+                                position: "relative",
+                              }}
                             >
                               <Link
                                 to={`/highlight-single/${item?.attributes?.Slug}`}
@@ -342,10 +334,4 @@ console.log(filteredItems)
   );
 };
 
-
 export default HighlightsNews;
-
-
-
-
-

@@ -74,7 +74,7 @@ const BlogSingle = (props) => {
       <img
         src={src}
         alt={alt}
-        style={{ maxWidth: '100%',maxHeight: '50vh', width: 'auto', height: 'auto' }}
+     
       />
     ),
   };
@@ -108,6 +108,7 @@ const BlogSingle = (props) => {
                       height: "auto",
                       objectFit: "cover",
                       borderRadius: "10px",
+                      maxHeight:"50vh !important"
                     }}
                     loading="lazy"
                     onError={(e) => {

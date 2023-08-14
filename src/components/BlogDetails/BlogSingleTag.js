@@ -97,6 +97,7 @@ const BlogSingleTag = ({ data, ...props }) => {
                       height: "auto",
                       objectFit: "cover",
                       borderRadius: "10px",
+                      maxHeight:"50vh !important"
                     }}
                     loading="lazy"
                     onError={(e) => {

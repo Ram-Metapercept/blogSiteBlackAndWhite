@@ -93,6 +93,7 @@ const BlogListTag = ({ slug, blRight }) => {
                         width: "100%",
                         height: "auto",
                         borderRadius: "10px",
+                        maxHeight:"50vh !important"
                       }}
                     />
                   </div>
