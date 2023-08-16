@@ -190,7 +190,7 @@ const HighlightsNews = (props) => {
                                 }}
                               >
                                 <h3
-                                  className="ca-service__item-title mb-30"
+                                  className="ca-service__item-title1 mb-30"
                                   style={{
                                     maxHeight: "3em",
                                     overflow: "hidden",
