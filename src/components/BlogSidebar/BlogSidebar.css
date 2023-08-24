@@ -16,3 +16,12 @@ a {
   padding-left: 30px;
   font-size: 19px !important;
 }
+
+
+.highlightedTag li a {
+  display: inline;
+  color: #474f62;
+  position: relative;
+  padding-left: 30px;
+  font-size: 19px !important;
+}

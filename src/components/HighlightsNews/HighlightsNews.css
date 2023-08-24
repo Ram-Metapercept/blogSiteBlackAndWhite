@@ -11,7 +11,10 @@ span {
 .wpo-blog-highlights-section {
   padding: 40px 0;
 }
-
+.tp-lasted-blog {
+  margin-bottom:0px !important;
+  /* padding-top: 30px; */
+}
 
 .thumb {
   position: absolute;

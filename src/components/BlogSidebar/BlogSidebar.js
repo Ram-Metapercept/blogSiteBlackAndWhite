@@ -147,7 +147,7 @@ const BlogSidebar = (props) => {
         </div>
         <div className="widget tag-widget">
           <h3 style={{ fontWeight: "700", color: "#070707" }}>Tags</h3>
-          <ul>
+          <ul className="highlightedTag">
             {objectsWithUniqueTags.map((blog) => (
               <li key={blog.id}>
                 <Link

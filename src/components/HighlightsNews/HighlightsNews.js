@@ -115,10 +115,10 @@ const HighlightsNews = (props) => {
           <div className="row">
             <div className={`col col-lg-8 col-md-12 ${props.colClass}`}>
               <div className="wpo-blog-highlights-wrap">
-                <div className="wpo-blog-items">
+                <div className="wpo-blog-items" >
                   <div className="row">
                     {filteredItems.map((item, i) => (
-                      <div key={i} className="col-lg-6">
+                      <div key={i} className="col-lg-6 p-3"  >
                         <div
                           className="it-blog tp-lasted-blog mb-30 aos-init aos-animate it-blog-wrapper"
                           data-aos="fade-up"
@@ -312,7 +312,7 @@ const HighlightsNews = (props) => {
                 </div>
                 <div className="widget tag-widget">
                   <h3 style={{ fontWeight: "700", color: "#070707" }}>Tags</h3>
-                  <ul>
+                  <ul className="highlightedTag">
                     {objectsWithUniqueTags.map((blog) => (
                       <li key={blog.id}>
                         <Link
