@@ -126,7 +126,7 @@ const BlogList = ({ slug }, props) => {
                     >
                       <h1>{blog?.attributes?.Title}</h1>
                     </Link>
-                    <div className="listing" id="cutoffText1">
+                    <div className="listing" id="Text1">
                     <ReactMarkdown
                       children={blog?.attributes?.Description}
                       remarkPlugins={[remarkGfm]}

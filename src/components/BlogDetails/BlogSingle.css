@@ -37,7 +37,6 @@ tr {
 
   margin: 0;
   padding-left: 10px !important;
-/* list-style: none !important; */
   align-items: center;
   font-size: 14px;
   color: #888;
@@ -45,9 +44,7 @@ tr {
 /* ------------------------------css related to list------------------------------- */
 
 li {
-  /* list-style: disc !important; */
   font-size: 16px !important;
-  /* margin-left: 5px !important; */
   font-family: "Roboto", sans-serif !important;
 }
 

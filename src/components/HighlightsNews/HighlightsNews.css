@@ -266,20 +266,20 @@ span {
 /* -------------------load more button related css -------------------------*/
 
 .tp-common-btn {
-  font-size: 16px;
+  font-size: 13px;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 400;
 
   color: var(--tp-common-white);
   padding: 15px 15px !important;
   border-radius: 8px;
   display: inline-block;
-  background-color: #3756f7 !important;
+  background-color: #6C60FE !important;
 }
 .tp-common-btn:hover,
 .tp-pf-btn-group button.active {
   color: #fff;
-  background-color: #F47F21 !important;
+  background-color: #324DA0 !important;
   overflow: hidden;
 }
 
@@ -304,6 +304,7 @@ span {
 .ca-service__item-title1 {
   color: #000 !important;
   font-size: 24px;
+
 }
 
 
@@ -315,7 +316,7 @@ span {
   background-repeat: no-repeat;
   transition: background-size 0.4s linear;
   color: #070707;
-  font-weight: 600;
+  font-weight: 400;
 }
 .ca-service__item-title1 a:hover {
   background-size: 0% 1px, 100% 1px;

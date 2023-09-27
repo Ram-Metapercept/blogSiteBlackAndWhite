@@ -11416,7 +11416,7 @@ xloading-bar
   width: 100%;
   color: var(--tp-theme-vogue);
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
   text-transform: uppercase;
   border: 1px solid var(--tp-border-9);
   border-radius: 0 0 8px 8px;
@@ -13755,7 +13755,8 @@ xloading-bar
 }
 .it-blog-date b {
   display: block;
-  font-size: 24px;
+  font-weight: 400;
+  font-size: 36px;
   color: var(--tp-theme-vogue);
   line-height: 1;
 }

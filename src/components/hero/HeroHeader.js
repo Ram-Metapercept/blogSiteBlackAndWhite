@@ -26,18 +26,19 @@ const HeroHeader = ({ backImage, backColor, title }) => {
            position: absolute;
           left: 0;
            top: -15%;
-            transform: translate(-100%, 75%) rotate(0deg);
+           transform: translate(0, 0);
             transform-origin: bottom left;
            transition: 0.5s transform ease-out;
           z-index: -1;
            background-color: #324DA0;
+            
+           animation: background-color-change linear 0.5s 1;
          }
-           .bg-panel-glass:hover::after {
-           transform: translate(0, 0);
-            transition: 0.2s transform ease-out;
-           }
-            .bg-panel-glass:hover .breadcrumb__title, .bg-panel-glass:hover .tp-section p {
+           
+            .bg-panel-glass .breadcrumb__title, .bg-panel-glass .tp-section p {
               color: white;
+            animation: text-color-change linear 0.5s 1;
+
            }
          .bannerText p {
            display: -webkit-box;
@@ -50,6 +51,24 @@ const HeroHeader = ({ backImage, backColor, title }) => {
             padding-top: 100px;
             padding-bottom: 100px;
           }
+
+          @keyframes background-color-change {
+            0% {
+              transform: translate(-100%, 75%) rotate(0deg);
+            }
+            100% {
+              transform: translate(0, 0);
+            }
+          }
+          @keyframes text-color-change {
+            0%{
+              color: black;
+            }
+            100%{
+              color: white;
+            }
+          }
+
           @media (max-width: 425px) {
             .breadcrumb__area {
             padding-top: 80px;

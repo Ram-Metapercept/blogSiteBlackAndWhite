@@ -170,7 +170,7 @@ const HighlightsNews = (props) => {
                                   borderRadius: "25px",
                                   marginBottom: "15px",
                                   color: "black",
-                                  fontSize: "12px",
+                                  fontSize: "13px",
                                   cursor: "default",
                                 }}
                               >

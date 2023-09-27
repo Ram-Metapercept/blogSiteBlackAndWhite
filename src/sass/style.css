@@ -741,7 +741,8 @@ font-family: "Roboto", sans-serif !important;
 }
 
 .wpo-breadcumb-area .wpo-breadcumb-wrap h2 {
-  font-size: 60px;
+  /* font-size: 60px; */
+  font-size: 50px !important;
   color: #fff;
   line-height: 60px;
   margin-top: -10px;
@@ -750,7 +751,8 @@ font-family: "Roboto", sans-serif !important;
 
 @media (max-width: 767px) {
   .wpo-breadcumb-area .wpo-breadcumb-wrap h2 {
-    font-size: 30px;
+    /* font-size: 30px; */
+    font-size: 25px !important;
     line-height: 35px;
     margin-bottom: 10px;
   }
@@ -1091,7 +1093,7 @@ font-family: "Roboto", sans-serif !important;
 }
 
 .blog-sidebar .category-widget ul li {
-  font-size: 19px;
+  font-size: 24px;
   font-size: 1.26667rem;
   position: relative;
 }
@@ -1176,9 +1178,9 @@ font-family: "Roboto", sans-serif !important;
 }
 
 .blog-sidebar .recent-post-widget .post h4 {
-  font-size: 19px;
-  font-size: 1.26667rem;
-  font-weight: 500;
+  font-size: 24px;
+  /* font-size: 1.26667rem; */
+  font-weight: 400;
   line-height: 1.3em;
   margin: 0.3em 0 0;
 }
@@ -1255,7 +1257,7 @@ font-family: "Roboto", sans-serif !important;
   font-size: 15px;
   font-size: 1rem;
   display: inline-block;
-  padding: 5px 18px;
+  padding: 5px 10px;
   color: #232f4b;
   background: #ecf4fb;
   border-radius: 5px;
@@ -2734,7 +2736,7 @@ font-family: "Roboto", sans-serif !important;
 }
 
 .wpo-site-header .header-right .header-right-menu-wrapper .header-right-menu-wrap .project-widget .post h4 {
-  font-size: 19px;
+  font-size: 24px;
   font-size: 1.26667rem;
   font-weight: 500;
   line-height: 1.3em;
