@@ -74,6 +74,7 @@ const NewHeader = (style_home_one) => {
                           style={{
                             textTransform: "lowercase",
                             fontSize: "18px",
+                            fontWeight:"400",
                             color: "#000",
                           }}
                         >

@@ -182,8 +182,8 @@
 		}
 
 		ul li {
-			font-size: 19px;
-			font-size: calc-rem-value(19);
+			font-size: 20px;
+			font-size: calc-rem-value(20);
 			position: relative;
 
 			@include media-query(767px) {
@@ -272,9 +272,9 @@
 		}
 
 		.post h4 {
-			font-size: 19px;
+			font-size: 20px !important;
 			font-size: calc-rem-value(19);
-			font-weight: 500;
+			font-weight: 400;
 			line-height: 1.3em;
 			margin: 0.3em 0 0;
 

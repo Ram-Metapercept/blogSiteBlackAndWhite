@@ -25,3 +25,11 @@ a {
   padding-left: 30px;
   font-size: 13px !important;
 }
+ @media (max-width: 1200px) and (min-width: 990px) {  
+  .blog-sidebar .widget {
+    margin-bottom: 30px;
+    padding: 10px !important;
+    border: 1px solid #eef0fc;
+}
+  
+ }

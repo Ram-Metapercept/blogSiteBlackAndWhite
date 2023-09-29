@@ -4347,7 +4347,7 @@ input[type=color] {
 .main-menu ul li a {
   display: inline-block;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--tp-common-black);
   padding: 43px 0;
   text-transform: uppercase;
@@ -4363,9 +4363,9 @@ input[type=color] {
   -o-transform: translateY(1px);
   transform: translateY(1px);
   font-size: 16px;
-  color: var(--tp-theme-redical);
+  color:#324DA0;
   font-family: var(--tp-ff-fontawesome);
-  font-weight: 400;
+  font-weight: 700;
   margin-left: 5px;
   display: inline-block;
   -webkit-transition: all 0.3s ease-out 0s;
@@ -4422,6 +4422,10 @@ input[type=color] {
   -o-transform: translateY(-50%) rotate(-90deg);
   transform: translateY(-50%) rotate(-90deg);
 }
+.main-menu ul li a:hover{
+  font-weight: 700 !important;
+  color: #324DA0;
+}
 .main-menu ul li .submenu li a {
   position: relative;
   z-index: 1;
@@ -4430,7 +4434,7 @@ input[type=color] {
   font-size: 14px;
   color: var(--tp-common-white);
   padding: 8px 20px;
-  font-weight: 500;
+  font-weight: 400;
   text-transform: capitalize;
   letter-spacing: 0;
   text-align: left;
@@ -16303,7 +16307,7 @@ p.checkout-coupon input[type=text]:focus {
 
 .tp-footer__widget-title {
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
 }
 .tp-footer__widget ul li a {
   font-size: 16px;
@@ -16496,7 +16500,7 @@ p.checkout-coupon input[type=text]:focus {
   color: var(--tp-grey-1);
 }
 .tp-copyrigh-text a {
-  font-weight: 700;
+  font-weight: 400;
   color: var(--tp-common-black);
 }
 .tp-copyrigh-text a:hover {
@@ -16515,7 +16519,7 @@ p.checkout-coupon input[type=text]:focus {
 
 .tp-footer-menu {
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--tp-common-black);
 }
 .tp-footer-menu ul li {
