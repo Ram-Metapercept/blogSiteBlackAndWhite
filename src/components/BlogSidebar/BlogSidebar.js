@@ -103,7 +103,7 @@ const BlogSidebar = (props) => {
                   to={`/blog/category/${blog?.attributes?.Slug}`}
              className="cutoffText2">
                   {blog.attributes.Title}
-                  <span  style={{fontSize:"24px"}} >({blog?.attributes?.Articles?.data?.length})</span>
+                  <span  style={{fontSize:"20px"}} >({blog?.attributes?.Articles?.data?.length})</span>
                 </Link>
               </li>
             ))}

@@ -190,22 +190,22 @@ const Footer = ({ tp_border }) => {
                     <ul style={{ margin: "0",listStyleType:"none" }}>
                       <li>
                         <a href="tel:8390905726">
-                          <strong>Consulting:</strong> +91-(839)-090-5726
+                          <strong style={{fontWeight:"400"}}>Consulting:</strong> +91-(839)-090-5726
                         </a>
                       </li>
                       <li>
                         <a href="tel:8173820346">
-                          <strong>Sales:</strong> +1-(817) 382-0346
+                          <strong style={{fontWeight:"400"}}>Sales:</strong> +1-(817) 382-0346
                         </a>
                       </li>
                       <li>
                         <a href="tel:9860800135">
-                          <strong>Training:</strong> +91-986-080-0135
+                          <strong style={{fontWeight:"400"}}>Training:</strong> +91-986-080-0135
                         </a>
                       </li>
                       <li>
                         <a href="tel:02041291914">
-                          <strong>Main Line:</strong> +91-(020)-4129-1914
+                          <strong style={{fontWeight:"400"}}>Main Line:</strong> +91-(020)-4129-1914
                         </a>
                       </li>
                     </ul>
@@ -239,7 +239,7 @@ const Footer = ({ tp_border }) => {
 
                 <div className="col-xl-3 col-md-6">
                   <div className="tp-footer__widget  mb-40 locationDiv">
-                    <h3 className="tp-footer__widget-title mb-35">Location</h3>
+                    <h3 className="tp-footer__widget-title mb-35" >Location</h3>
 
                     <div className="tp-footer-cta d-flex align-items-center justify-content-start">
                       <span className="call-icon">
@@ -257,10 +257,10 @@ const Footer = ({ tp_border }) => {
                           }}
                         >
                           <div>
-                            <strong>India:</strong> Pune, Maharashtra, India
+                            <strong style={{fontWeight:"400"}}>India:</strong> Pune, Maharashtra, India
                           </div>
                           <div>
-                            <strong>USA:</strong> Arlington, Texas, USA
+                            <strong style={{fontWeight:"400"}}>USA:</strong> Arlington, Texas, USA
                           </div>
                         </span>
                       </span>

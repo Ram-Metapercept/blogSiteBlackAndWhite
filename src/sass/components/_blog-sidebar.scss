@@ -21,10 +21,11 @@
 		border: 1px solid $border-color-s2;
 
 		h3 {
-			font-size: 23px;
-			font-size: calc-rem-value(23);
+			font-size: 24px;
+			font-size: calc-rem-value(24);
 			color: $dark-gray;
 			margin: 0 0 1.3em;
+			font-weight: 400 !important;
 			position: relative;
 			text-transform: capitalize;
 			padding-bottom: 20px;

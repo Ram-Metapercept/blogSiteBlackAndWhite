@@ -269,7 +269,7 @@ const HighlightsNews = (props) => {
                           to={`/blog/category/${blog?.attributes?.Slug}`}
                         >
                           {truncate(blog.attributes.Title, 40)}
-                          <span style={{ fontSize: "24px" }}>
+                          <span style={{ fontSize: "20px" }}>
                             ({blog?.attributes?.Articles?.data?.length})
                           </span>
                         </Link>
