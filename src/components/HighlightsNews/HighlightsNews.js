@@ -4,7 +4,6 @@ import "../HighlightsNews/HighlightsNews.css"; // Import the CSS file for stylin
 import globalEnv from "../../api/globalenv.js";
 import "./HighlightsNews.css";
 import { AiOutlinePlus } from "react-icons/ai";
-import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 const truncate = require("truncate");
@@ -14,7 +13,7 @@ const HighlightsNews = (props) => {
   const [latest, setLatest] = useState([]);
   const [category, setCategory] = useState([]);
   const [currentPage] = useState(1);
-  const [isloading, setIsLoading] = useState(false);
+
 
   const [visibleItems, setVisibleItems] = useState(6);
   const [loadMoreVisible, setLoadMoreVisible] = useState(true);
@@ -30,7 +29,7 @@ const HighlightsNews = (props) => {
       .then((response) => response.json())
       .then((data) => {
         setArticles(data.data);
-        setIsLoading(false);
+     
       })
       .catch((error) => console.error(error));
   }, []);
@@ -122,9 +121,7 @@ const HighlightsNews = (props) => {
               <div className="wpo-blog-highlights-wrap">
                 <div className="wpo-blog-items">
                   <div className="row">
-                    {isloading ? (
-                      <Skeleton height={30} />
-                    ) : (
+                    {
                       filteredItems.map((item, i) => (
                         <div key={i} className="col-lg-6 p-3">
                           <div
@@ -237,7 +234,7 @@ const HighlightsNews = (props) => {
                             </div>
                           </div>
                         </div>
-                      ))
+                      )
                     )}
                   </div>
                 </div>
