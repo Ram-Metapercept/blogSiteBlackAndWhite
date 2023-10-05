@@ -94,7 +94,7 @@ const HeroHeader = ({ backImage, backColor, title }) => {
                 <div className="col-md-9 col-lg-7 col-xxl-6 col-sm-12 bg-panel-glass side-content">
                   <h3
                     className="breadcrumb__title"
-                    style={{ fontWeight: "500" }}
+                    style={{ fontWeight: "400" }}
                   >
                     {title}
                   </h3>

@@ -156,7 +156,7 @@
 .topbar .theme-btn-s2 {
 	padding: 15px 20px;
 	font-size: 14px;
-	font-weight: 600;
+	font-weight: 400;
 	margin-bottom: -3px;
 	color: #fff !important;
 }
@@ -759,7 +759,7 @@
 		top: -2px;
 		right: -5px;
 		border-radius: 50%;
-		font-weight: 600;	
+		font-weight: 400;	
 	
 	}
 
@@ -811,7 +811,7 @@
 		p {
 			font-size: 15px;
 			font-size: calc-rem-value(15);
-			font-weight: 500;
+			font-weight: 400;
 			color: $heading-color;
 			margin: 0;
 		}
@@ -856,7 +856,7 @@
 		.mini-cart-item-des a {
 			font-size: 14px;
 			font-size: calc-rem-value(14);
-			font-weight: 600;
+			font-weight: 400;
 			text-align: left;
 			color: $heading-color;
 		}
@@ -914,7 +914,7 @@
 		.mini-cart-action .mini-checkout-price {
 			font-size: 16px;
 			font-size: calc-rem-value(16);
-			font-weight: 600;
+			font-weight: 400;
 			color: $heading-color;
 			display: block;
 			margin-bottom: 30px;
@@ -987,7 +987,7 @@
 				display: block;
 				color: #232f4b;
 			font-family: "Roboto", sans-serif !important;
-				font-weight: 500;
+				font-weight: 400;
 				position: relative;
 			}
 
@@ -1013,7 +1013,7 @@
 				color: $dark-gray;
 				position: relative;
 				overflow: hidden;
-				font-weight: 500;
+				font-weight: 400;
 				font-family: $heading-font;
 
 				&:after {
@@ -1090,7 +1090,7 @@
 				font-size: 15px;
 				font-size: calc-rem-value(15);
 				color: $white;
-				font-weight: 600;
+				font-weight: 400;
 
 				&:hover,
 				&.active {
@@ -1584,7 +1584,7 @@
 				.post h4 {
 					font-size: 19px;
 					font-size: calc-rem-value(19);
-					font-weight: 500;
+					font-weight: 400;
 					line-height: 1.3em;
 					margin: 0.3em 0 0;
 					color: $white;

@@ -145,7 +145,7 @@ const Footer = ({ tp_border }) => {
                         action="https://cfed3d59.sibforms.com/serve/MUIFAAQuk_u9WnIQCnfRSQRDr6tsGW02CFsAaqR-YpfsGA1BPLNNRbGXRv0x9e4KlZsFmKI5FoLlPU1hHvmAdB8-T_blKEXpJ3tSaWPa-44duJsbdTcYQtXXO3jnTgLW_wn2Yd6_0vXAr9N-KCqb8mOwh53AaLspAPoA-xVKkJO3oTSXe4rS678QVt87n2qp6r-VxWNFuDHGvG2X"
                         onSubmit={isFormValid}
                       >
-                        <span>
+                        <span style={{color:"rgb(50, 77, 160)"}}>
                           <i className="fas fa-envelope-open"></i>
                         </span>
                         <input

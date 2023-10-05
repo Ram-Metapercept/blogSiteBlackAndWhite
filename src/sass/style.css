@@ -61,7 +61,7 @@ Version:        1.0.0
 @font-face {
   font-family: "Roboto", sans-serif !important;
   src: url("../fonts/FuturaPT-Demi.woff2") format("woff2"), url("../fonts/FuturaPT-Demi.woff") format("woff");
-  font-weight: 600;
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -69,7 +69,7 @@ Version:        1.0.0
 @font-face {
   font-family: "Roboto", sans-serif !important;
   src: url("../fonts/FuturaPT-DemiObl.woff2") format("woff2"), url("../fonts/FuturaPT-DemiObl.woff") format("woff");
-  font-weight: 600;
+  font-weight: 400;
   font-style: italic;
   font-display: swap;
 }
@@ -93,7 +93,7 @@ Version:        1.0.0
 @font-face {
   font-family: "Roboto", sans-serif !important;
   src: url("../fonts/FuturaPT-Medium.woff2") format("woff2"), url("../fonts/FuturaPT-Medium.woff") format("woff");
-  font-weight: 500;
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
@@ -417,7 +417,7 @@ a:hover {
   background: linear-gradient(to left, #3756f7, #003aae);
   color: #fff;
   display: inline-block;
-  font-weight: 500;
+  font-weight: 400;
   padding: 15px 45px;
   border: 0;
   border-radius: 6px;
@@ -1422,7 +1422,7 @@ font-family: "Roboto", sans-serif !important;
   line-height: 50px;
   font-size: 16px;
   font-size: 1.06667rem;
-  font-weight: 600;
+  font-weight: 400;
   color: #232f4b;
   background: #ebf4fc;
   display: block;
@@ -1621,7 +1621,7 @@ font-family: "Roboto", sans-serif !important;
 .topbar .theme-btn-s2 {
   padding: 15px 20px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 400;
   margin-bottom: -3px;
   color: #fff !important;
 }
@@ -2207,7 +2207,7 @@ font-family: "Roboto", sans-serif !important;
     display: block;
     color: #232f4b;
     font-family: "Roboto", sans-serif !important;
-    font-weight: 500;
+    font-weight: 400;
     position: relative;
   }
   .wpo-site-header #navbar > ul .sub-menu {
@@ -2233,7 +2233,7 @@ font-family: "Roboto", sans-serif !important;
     color: #232f4b;
     position: relative;
     overflow: hidden;
-    font-weight: 500;
+    font-weight: 400;
   font-family: "Roboto", sans-serif !important;
   }
   .wpo-site-header #navbar > ul > li .sub-menu a:after {
@@ -2307,7 +2307,7 @@ font-family: "Roboto", sans-serif !important;
     font-size: 15px;
     font-size: 1rem;
     color: #fff;
-    font-weight: 600;
+    font-weight: 400;
   }
   .wpo-site-header #navbar > ul > li a:hover, .wpo-site-header #navbar > ul > li a.active {
     color: #fff;
@@ -2738,7 +2738,7 @@ font-family: "Roboto", sans-serif !important;
 .wpo-site-header .header-right .header-right-menu-wrapper .header-right-menu-wrap .project-widget .post h4 {
   font-size: 24px;
   font-size: 1.26667rem;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.3em;
   margin: 0.3em 0 0;
   color: #fff;
@@ -3250,7 +3250,7 @@ font-family: "Roboto", sans-serif !important;
 .wpo-site-footer .social-widget ul li a {
   display: block;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
   color: #fff;
   margin-bottom: 10px;
 }
@@ -3463,7 +3463,7 @@ font-family: "Roboto", sans-serif !important;
 .wpo-blog-hero-area .wpo-blog-grids .grid .img-holder .wpo-blog-content h2 {
   font-size: 35px;
   color: #fff;
-  font-weight: 600;
+  font-weight: 400;
   margin-top: 15px;
 }
 
@@ -3598,7 +3598,7 @@ font-family: "Roboto", sans-serif !important;
 
 .wpo-breacking-news .wpo-breacking-wrap .wpo-breacking-item .wpo-breacking-text h3 {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 400;
   margin-top: 10px;
 }
 
@@ -4687,7 +4687,7 @@ font-family: "Roboto", sans-serif !important;
 .cart-area .submit-btn-area .theme-btn, .cart-area .submit-btn-area .theme-btn-s3, .cart-area .submit-btn-area .theme-btn-s4, .cart-area .submit-btn-area .view-cart-btn {
   text-transform: capitalize;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 27px;
 }
 
@@ -4717,7 +4717,7 @@ font-family: "Roboto", sans-serif !important;
   border-bottom: 1px solid #f0f0f094;
   color: #3756f7;
   padding-top: 30px;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 /*===============================
@@ -4818,7 +4818,7 @@ font-family: "Roboto", sans-serif !important;
 
 .wpo-checkout-area .coupon label {
   margin-bottom: 0;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 18px;
   color: #0F0F0F;
   cursor: pointer;
@@ -5000,13 +5000,13 @@ font-family: "Roboto", sans-serif !important;
 .wpo-checkout-area .payment-select ul li {
   margin-right: 10px;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 400;
   color: #5B5B5B;
 }
 
 .wpo-checkout-area .payment-select label {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 @media (max-width: 575px) {
@@ -5125,7 +5125,7 @@ font-family: "Roboto", sans-serif !important;
 .wpo-checkout-area .cout-order-area .oreder-item ul .o-header {
   color: #0F0F0F;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 400;
   border-bottom: 1px solid #ebebeb;
 }
 
@@ -5136,7 +5136,7 @@ font-family: "Roboto", sans-serif !important;
 .wpo-checkout-area .cout-order-area .oreder-item ul .o-bottom {
   border-top: 1px solid #ebebeb;
   color: #3756f7;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .wpo-checkout-area .create-account.active {
@@ -5249,7 +5249,7 @@ font-family: "Roboto", sans-serif !important;
 font-family: "Roboto", sans-serif !important;
   font-size: 15px;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 400;
   color: #3756f7;
   padding: 12px 20px;
   border: 2px solid #3756f7;
@@ -5399,7 +5399,7 @@ font-family: "Roboto", sans-serif !important;
   text-decoration: line-through;
   display: inline-block;
   margin-left: 5px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 @media (max-width: 991px) {
@@ -5977,7 +5977,7 @@ font-family: "Roboto", sans-serif !important;
 }
 
 .wpo-blog-pg-section .entry-meta ul li {
-  font-weight: 500;
+  font-weight: 400;
   font-size: 14px;
   font-size: 0.93333rem;
   float: left;
@@ -6050,7 +6050,7 @@ font-family: "Roboto", sans-serif !important;
   font-size: 34px;
   font-size: 2.26667rem;
   line-height: 1.2em;
-  font-weight: 600;
+  font-weight: 400;
   margin: -0.27em 0 0.7em;
 }
 
@@ -6353,7 +6353,7 @@ font-family: "Roboto", sans-serif !important;
 }
 
 .wpo-blog-single-section .entry-meta ul li {
-  font-weight: 500;
+  font-weight: 400;
   font-size: 14px;
   font-size: 0.93333rem;
   float: left;
@@ -6454,7 +6454,7 @@ font-family: "Roboto", sans-serif !important;
 .wpo-blog-single-section .post h3 {
   font-size: 24px;
   font-size: 1.6rem;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.3em;
   margin: 1.8em 0 1em;
 }
@@ -6579,7 +6579,7 @@ font-family: "Roboto", sans-serif !important;
 .wpo-blog-single-section .tag-share .tag > span, .wpo-blog-single-section .tag-share-s2 .tag > span {
 font-family: "Roboto", sans-serif !important;
   color: #232f4b;
-  font-weight: 600;
+  font-weight: 400;
   display: inline-block;
   padding-right: 15px;
   text-transform: uppercase;
@@ -6671,7 +6671,7 @@ font-family: "Roboto", sans-serif !important;
 font-family: "Roboto", sans-serif !important;
   font-size: 24px;
   font-size: 1.6rem;
-  font-weight: 600;
+  font-weight: 400;
   display: inline-block;
   margin-bottom: 10px;
   color: #232f4b;
@@ -6812,7 +6812,7 @@ font-family: "Roboto", sans-serif !important;
   font-size: 0.93333rem;
   color: #444444;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 2px;
 }
 
@@ -6867,7 +6867,7 @@ font-family: "Roboto", sans-serif !important;
 .wpo-blog-single-section .comments-area .comments-title {
   font-size: 22px;
   font-size: 1.46667rem;
-  font-weight: 500;
+  font-weight: 400;
   margin: 0 0 1em;
   text-transform: uppercase;
   letter-spacing: 3px;
@@ -6944,7 +6944,7 @@ font-family: "Roboto", sans-serif !important;
 font-family: "Roboto", sans-serif !important;
   font-size: 14px;
   font-size: 0.93333rem;
-  font-weight: 600;
+  font-weight: 400;
   color: #232f4b;
   text-align: center;
   border-radius: 50px;
@@ -7095,7 +7095,7 @@ font-family: "Roboto", sans-serif !important;
 .wpo-contact-pg-section .wpo-contact-title h2 {
   font-size: 35px;
   font-size: 2.33333rem;
-  font-weight: 600;
+  font-weight: 400;
   margin-bottom: 20px;
 }
 
@@ -7272,7 +7272,7 @@ font-family: "Roboto", sans-serif !important;
 
 .wpo-contact-pg-section .office-info .office-info-item .office-info-text h2 {
   font-size: 30px;
-  font-weight: 500;
+  font-weight: 400;
   margin: 20px 0;
 }
 
@@ -7432,7 +7432,7 @@ font-family: "Roboto", sans-serif !important;
   display: block;
   line-height: 50px;
   font-size: 35px;
-  font-weight: 600;
+  font-weight: 400;
   color: #fff;
 }
 
@@ -7567,7 +7567,7 @@ input[type=checkbox]:checked:disabled + label:before {
 
 .input-box label {
   color: #676B79;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 16px;
   padding-left: 20px !important;
 }
@@ -7593,7 +7593,7 @@ input[type=checkbox]:checked:disabled + label:before {
   border-top: 1px dashed #e5e5e5;
   margin-top: 45px;
   text-align: center;
-  font-weight: 500;
+  font-weight: 400;
   margin-bottom: 20px;
 }
 

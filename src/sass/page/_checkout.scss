@@ -84,7 +84,7 @@
     }
     .coupon label {
         margin-bottom: 0;
-        font-weight: 500;
+        font-weight: 400;
         font-size: 18px;
         color: #0F0F0F;
         cursor: pointer;
@@ -234,12 +234,12 @@
     .payment-select ul li{
       margin-right: 10px;
       font-size: 15px;
-      font-weight: 500;
+      font-weight: 400;
       color: #5B5B5B;
     }
     .payment-select label{
       font-size: 18px;
-      font-weight: 600;
+      font-weight: 400;
       @media(max-width:575px){
         font-size: 14px;
       }
@@ -331,7 +331,7 @@
     .cout-order-area .oreder-item ul .o-header{
      color:#0F0F0F;
      font-size: 20px;
-     font-weight: 600;
+     font-weight: 400;
      border-bottom: 1px solid #ebebeb;
     }
     
@@ -341,7 +341,7 @@
     .cout-order-area .oreder-item ul .o-bottom{
       border-top:1px solid #ebebeb;
       color:$theme-primary-color;
-      font-weight: 600; 
+      font-weight: 400; 
     }
     .create-account.active{
       display: block;

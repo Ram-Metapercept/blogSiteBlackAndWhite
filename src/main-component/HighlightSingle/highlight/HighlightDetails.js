@@ -5,6 +5,7 @@ import rehypeRaw from "rehype-raw";
 import BlogSidebar from "../../../components/BlogSidebar/BlogSidebar";
 import globalEnv from "../../../api/globalenv";
 import "./HighlightDetails.css";
+import { ShimmerThumbnail } from "react-shimmer-effects";
 
 const HighlightDetails = ({ article }, props) => {
   const wordCount = useMemo(() => {
@@ -55,7 +56,7 @@ const HighlightDetails = ({ article }, props) => {
                     }}
                   />
                 ) : (
-                  <span>Image loading........</span>
+                  <ShimmerThumbnail style={{height:"5vh"}} rounded />
                 )}
               </div>
 

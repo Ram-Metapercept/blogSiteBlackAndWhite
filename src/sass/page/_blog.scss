@@ -33,7 +33,7 @@
 			list-style: none;
 
 			li {
-				font-weight: 500;
+				font-weight: 400;
 				font-size: 14px;
 				font-size: calc-rem-value(14);
 				float: left;
@@ -102,7 +102,7 @@
 			font-size: 34px;
 			font-size: calc-rem-value(34);
 			line-height: 1.2em;
-			font-weight: 600;
+			font-weight: 400;
 			margin: -0.27em 0 0.7em;
 
 			@include media-query(991px) {

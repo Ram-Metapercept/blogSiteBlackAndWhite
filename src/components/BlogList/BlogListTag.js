@@ -125,7 +125,13 @@ const BlogListTag = ({ slug, blRight }) => {
                       </li>
                     </ul>
                   </div>
-                  <h1>{blog?.attributes?.Title}</h1>
+                  <h2 >
+
+    {blog?.attributes?.Title}
+  
+  
+
+</h2>
                   <div className="entry-details">
                     <div className="custom-list">
                     <div className="listing" id="cutoffText1">

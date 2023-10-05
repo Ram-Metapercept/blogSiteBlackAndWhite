@@ -5,7 +5,11 @@ import globalEnv from "../../api/globalenv.js";
 import "./HighlightsNews.css";
 import { AiOutlinePlus } from "react-icons/ai";
 import "react-loading-skeleton/dist/skeleton.css";
-
+import { ShimmerPostList,  ShimmerText,
+  ShimmerCategoryItem,
+  ShimmerButton,ShimmerContentBlock } from "react-shimmer-effects";
+  import Skeleton from "react-loading-skeleton";
+  import "react-loading-skeleton/dist/skeleton.css";
 const truncate = require("truncate");
 
 const HighlightsNews = (props) => {
@@ -17,7 +21,7 @@ const HighlightsNews = (props) => {
 
   const [visibleItems, setVisibleItems] = useState(6);
   const [loadMoreVisible, setLoadMoreVisible] = useState(true);
-
+   const [loading,setLoading] = useState(true);
   const ClickHandler = () => {
     window.scrollTo(10, 0);
   };
@@ -29,6 +33,7 @@ const HighlightsNews = (props) => {
       .then((response) => response.json())
       .then((data) => {
         setArticles(data.data);
+        setLoading(false)
      
       })
       .catch((error) => console.error(error));
@@ -38,6 +43,7 @@ const HighlightsNews = (props) => {
       .then((response) => response.json())
       .then((data) => {
         setCategory(data.data);
+        setLoading(false)
       })
       .catch((error) => console.error(error));
   }, []);
@@ -49,6 +55,7 @@ const HighlightsNews = (props) => {
       .then((response) => response.json())
       .then((data) => {
         setLatest(data.data);
+        setLoading(false)
       })
       .catch((error) => console.error(error));
   }, [currentPage]);
@@ -121,7 +128,29 @@ const HighlightsNews = (props) => {
               <div className="wpo-blog-highlights-wrap">
                 <div className="wpo-blog-items">
                   <div className="row">
-                    {
+                  {loading ? (
+           
+                   
+                    // <div className="col-md-6 pb-30">
+                    
+
+                    //   <ShimmerPostList
+                      
+                       
+                    //   />
+                    <>
+                    <div className="col-lg-6 p-3">
+                <Skeleton height={350} />
+              </div>
+              <div className="col-lg-6 p-3">
+                <Skeleton height={350} />
+              </div>
+              <div className="col-lg-6 p-3">
+                <Skeleton height={350} />
+              </div> 
+                       </>
+                 
+                    ) : (
                       filteredItems.map((item, i) => (
                         <div key={i} className="col-lg-6 p-3">
                           <div
@@ -234,8 +263,8 @@ const HighlightsNews = (props) => {
                             </div>
                           </div>
                         </div>
-                      )
-                    )}
+                      ))
+                      )}
                   </div>
                 </div>
               </div>
@@ -258,11 +287,22 @@ const HighlightsNews = (props) => {
             <div className={`col col-lg-4 col-md-12 ${props.hideClass}`}>
               <div className="blog-sidebar">
                 <div className="widget category-widget">
-                  <h3 style={{ fontWeight: "700", color: "#070707" }}>
+                  <h3 style={{ fontWeight: "400", color: "#070707" }}>
                     Post Categories
                   </h3>
                   <ul>
-                    {objectsWithUniqueCats.map((blog) => (
+                    {loading ? (
+                      <div>
+                        {[...Array(5)].map((_, index) => (
+                          <ShimmerText
+                            key={index}
+                            className={`line${index + 1}`}
+                            line={1}
+                            gap={10}
+                          />
+                        ))}
+                      </div>
+                    ) : (objectsWithUniqueCats.map((blog) => (
                       <li key={blog?.id}>
                         <Link
                           onClick={ClickHandler}
@@ -274,14 +314,24 @@ const HighlightsNews = (props) => {
                           </span>
                         </Link>
                       </li>
-                    ))}
+                    )))}
                   </ul>
                 </div>
                 <div className="widget recent-post-widget">
-                  <h3 style={{ fontWeight: "700", color: "#070707" }}>
+                  <h3 style={{ fontWeight: "400", color: "#070707" }}>
                     Latest Post
                   </h3>
-                  {latest.slice(0, 5).map((blog, bitem) => (
+                  {loading
+                    ? [...Array(5)].map((_, index) => (
+                        <ShimmerCategoryItem
+                          hasImage
+                          imageType="thumbnail"
+                          imageWidth={80}
+                          imageHeight={80}
+                          title
+                        />
+                      ))
+                    : latest.slice(0, 5).map((blog, bitem) => (
                     <div className="posts" key={bitem}>
                       <div className="post">
                         <div className="img-holder">
@@ -317,9 +367,9 @@ const HighlightsNews = (props) => {
                   ))}
                 </div>
                 <div className="widget tag-widget">
-                  <h3 style={{ fontWeight: "700", color: "#070707" }}>Tags</h3>
+                  <h3 style={{ fontWeight: "400", color: "#070707" }}>Tags</h3>
                   <ul className="highlightedTag">
-                    {objectsWithUniqueTags.map((blog) => (
+                    {loading ?<div><div style={{display:"flex", justifyContent:"space-around"}}> <ShimmerButton size="sm"/><ShimmerButton size="sm"/></div> <div style={{display:"flex", justifyContent:"space-around"}}> <ShimmerButton size="sm"/><ShimmerButton size="sm"/></div> </div>: (objectsWithUniqueTags.map((blog) => (
                       <li key={blog.id}>
                         <Link
                           onClick={ClickHandler}
@@ -328,7 +378,7 @@ const HighlightsNews = (props) => {
                           {blog.attributes.Tag}
                         </Link>
                       </li>
-                    ))}
+                    )))}
                   </ul>
                 </div>
               </div>

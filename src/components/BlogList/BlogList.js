@@ -124,7 +124,7 @@ const BlogList = ({ slug }, props) => {
                       onClick={ClickHandler}
                       to={`/blog-single/${blog?.attributes?.Slug}`}
                     >
-                      <h1>{blog?.attributes?.Title}</h1>
+                    <div className="wpo-blog-content">  <h2>{blog?.attributes?.Title}</h2></div>
                     </Link>
                     <div className="listing" id="cutoffText1">
                     <ReactMarkdown
