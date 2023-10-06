@@ -208,7 +208,7 @@ const BlogSingle = (props) => {
                   )}
                 </div>
               </div>
-  )
+  
             </div>
           </div>
           <BlogSidebar blLeft={props.blLeft} />
