@@ -6,6 +6,8 @@ import rehypeRaw from "rehype-raw";
 import BlogSidebar from "../BlogSidebar/BlogSidebar.js";
 import globalEnv from "../../api/globalenv.js";
 import { AiOutlinePlus } from "react-icons/ai";
+import Skeleton from "react-loading-skeleton";
+import { ShimmerThumbnail } from "react-shimmer-effects";
 
 const ClickHandler = () => {
   window.scrollTo(10, 0);
@@ -17,7 +19,7 @@ const BlogListTag = ({ slug, blRight }) => {
   const [visibleItems, setVisibleItems] = useState(2);
   const [loadMoreVisible, setLoadMoreVisible] = useState(true);
   const [hasMoreContent, setHasMoreContent] = useState(true);
-
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -27,7 +29,8 @@ const BlogListTag = ({ slug, blRight }) => {
           )}&filters[Archived][$eq]=false&populate=*`
         );
         const data = await response.json();
-        setArticles(data.data);
+        setArticles(data.data)
+        setLoading(false);
       } catch (error) {
         console.error(error);
       }
@@ -73,95 +76,107 @@ const BlogListTag = ({ slug, blRight }) => {
         <div className="row">
           <div className={`col col-lg-8 col-12 ${blRight}`}>
             <div className="wpo-blog-content">
-              {currentArticles.map((blog, bitem) => (
-                <div className={`post ${blog.blClass}`} key={bitem}>
-                  <div className="entry-media video-holder"
-                   style={{
-                    width: "100%",
-                    maxWidth: "100%",
-                    height: "auto",
-                    maxHeight: "50vh",
-                    overflow: "hidden",
-                    borderRadius: "10px",
-                  }}
-  >
-                    <img
-                      src={`${globalEnv.api}${blog.attributes.Image.data[0].attributes.url}`}
-                      alt=""
-                      key={blog.id}
-                      style={{
-                        width: "100%",
-                        height: "auto",
-                        borderRadius: "10px",
-                        maxHeight:"50vh !important"
-                      }}
-                    />
-                  </div>
-                  <div className="entry-meta">
-                    <ul>
-                      {blog?.attributes?.Author?.data[0]?.attributes
-                        ?.fullname && (
-                        <li>
-                          <i className="fi flaticon-user"> </i>By{" "}
-                          {
-                            blog?.attributes?.Author?.data[0]?.attributes
-                              ?.fullname
-                          }
-                        </li>
-                      )}
+              {loading ?
+                <div>
+                  {[...Array(3)].map((_, index) => (
+                    <div key={index} className="col-lg-12  rounded-8" >
+                      <div style={{ marginBottom: "50px" }}>
+                        <ShimmerThumbnail height={300} rounded />
 
-                      <li>
-                        <i className="fi flaticon-calendar"></i>{" "}
-                        {new Date(
-                          blog?.attributes?.createdAt
-                        ).toLocaleDateString("en-GB")}
-                      </li>
-                      <li>
-                        <i className="fa-regular fa-clock"></i>&nbsp;
-                        {Math.ceil(
-                          countWords(blog?.attributes?.Description) / 200
-                        )}{" "}
-                        min read
-                      </li>
-                    </ul>
-                  </div>
-                  <h2 >
-
-    {blog?.attributes?.Title}
-  
-  
-
-</h2>
-                  <div className="entry-details">
-                    <div className="custom-list">
-                    <div className="listing" id="cutoffText1">
-                      <ReactMarkdown
-                        children={
-                          blog?.attributes?.Description+ "...."
-                        }
-                        remarkPlugins={[remarkGfm]}
-                        rehypePlugins={[rehypeRaw]}
-                        transformImageUri={(uri) =>
-                          uri.startsWith("http")
-                            ? uri
-                            : `${globalEnv.api}${uri}`
-                        }
-                        className="markdown"
-                        components={components}
-                      />
+                        <Skeleton count={7} />
                       </div>
                     </div>
-                    <Link
-                      onClick={ClickHandler}
-                      to={`/blog-single/tag/${blog?.attributes?.Slug}`}
-                      state={propsToPass}
-                      className="read-more"
-                    >
-                      READ MORE...
-                    </Link>
-                  </div>
+                  ))}
                 </div>
-              ))}
+                : currentArticles.map((blog, bitem) => (
+                  <div className={`post ${blog.blClass}`} key={bitem}>
+                    <div className="entry-media video-holder"
+                      style={{
+                        width: "100%",
+                        maxWidth: "100%",
+                        height: "auto",
+                        maxHeight: "50vh",
+                        overflow: "hidden",
+                        borderRadius: "10px",
+                      }}
+                    >
+                      <img
+                        src={`${globalEnv.api}${blog.attributes.Image.data[0].attributes.url}`}
+                        alt=""
+                        key={blog.id}
+                        style={{
+                          width: "100%",
+                          height: "auto",
+                          borderRadius: "10px",
+                          maxHeight: "50vh !important"
+                        }}
+                      />
+                    </div>
+                    <div className="entry-meta">
+                      <ul>
+                        {blog?.attributes?.Author?.data[0]?.attributes
+                          ?.fullname && (
+                            <li>
+                              <i className="fi flaticon-user"> </i>By{" "}
+                              {
+                                blog?.attributes?.Author?.data[0]?.attributes
+                                  ?.fullname
+                              }
+                            </li>
+                          )}
+
+                        <li>
+                          <i className="fi flaticon-calendar"></i>{" "}
+                          {new Date(
+                            blog?.attributes?.createdAt
+                          ).toLocaleDateString("en-GB")}
+                        </li>
+                        <li>
+                          <i className="fa-regular fa-clock"></i>&nbsp;
+                          {Math.ceil(
+                            countWords(blog?.attributes?.Description) / 200
+                          )}{" "}
+                          min read
+                        </li>
+                      </ul>
+                    </div>
+                    <h2 >
+
+                      {blog?.attributes?.Title}
+
+
+
+                    </h2>
+                    <div className="entry-details">
+                      <div className="custom-list">
+                        <div className="listing" id="cutoffText1">
+                          <ReactMarkdown
+                            children={
+                              blog?.attributes?.Description + "...."
+                            }
+                            remarkPlugins={[remarkGfm]}
+                            rehypePlugins={[rehypeRaw]}
+                            transformImageUri={(uri) =>
+                              uri.startsWith("http")
+                                ? uri
+                                : `${globalEnv.api}${uri}`
+                            }
+                            className="markdown"
+                            components={components}
+                          />
+                        </div>
+                      </div>
+                      <Link
+                        onClick={ClickHandler}
+                        to={`/blog-single/tag/${blog?.attributes?.Slug}`}
+                        state={propsToPass}
+                        className="read-more"
+                      >
+                        READ MORE...
+                      </Link>
+                    </div>
+                  </div>
+                ))}
             </div>
             <div className="pagination-wrapper">
               {loadMoreVisible &&

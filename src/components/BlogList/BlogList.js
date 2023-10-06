@@ -7,6 +7,8 @@ import globalEnv from "../../api/globalenv.js";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
+import Skeleton from "react-loading-skeleton";
+import { ShimmerThumbnail } from "react-shimmer-effects";
 
 const ClickHandler = () => {
   window.scrollTo(10, 0);
@@ -22,7 +24,7 @@ const BlogList = ({ slug }, props) => {
   const [visibleItems, setVisibleItems] = useState(2);
   const [loadMoreVisible, setLoadMoreVisible] = useState(true);
   const [hasMoreContent, setHasMoreContent] = useState(true);
-
+    const [loading,setLoading]=useState(true)
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -30,6 +32,7 @@ const BlogList = ({ slug }, props) => {
           `${globalEnv.api}/api/categories?filters[Slug][$eq]=${slug}&populate[Articles][populate]=*`
         );
         const data = await response.json();
+        setLoading(false)
         setCategory(data.data);
       } catch (error) {
         console.error(error);
@@ -67,7 +70,16 @@ const BlogList = ({ slug }, props) => {
         <div className="row">
           <div className={`col col-lg-8 col-12 ${props.blRight}`}>
             <div className="wpo-blog-content">
-              {currentArticles.map((blog) => (
+              {loading? <div>
+                {[...Array(3)].map((_, index) => (
+                  <div key={index} className="col-lg-12 rounded-8">
+                  <div style={{marginBottom:"50px"}}>
+                    <ShimmerThumbnail height={300} rounded />
+                    <Skeleton count={7} />
+                    </div>
+                  </div>
+                ))}
+              </div>:currentArticles.map((blog) => (
                 <div className="post" key={blog.id}>
                   <div className="entry-media video-holder"
                   

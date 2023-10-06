@@ -7,7 +7,10 @@ import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import "./BlogSingle.css";
 import globalEnv from "../../api/globalenv.js";
+import Skeleton from "react-loading-skeleton";
+import { ShimmerThumbnail } from "react-shimmer-effects";
 
+import "react-loading-skeleton/dist/skeleton.css";
 const BlogSingle = (props) => {
   const { slug } = useParams();
   const [item, setItem] = useState([]);
@@ -116,52 +119,53 @@ const BlogSingle = (props) => {
                     }}
                   />
                 ) : (
-                  <span>Image loading........</span>
+                  <p>
+                  <ShimmerThumbnail height={300} rounded />
+               </p>
                 )}
               </div>
 
+              {currentData ? (
+  <div>
+    <div className="entry-meta">
+      <ul style={{ listStyle: "none !important" }}>
+        {currentData?.attributes?.Author?.data[0]?.attributes?.fullname && (
+          <li>
+            <i className="fi flaticon-user"> </i> By{" "}
+            {currentData?.attributes?.Author?.data[0]?.attributes?.fullname}
+          </li>
+        )}
 
-                <div className="entry-meta">
-                  <ul style={{ listStyle: "none !important" }}>
-                    {currentData?.attributes?.Author?.data[0]?.attributes
-                      ?.fullname && (
-                      <li>
-                        <i className="fi flaticon-user"> </i> By{" "}
-                        {
-                          currentData?.attributes?.Author?.data[0]?.attributes
-                            ?.fullname
-                        }
-                      </li>
-                    )}
+        <li>
+          <i className="fi flaticon-calendar"></i>{" "}
+          {new Date(currentData?.attributes?.createdAt).toLocaleDateString("en-GB")}{" "}
+        </li>
+        <li>
+          <i className="fa-regular fa-clock"></i>&nbsp;
+          {Math.ceil(countWords(currentData?.attributes?.Description) / 200)}{" "}
+          min read
+        </li>
+      </ul>
+    </div>
 
-                    <li>
-                      <i className="fi flaticon-calendar"></i>{" "}
-                      {new Date(
-                        currentData?.attributes?.createdAt
-                      ).toLocaleDateString("en-GB")}{" "}
-                    </li>
-                    <li>
-                      <i className="fa-regular fa-clock"></i>&nbsp;
-                      {Math.ceil(
-                        countWords(currentData?.attributes?.Description) / 200
-                      )}{" "}
-                      min read
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="custom-list">
-                  <ReactMarkdown
-                    remarkPlugins={[remarkGfm]}
-                    children={currentData?.attributes?.Description}
-                    rehypePlugins={[rehypeRaw]}
-                    transformImageUri={(uri) =>
-                      uri.startsWith("http") ? uri : `${globalEnv.api}${uri}`
-                    }
-                    components={components}
-                  />
-                </div>
-              </div>
+    <div className="custom-list">
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        children={currentData?.attributes?.Description}
+        rehypePlugins={[rehypeRaw]}
+        transformImageUri={(uri) =>
+          uri.startsWith("http") ? uri : `${globalEnv.api}${uri}`
+        }
+        components={components}
+      />
+    </div>
+  </div>
+) : (
+  <p>
+    <Skeleton count={30} />
+  </p>
+)}
+</div>
 
               <div className="more-posts d-flex align-items-stretch flex-wrap p-0">
                 <div className="previous-post" style={{ padding: "40px 25px" }}>
@@ -204,6 +208,7 @@ const BlogSingle = (props) => {
                   )}
                 </div>
               </div>
+  )
             </div>
           </div>
           <BlogSidebar blLeft={props.blLeft} />

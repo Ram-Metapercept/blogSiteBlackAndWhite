@@ -6,13 +6,14 @@ import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import "./BlogSingleTag.css";
 import globalEnv from "../../api/globalenv.js";
-
+import { ShimmerThumbnail } from "react-shimmer-effects";
+import Skeleton from "react-loading-skeleton";
 const BlogSingleTag = ({ data, ...props }) => {
   const { slug } = useParams();
   const [item, setItem] = useState([]);
   const [tagItem, setTagItem] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-
+   
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -105,51 +106,49 @@ const BlogSingleTag = ({ data, ...props }) => {
                     }}
                   />
                 ) : (
-                  <span>Image loading........</span>
+                     <p>
+                     <ShimmerThumbnail height={350} rounded />
+                  </p>
                 )}
               </div>
+              {currentData ? (
+  <div>
+    <div className="entry-meta">
+      {currentData?.attributes?.Author?.data[0]?.attributes?.fullname && (
+        <ul>
+          <li>
+            <i className="fi flaticon-user"> </i> By{" "}
+            {currentData?.attributes?.Author?.data[0]?.attributes?.fullname}
+          </li>
+          <li>
+            <i className="fi flaticon-calendar"></i>
+            {new Date(currentData?.attributes?.createdAt).toLocaleDateString("en-GB")}
+          </li>
+          <li>
+            <i className="fa-regular fa-clock"></i>&nbsp;
+            {Math.ceil(countWords(currentData?.attributes?.Description) / 200)} min read
+          </li>
+        </ul>
+      )}
+    </div>
+    <div className="custom-list">
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        children={currentData?.attributes?.Description}
+        rehypePlugins={[rehypeRaw]}
+        transformImageUri={(uri) =>
+          uri.startsWith("http") ? uri : `${globalEnv.api}${uri}`
+        }
+      />
+    </div>
+  </div>
+) : (
+  <p>
+    <Skeleton count={30} />
+  </p>
+)}
+</div>
 
-
-                <div className="entry-meta">
-                  <ul>
-                    {currentData?.attributes?.Author?.data[0]?.attributes
-                      ?.fullname && (
-                      <li>
-                        <i className="fi flaticon-user"> </i> By{" "}
-                        {
-                          currentData?.attributes?.Author?.data[0]?.attributes
-                            ?.fullname
-                        }
-                      </li>
-                    )}
-
-                    <li>
-                      <i className="fi flaticon-calendar"></i>
-                      {new Date(
-                        currentData?.attributes?.createdAt
-                      ).toLocaleDateString("en-GB")}
-                    </li>
-                    <li>
-                      <i className="fa-regular fa-clock"></i>&nbsp;
-                      {Math.ceil(
-                        countWords(currentData?.attributes?.Description) / 200
-                      )}{" "}
-                      min read
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="custom-list">
-                  <ReactMarkdown
-                    remarkPlugins={[remarkGfm]}
-                    children={currentData?.attributes?.Description}
-                    rehypePlugins={[rehypeRaw]}
-                    transformImageUri={(uri) =>
-                      uri.startsWith("http") ? uri : `${globalEnv.api}${uri}`
-                    }
-                  />
-                </div>
-              </div>
               <div className="more-posts d-flex align-items-stretch flex-wrap p-0">
                 <div className="previous-post" style={{ padding: "40px 25px" }}>
                   {prevData ? (

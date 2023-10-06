@@ -23,10 +23,10 @@
 	.entry-meta {
 		list-style: none;
 		overflow: hidden;
-		margin: 35px 0;
+		margin: 15px 0;
 
 		@include media-query(767px) {
-			margin: 25px 0;
+			margin: 10px 0;
 		}
 
 		ul {

@@ -79,5 +79,28 @@
   float: left;
   text-transform: none !important;
 }
-/* .wpo-blog-content + h4 {
+.image-description-skeleton {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 10px;
+}
+
+.skeleton-image {
+  flex: 1;
+  margin-right: 20px;
+  width: 20vh;
+  height:15vh
+}
+
+.skeleton-description {
+  flex: 2;
+}
+
+.skeleton-description span {
+  display: block;
+  margin-bottom: 10px;
+}
+
 

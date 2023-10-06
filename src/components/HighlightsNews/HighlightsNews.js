@@ -5,11 +5,11 @@ import globalEnv from "../../api/globalenv.js";
 import "./HighlightsNews.css";
 import { AiOutlinePlus } from "react-icons/ai";
 import "react-loading-skeleton/dist/skeleton.css";
-import { ShimmerPostList,  ShimmerText,
+import { ShimmerThumbnail,  ShimmerText,
   ShimmerCategoryItem,
-  ShimmerButton,ShimmerContentBlock } from "react-shimmer-effects";
-  import Skeleton from "react-loading-skeleton";
-  import "react-loading-skeleton/dist/skeleton.css";
+  ShimmerButton } from "react-shimmer-effects";
+ 
+
 const truncate = require("truncate");
 
 const HighlightsNews = (props) => {
@@ -130,25 +130,14 @@ const HighlightsNews = (props) => {
                   <div className="row">
                   {loading ? (
            
-                   
-                    // <div className="col-md-6 pb-30">
+                
+                    [...Array(6)].map((_, index) => (
+                      <div className="col-lg-6 p-3 rounded-8" key={index}>
+                      <ShimmerThumbnail height={350} rounded />
+                      </div>
+                    ))
                     
-
-                    //   <ShimmerPostList
-                      
-                       
-                    //   />
-                    <>
-                    <div className="col-lg-6 p-3">
-                <Skeleton height={350} />
-              </div>
-              <div className="col-lg-6 p-3">
-                <Skeleton height={350} />
-              </div>
-              <div className="col-lg-6 p-3">
-                <Skeleton height={350} />
-              </div> 
-                       </>
+                     
                  
                     ) : (
                       filteredItems.map((item, i) => (

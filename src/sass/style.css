@@ -5963,12 +5963,12 @@ font-family: "Roboto", sans-serif !important;
 .wpo-blog-pg-section .entry-meta {
   list-style: none;
   overflow: hidden;
-  margin: 35px 0;
+  margin: 15px 0;
 }
 
 @media (max-width: 767px) {
   .wpo-blog-pg-section .entry-meta {
-    margin: 25px 0;
+    margin: 10px 0;
   }
 }
 

@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import globalEnv from "../../api/globalenv.js";
 import { Col } from "react-bootstrap";
 import "./BlogSidebar.css";
+import {  ShimmerText,
+  ShimmerCategoryItem,
+  ShimmerButton } from "react-shimmer-effects";
 const truncate = require("truncate");
 
 const ClickHandler = () => {
@@ -29,7 +32,7 @@ const BlogSidebar = (props) => {
   const [latest, setLatest] = useState([]);
   const [article, setArticle] = useState([]);
   const [category, setCategory] = useState([]);
-
+   const [loading,setLoading]=useState(true)
   useEffect(() => {
     const fetchArticleData = async () => {
       try {
@@ -38,6 +41,7 @@ const BlogSidebar = (props) => {
         );
         const data = await response.json();
         setLatest(data.data);
+        setLoading(false)
       } catch (error) {
         console.error(error);
       }
@@ -50,7 +54,7 @@ const BlogSidebar = (props) => {
         );
         const data = await response.json();
         setCategory(data.data);
-      } catch (error) {
+        setLoading(false)      } catch (error) {
         console.error(error);
       }
     };
@@ -62,6 +66,7 @@ const BlogSidebar = (props) => {
         );
         const data = await response.json();
         setArticle(data.data);
+        setLoading(false) 
       } catch (error) {
         console.error(error);
       }
@@ -96,7 +101,18 @@ const BlogSidebar = (props) => {
             Post Categories
           </h3>
           <ul>
-            {objectsWithUniqueCats.map((blog) => (
+            {loading ? (
+              <div>
+                {[...Array(5)].map((_, index) => (
+                  <ShimmerText
+                    key={index}
+                    className={`line${index + 1}`}
+                    line={1}
+                    gap={10}
+                  />
+                ))}
+              </div>
+            ) :objectsWithUniqueCats.map((blog) => (
               <li key={blog.id}>
                 <Link
                   onClick={ClickHandler}
@@ -111,7 +127,17 @@ const BlogSidebar = (props) => {
         </div>
         <div className="widget recent-post-widget">
           <h3 style={{ fontWeight: "700", color: "#070707" }}>Latest Posts</h3>
-          {latest.slice(0, 5).map((blog, bitem) => (
+          {loading
+            ? [...Array(5)].map((_, index) => (
+                <ShimmerCategoryItem
+                  hasImage
+                  imageType="thumbnail"
+                  imageWidth={80}
+                  imageHeight={80}
+                  title
+                />
+              ))
+            : latest.slice(0, 5).map((blog, bitem) => (
             <div className="posts" key={bitem}>
               <div className="post">
                 <div className="img-holder">
@@ -148,7 +174,7 @@ const BlogSidebar = (props) => {
         <div className="widget tag-widget">
           <h3 style={{ fontWeight: "700", color: "#070707" }}>Tags</h3>
           <ul className="highlightedTag">
-            {objectsWithUniqueTags.map((blog) => (
+            {loading ?<div><div style={{display:"flex", justifyContent:"space-around"}}> <ShimmerButton size="sm"/><ShimmerButton size="sm"/></div> <div style={{display:"flex", justifyContent:"space-around"}}> <ShimmerButton size="sm"/><ShimmerButton size="sm"/></div> </div>:objectsWithUniqueTags.map((blog) => (
               <li key={blog.id}>
                 <Link
                   onClick={ClickHandler}
