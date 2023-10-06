@@ -16308,6 +16308,7 @@ p.checkout-coupon input[type=text]:focus {
 .tp-footer__widget-title {
   font-size: 16px;
   font-weight: 400;
+  color:#070707
 }
 .tp-footer__widget ul li a {
   font-size: 16px;
