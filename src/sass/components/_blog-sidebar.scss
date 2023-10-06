@@ -206,10 +206,12 @@
 		}
 
 		ul a {
-			display: block;
+			display: flex;
+			align-items: center;
 			color: #474f62;
 			position: relative;
-			padding-left: 30px;
+			padding-left:28px;
+			padding-right: 20px;
 
 			&:before {
 				position: absolute;

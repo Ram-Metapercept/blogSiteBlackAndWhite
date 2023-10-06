@@ -97,7 +97,7 @@ const BlogSidebar = (props) => {
     <Col lg={4} xs={12} className={`col col-lg-4 col-12 ${props.blLeft}`}>
       <div className="blog-sidebar">
         <div className="widget category-widget">
-          <h3 style={{ fontWeight: "700", color: "#070707" }}>
+          <h3 style={{ fontWeight: "400", color: "#070707" }}>
             Post Categories
           </h3>
           <ul>
@@ -117,7 +117,7 @@ const BlogSidebar = (props) => {
                 <Link
                   onClick={ClickHandler}
                   to={`/blog/category/${blog?.attributes?.Slug}`}
-             className="cutoffText2">
+             >
                   {blog.attributes.Title}
                   <span  style={{fontSize:"20px"}} >({blog?.attributes?.Articles?.data?.length})</span>
                 </Link>
@@ -126,7 +126,7 @@ const BlogSidebar = (props) => {
           </ul>
         </div>
         <div className="widget recent-post-widget">
-          <h3 style={{ fontWeight: "700", color: "#070707" }}>Latest Posts</h3>
+          <h3 style={{ fontWeight: "400", color: "#070707" }}>Latest Posts</h3>
           {loading
             ? [...Array(5)].map((_, index) => (
                 <ShimmerCategoryItem
