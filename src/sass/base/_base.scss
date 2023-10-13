@@ -24,7 +24,10 @@ p {
     color: $body-color;
     line-height: 1.8em;
 }
-
+.tp-offcanvas__bottom p{
+    color: #070707!important; 
+    font-size: 14px;
+}
 h1,
 h2,
 h3,

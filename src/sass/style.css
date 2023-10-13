@@ -366,7 +366,7 @@ a:hover {
 }
 
 .wpo-section-title h2 {
-  font-size: 50px;
+  font-size: 35px !important;
   line-height: 1em;
   font-weight: 400;
   color: #444444;

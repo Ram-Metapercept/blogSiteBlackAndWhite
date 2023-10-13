@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const NavMenu = () => {
   return (
     <>
-      <ul>
+      <ul style={{display:"flex", gap:'10px'}}>
         {menu_data?.map((item, i) => (
           <li
             key={i}
@@ -13,7 +13,7 @@ const NavMenu = () => {
             className={`${item.has_dropdown ? "has-dropdown" : ""} 
     `}
           >
-            <Link to={item.link} target={i !== 0 ? "_blank" : ""}>
+            <Link to={item.link} target={i !== 0 ? "_blank" : ""} >
               {item.title}
             </Link>
           </li>

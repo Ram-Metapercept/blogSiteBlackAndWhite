@@ -35,6 +35,6 @@ const menu_data = [
     has_dropdown: false,
     title: "Contact Us",
     link: `${MainSiteUrl.url}/contact`,
-  },
+  }
 ];
 export default menu_data;

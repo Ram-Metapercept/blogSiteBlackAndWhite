@@ -28,7 +28,9 @@ const Sidebar = ({ isActive, setIsActive }) => {
                 <img src={Logo1} alt="sticky-logo" />
               </Link>
             </div>
+            <div className="tp-offcanvas__bottom">
             <p> We bring your ideas to better product.</p>
+            </div>
             <div className="tp-offcanvas__social">
               <span>
                 {" "}
@@ -133,7 +135,7 @@ const Sidebar = ({ isActive, setIsActive }) => {
               Our team applies its wide ranging in experience to determining.
             </p>
             <div className="tp-offcanvas-btn-wrapper">
-              <Link href="/contact" className="tp-common-btn">
+              <Link href="/contact" className="tp-common-btn" id="getButton">
                 get in touch
                 <span>
                   <i className="fal fa-long-arrow-right"></i>

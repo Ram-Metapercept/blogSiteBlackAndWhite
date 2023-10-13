@@ -4345,12 +4345,19 @@ input[type=color] {
   }
 }
 .main-menu ul li a {
-  display: inline-block;
+  display: flex;
+  height: 110px;
+  align-items: center;
+  max-width: 125px;
   font-size: 16px;
   font-weight: 400;
   color: var(--tp-common-black);
   padding: 43px 0;
   text-transform: uppercase;
+}
+.main-menu ul li a *{
+  overflow-wrap: break-word;
+  max-width: 125px;
 }
 .main-menu ul li.has-dropdown > a {
   position: relative;
@@ -4424,7 +4431,7 @@ input[type=color] {
 }
 .main-menu ul li a:hover{
   font-weight: 700 !important;
-  color: #324DA0;
+  color: #005A9C!important;
 }
 .main-menu ul li .submenu li a {
   position: relative;
@@ -4658,7 +4665,7 @@ input[type=color] {
     margin-right: 20px;
   }
 }
-@media only screen and (min-width: 0px) and (max-width: 1499px) {
+@media only screen and (min-width: 0px) and (max-width: 1200px) {
   .header-mail-info {
     display: none;
   }

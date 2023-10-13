@@ -26,6 +26,9 @@ const HighlightDetails = ({ article, blRight, blLeft }) => {
   return (
     <div>
       <section className="wpo-blog-single-section section-padding">
+
+
+
         <div className="container">
           <div className="row">
             <div className={`col col-lg-8 col-12 ${blRight}`}>

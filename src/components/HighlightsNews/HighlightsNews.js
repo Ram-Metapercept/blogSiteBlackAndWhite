@@ -258,7 +258,7 @@ const HighlightsNews = (props) => {
                 </div>
               </div>
               {loadMoreVisible && totalItems > visibleItems && (
-                <div className="pt-istop-btn-wrapper  text-center mt-30 ">
+                <div className="loadMoreDiv pt-istop-btn-wrapper  text-center mt-30 ">
                   <button
                     className="tp-common-btn text-center "
                     onClick={loadMoreItems}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import menu_data from "./menu-data";
 import menu_data from "./menu-data-new";
 import { Link } from "react-router-dom";
@@ -22,7 +22,23 @@ const MobileMenus = () => {
       setSubMenu(s_menu);
     }
   };
+  useEffect(() => {
+    // Get the element
+    var elem = document.querySelector("#google_translate_element");
+    console.log(elem.style.display);
+    console.log(getComputedStyle(elem).display);
+    if (getComputedStyle(elem).display === "none") {
+      elem.className = "d-block";
+      elem.style.position = "static";
+      elem.style.margin = "0  0 20px 0px";
+      console.log("added");
+      document.querySelector("#google_translate_element2").appendChild(elem);
+    }
+  }, []);
   return (
+    <>
+    <div id="google_translate_element2" className=""></div>
+
     <nav className="mean-nav">
       <ul>
         {menu_data?.map((menu, i) => (
@@ -119,6 +135,7 @@ const MobileMenus = () => {
         ))}
       </ul>
     </nav>
+    </>
   );
 };
 

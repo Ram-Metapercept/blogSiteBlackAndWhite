@@ -66,6 +66,7 @@ const BlogList = ({ slug }, props) => {
 
   return (
     <section className="wpo-blog-pg-section section-padding">
+      
       <div className="container">
         <div className="row">
           <div className={`col col-lg-8 col-12 ${props.blRight}`}>
@@ -164,7 +165,7 @@ const BlogList = ({ slug }, props) => {
                 {loadMoreVisible &&
                   hasMoreContent &&
                   totalItems.length > visibleItems && (
-                    <div className="pt-istop-btn-wrapper text-center mt-30">
+                    <div className="loadMoreDiv pt-istop-btn-wrapper text-center mt-30">
                       <button
                         className="tp-common-btn text-center"
                         onClick={loadMoreItems}
