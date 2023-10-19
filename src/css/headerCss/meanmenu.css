@@ -67,6 +67,7 @@ a.meanmenu-reveal {
   position: relative;
   float: left;
   width: 100%;
+  margin-left: 5px;
 }
 
 .mean-container .mean-nav ul li a {

@@ -444,7 +444,7 @@ button {
   }
 }
 #getButton {
-  padding: 18px 29px !important;
+  padding: 18px 15px !important;
 }
 #google_translate_element select {
   background-color: #fff;
@@ -534,3 +534,24 @@ body {
 /* .VIpgJd-ZVi9od-aZ2wEe{
   display: none;
 } */
+/* 
+iframe{
+  visibility: hidden !important;
+  position: fixed; 
+    box-sizing: border-box;
+    inset: 0px;
+    width: 100vw;
+    height: 100vh;
+    font-size: large;
+    padding: 2rem 2rem 4rem;
+    line-height: 1.2;
+    white-space: pre-wrap;
+    overflow: auto;
+    background-color: yellow !important;
+ 
+} */
+
+
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf{
+  display: none !important;
+}

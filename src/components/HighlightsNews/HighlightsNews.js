@@ -124,7 +124,7 @@ const HighlightsNews = (props) => {
             <h2>Posts</h2>
           </div>
           <div className="row">
-            <div className={`col col-lg-8 col-md-12 ${props.colClass}`}>
+            <div className={`col-12 col-lg-8 ${props.colClass}`}>
               <div className="wpo-blog-highlights-wrap">
                 <div className="wpo-blog-items">
                   <div className="row">
@@ -258,7 +258,7 @@ const HighlightsNews = (props) => {
                 </div>
               </div>
               {loadMoreVisible && totalItems > visibleItems && (
-                <div className="loadMoreDiv pt-istop-btn-wrapper  text-center mt-30 ">
+                <div className="loadMoreDiv pt-istop-btn-wrapper  text-center mt-20 ">
                   <button
                     className="tp-common-btn text-center "
                     onClick={loadMoreItems}
@@ -273,7 +273,7 @@ const HighlightsNews = (props) => {
                 </div>
               )}
             </div>
-            <div className={`col col-lg-4 col-md-12 ${props.hideClass}`}>
+            <div className={`col-12 col-lg-4 ${props.hideClass}`}>
               <div className="blog-sidebar">
                 <div className="widget category-widget">
                   <h3 style={{ fontWeight: "400", color: "#070707" }}>
@@ -318,6 +318,7 @@ const HighlightsNews = (props) => {
                           imageWidth={80}
                           imageHeight={80}
                           title
+                          key={index}
                         />
                       ))
                     : latest.slice(0, 5).map((blog, bitem) => (

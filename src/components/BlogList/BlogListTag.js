@@ -19,7 +19,7 @@ const BlogListTag = ({ slug, blRight }) => {
   const [visibleItems, setVisibleItems] = useState(2);
   const [loadMoreVisible, setLoadMoreVisible] = useState(true);
   const [hasMoreContent, setHasMoreContent] = useState(true);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -29,7 +29,7 @@ const BlogListTag = ({ slug, blRight }) => {
           )}&filters[Archived][$eq]=false&populate=*`
         );
         const data = await response.json();
-        setArticles(data.data)
+        setArticles(data.data);
         setLoading(false);
       } catch (error) {
         console.error(error);
@@ -76,10 +76,10 @@ const BlogListTag = ({ slug, blRight }) => {
         <div className="row">
           <div className={`col col-lg-8 col-12 ${blRight}`}>
             <div className="wpo-blog-content">
-              {loading ?
+              {loading ? (
                 <div>
                   {[...Array(3)].map((_, index) => (
-                    <div key={index} className="col-lg-12  rounded-8" >
+                    <div key={index} className="col-lg-12  rounded-8">
                       <div style={{ marginBottom: "50px" }}>
                         <ShimmerThumbnail height={300} rounded />
 
@@ -88,9 +88,11 @@ const BlogListTag = ({ slug, blRight }) => {
                     </div>
                   ))}
                 </div>
-                : currentArticles.map((blog, bitem) => (
+              ) : (
+                currentArticles.map((blog, bitem) => (
                   <div className={`post ${blog.blClass}`} key={bitem}>
-                    <div className="entry-media video-holder"
+                    <div
+                      className="entry-media video-holder"
                       style={{
                         width: "100%",
                         maxWidth: "100%",
@@ -108,7 +110,7 @@ const BlogListTag = ({ slug, blRight }) => {
                           width: "100%",
                           height: "auto",
                           borderRadius: "10px",
-                          maxHeight: "50vh !important"
+                          maxHeight: "50vh !important",
                         }}
                       />
                     </div>
@@ -116,14 +118,14 @@ const BlogListTag = ({ slug, blRight }) => {
                       <ul>
                         {blog?.attributes?.Author?.data[0]?.attributes
                           ?.fullname && (
-                            <li>
-                              <i className="fi flaticon-user"> </i>By{" "}
-                              {
-                                blog?.attributes?.Author?.data[0]?.attributes
-                                  ?.fullname
-                              }
-                            </li>
-                          )}
+                          <li>
+                            <i className="fi flaticon-user"> </i>By{" "}
+                            {
+                              blog?.attributes?.Author?.data[0]?.attributes
+                                ?.fullname
+                            }
+                          </li>
+                        )}
 
                         <li>
                           <i className="fi flaticon-calendar"></i>{" "}
@@ -140,30 +142,22 @@ const BlogListTag = ({ slug, blRight }) => {
                         </li>
                       </ul>
                     </div>
-                    <h2 >
-
-                      {blog?.attributes?.Title}
-
-
-
-                    </h2>
+                    <h2>{blog?.attributes?.Title}</h2>
                     <div className="entry-details">
                       <div className="custom-list">
                         <div className="listing" id="cutoffText1">
-                          <ReactMarkdown
-                            children={
-                              blog?.attributes?.Description + "...."
-                            }
-                            remarkPlugins={[remarkGfm]}
-                            rehypePlugins={[rehypeRaw]}
-                            transformImageUri={(uri) =>
-                              uri.startsWith("http")
-                                ? uri
-                                : `${globalEnv.api}${uri}`
-                            }
-                            className="markdown"
-                            components={components}
-                          />
+                          <div
+                            dangerouslySetInnerHTML={{
+                              __html:
+                                blog.attributes?.Description.replace(
+                                  /src="(\/[^"]+)"/g,
+                                  (match, src) =>
+                                    src.startsWith("http")
+                                      ? match
+                                      : `src="${globalEnv.api}${src}"`
+                                ) || "" + "...",
+                            }}
+                          ></div>
                         </div>
                       </div>
                       <Link
@@ -176,13 +170,14 @@ const BlogListTag = ({ slug, blRight }) => {
                       </Link>
                     </div>
                   </div>
-                ))}
+                ))
+              )}
             </div>
             <div className="pagination-wrapper">
               {loadMoreVisible &&
                 hasMoreContent &&
                 totalItems > visibleItems && (
-                  <div className="loadMoreDiv pt-istop-btn-wrapper text-center mt-30">
+                  <div className="loadMoreDiv pt-istop-btn-wrapper text-center mt-10">
                     <button
                       className="tp-common-btn text-center"
                       onClick={loadMoreItems}

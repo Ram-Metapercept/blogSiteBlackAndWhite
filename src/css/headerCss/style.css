@@ -3484,10 +3484,15 @@ input[type=color] {
   opacity: 1;
   visibility: visible;
 }
-@media (max-width:576px) {
+@media (max-width: 576px) {
   .tp-offcanvas {
     width: 300px;
     padding: 50px 20px;
+  }
+}
+@media (max-width: 300px) {
+  .tp-offcanvas {
+    padding: 50px 20px 50px 30px;
   }
 }
 

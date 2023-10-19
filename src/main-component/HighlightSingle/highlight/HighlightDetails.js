@@ -67,7 +67,7 @@ const HighlightDetails = ({ article, blRight, blLeft }) => {
                           <ShimmerThumbnail style={{ height: "5vh" }} rounded />
                         )}
                       </div>
-
+                 
                       <div className="entry-meta">
                         <ul>
                           {article?.attributes?.Author?.data[0]?.attributes
@@ -93,20 +93,9 @@ const HighlightDetails = ({ article, blRight, blLeft }) => {
                           </li>
                         </ul>
                       </div>
-
-                      <div className="custom-list">
-                        <ReactMarkdown
-                          children={article.attributes?.Description}
-                          remarkPlugins={[remarkGfm]}
-                          rehypePlugins={[rehypeRaw]}
-                          transformImageUri={(uri) =>
-                            uri.startsWith("http")
-                              ? uri
-                              : `${globalEnv.api}${uri}`
-                          }
-                          className="markdown"
-                        />
-                      </div>
+ <div className="custom-list">
+ <div dangerouslySetInnerHTML={{ __html: article.attributes?.Description.replace(/src="(\/[^"]+)"/g, (match, src) => (src.startsWith("http") ? match : `src="${globalEnv.api}${src}"`)) || "" }}></div>
+                      </div> 
                     </>
                   ) : (
                     <p>
@@ -122,6 +111,7 @@ const HighlightDetails = ({ article, blRight, blLeft }) => {
             <BlogSidebar blLeft={blLeft} />
           </div>
         </div>
+      
       </section>
     </div>
   );

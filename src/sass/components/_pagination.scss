@@ -1,11 +1,11 @@
 /**** pagination ****/
 .pagination-wrapper {
 	text-align: center;
-	margin-top: 60px;
+	margin-top: 0px;
 
 	@include media-query(991px) {
 		text-align: left;
-		margin-top: 40px;
+		margin-top: 0px;
 	}
 
 	.pg-pagination {

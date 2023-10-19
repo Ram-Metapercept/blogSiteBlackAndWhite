@@ -13,7 +13,7 @@ const BlogSingleTag = ({ data, ...props }) => {
   const [item, setItem] = useState([]);
   const [tagItem, setTagItem] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-   
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -32,6 +32,12 @@ const BlogSingleTag = ({ data, ...props }) => {
   function countWords(str) {
     return str?.trim().split(/\s+/).length;
   }
+  const components = {
+    listItem: ({ children }) => (
+      <li style={{ listStyle: "disc" }}>{children}</li>
+    ),
+    img: ({ src, alt }) => <img src={src} alt={alt} />,
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -78,76 +84,100 @@ const BlogSingleTag = ({ data, ...props }) => {
           <div className={`col col-lg-8 col-12 ${props.blRight}`}>
             <div className="wpo-blog-content">
               <div className="post format-standard-image">
-              <div className="entry-media"
-                style={{
-                  width: "100%",
-                  maxWidth: "100%",
-                  height: "auto",
-                  maxHeight: "50vh",
-                  overflow: "hidden",
-                  borderRadius: "10px",
-                }}
-              >
-                {imageUrl ? (
-                  <img
-                    src={`${globalEnv?.api}${imageUrl}`}
-                    alt="them-pure"
-                    effect="blur"
-                    style={{
-                      width: "100%",
-                      height: "auto",
-                      objectFit: "cover",
-                      borderRadius: "10px",
-                      maxHeight:"50vh !important"
-                    }}
-                    loading="lazy"
-                    onError={(e) => {
-                      e.target.src = "/fallback-image.jpg";
-                    }}
-                  />
+                <div
+                  className="entry-media"
+                  style={{
+                    width: "100%",
+                    maxWidth: "100%",
+                    height: "auto",
+                    maxHeight: "50vh",
+                    overflow: "hidden",
+                    borderRadius: "10px",
+                  }}
+                >
+                  {imageUrl ? (
+                    <div
+                      style={{
+                        width: "100%",
+                        maxWidth: "100%",
+                        height: "auto",
+                        maxHeight: "50vh",
+                        overflow: "hidden",
+                        borderRadius: "10px",
+                      }}
+                    >
+                      <img
+                        src={`${globalEnv?.api}${imageUrl}`}
+                        alt="them-pure"
+                        effect="blur"
+                        style={{
+                          width: "100%",
+                          height: "auto",
+                          objectFit: "cover",
+                          borderRadius: "10px",
+                          maxHeight: "50vh !important",
+                        }}
+                        loading="lazy"
+                        onError={(e) => {
+                          e.target.src = "/fallback-image.jpg";
+                        }}
+                      />
+                    </div>
+                  ) : (
+                    <p>
+                      <ShimmerThumbnail height={300} rounded />
+                    </p>
+                  )}
+                </div>
+                {currentData ? (
+                  <div>
+                    <div className="entry-meta">
+                      {currentData?.attributes?.Author?.data[0]?.attributes
+                        ?.fullname && (
+                        <ul>
+                          <li>
+                            <i className="fi flaticon-user"> </i> By{" "}
+                            {
+                              currentData?.attributes?.Author?.data[0]
+                                ?.attributes?.fullname
+                            }
+                          </li>
+                          <li>
+                            <i className="fi flaticon-calendar"></i>
+                            {new Date(
+                              currentData?.attributes?.createdAt
+                            ).toLocaleDateString("en-GB")}
+                          </li>
+                          <li>
+                            <i className="fa-regular fa-clock"></i>&nbsp;
+                            {Math.ceil(
+                              countWords(currentData?.attributes?.Description) /
+                                200
+                            )}{" "}
+                            min read
+                          </li>
+                        </ul>
+                      )}
+                    </div>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          currentData.attributes?.Description.replace(
+                            /src="(\/[^"]+)"/g,
+                            (match, src) =>
+                              src.startsWith("http")
+                                ? match
+                                : `src="${globalEnv.api}${src}"`
+                          ) || "",
+                      }}
+                    ></div>
+                  </div>
                 ) : (
-                     <p>
-                     <ShimmerThumbnail height={350} rounded />
+                  <p>
+                    <Skeleton count={30} />
                   </p>
                 )}
               </div>
-              {currentData ? (
-  <div>
-    <div className="entry-meta">
-      {currentData?.attributes?.Author?.data[0]?.attributes?.fullname && (
-        <ul>
-          <li>
-            <i className="fi flaticon-user"> </i> By{" "}
-            {currentData?.attributes?.Author?.data[0]?.attributes?.fullname}
-          </li>
-          <li>
-            <i className="fi flaticon-calendar"></i>
-            {new Date(currentData?.attributes?.createdAt).toLocaleDateString("en-GB")}
-          </li>
-          <li>
-            <i className="fa-regular fa-clock"></i>&nbsp;
-            {Math.ceil(countWords(currentData?.attributes?.Description) / 200)} min read
-          </li>
-        </ul>
-      )}
-    </div>
-    <div className="custom-list">
-      <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
-        children={currentData?.attributes?.Description}
-        rehypePlugins={[rehypeRaw]}
-        transformImageUri={(uri) =>
-          uri.startsWith("http") ? uri : `${globalEnv.api}${uri}`
-        }
-      />
-    </div>
-  </div>
-) : (
-  <p>
-    <Skeleton count={30} />
-  </p>
-)}
-</div>
 
               <div className="more-posts d-flex align-items-stretch flex-wrap p-0">
                 <div className="previous-post" style={{ padding: "40px 25px" }}>

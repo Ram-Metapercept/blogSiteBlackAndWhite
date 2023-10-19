@@ -135,6 +135,7 @@ const BlogSidebar = (props) => {
                   imageWidth={80}
                   imageHeight={80}
                   title
+                  key={index}
                 />
               ))
             : latest.slice(0, 5).map((blog, bitem) => (
