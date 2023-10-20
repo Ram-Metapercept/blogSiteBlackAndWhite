@@ -42,7 +42,7 @@
 	
 				&+li{
 					margin-left: 20px;
-					padding-left: 20px;
+					// padding-left: 20px;
 					position: relative;
 
 					&:before{
@@ -507,7 +507,7 @@
 		}
 
 		.post-control-link {
-			font-size: 14px;
+			font-size: 16px;
 			font-size: calc-rem-value(14);
 			color: $text-color;
 			text-transform: uppercase;
@@ -517,13 +517,13 @@
 
 		.post-name {
 			font-family: $heading-font;
-			font-size: 18px;
+			font-size: 16px;
 			font-size: calc-rem-value(18);
 			color: $heading-color;
 			margin: 0.7em 0 0;
 
 			@include media-query(991px) {
-				font-size: 18px;
+				font-size: 16px;
 				font-size: calc-rem-value(18);
 			}
 		}

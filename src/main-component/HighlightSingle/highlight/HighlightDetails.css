@@ -28,4 +28,16 @@ tr {
 }
 
 
+@media screen and (min-width: 432px) and (max-width: 530px) {
+  .wpo-blog-pg-section .entry-meta ul li:last-child {
+      margin-left: 0px;
+      padding-left: 0px;
+      position: relative;
+  }
 
+  .wpo-blog-single-section .entry-meta ul li:last-child {
+    margin-left: 0px;
+    padding-left: 0px;
+    position: relative;
+}
+}

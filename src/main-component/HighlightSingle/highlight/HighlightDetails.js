@@ -1,7 +1,5 @@
 import React, { useMemo, useEffect } from "react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import rehypeRaw from "rehype-raw";
+
 import BlogSidebar from "../../../components/BlogSidebar/BlogSidebar";
 import globalEnv from "../../../api/globalenv";
 import "./HighlightDetails.css";
@@ -26,9 +24,6 @@ const HighlightDetails = ({ article, blRight, blLeft }) => {
   return (
     <div>
       <section className="wpo-blog-single-section section-padding">
-
-
-
         <div className="container">
           <div className="row">
             <div className={`col col-lg-8 col-12 ${blRight}`}>
@@ -67,7 +62,7 @@ const HighlightDetails = ({ article, blRight, blLeft }) => {
                           <ShimmerThumbnail style={{ height: "5vh" }} rounded />
                         )}
                       </div>
-                 
+
                       <div className="entry-meta">
                         <ul>
                           {article?.attributes?.Author?.data[0]?.attributes
@@ -93,15 +88,25 @@ const HighlightDetails = ({ article, blRight, blLeft }) => {
                           </li>
                         </ul>
                       </div>
- <div className="custom-list">
- <div dangerouslySetInnerHTML={{ __html: article.attributes?.Description.replace(/src="(\/[^"]+)"/g, (match, src) => (src.startsWith("http") ? match : `src="${globalEnv.api}${src}"`)) || "" }}></div>
-                      </div> 
+                      <div className="custom-list">
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html:
+                              article.attributes?.Description.replace(
+                                /src="(\/[^"]+)"/g,
+                                (match, src) =>
+                                  src.startsWith("http")
+                                    ? match
+                                    : `src="${globalEnv.api}${src}"`
+                              ) || "",
+                          }}
+                        ></div>
+                      </div>
                     </>
                   ) : (
                     <p>
-                     
                       <ShimmerThumbnail height={350} rounded />
-                      <Skeleton count={40}/>
+                      <Skeleton count={40} />
                     </p>
                   )}
                 </div>
@@ -111,7 +116,6 @@ const HighlightDetails = ({ article, blRight, blLeft }) => {
             <BlogSidebar blLeft={blLeft} />
           </div>
         </div>
-      
       </section>
     </div>
   );
