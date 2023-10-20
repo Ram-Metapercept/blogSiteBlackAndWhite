@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import BlogSidebar from "../BlogSidebar/BlogSidebar.js";
-import ReactMarkdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
-import remarkGfm from "remark-gfm";
+
 import "./BlogSingle.css";
 import globalEnv from "../../api/globalenv.js";
 import Skeleton from "react-loading-skeleton";
@@ -69,13 +67,6 @@ const BlogSingle = (props) => {
   function countWords(str) {
     return str?.trim().split(/\s+/).length;
   }
-  const components = {
-    listItem: ({ children }) => (
-      <li style={{ listStyle: "disc" }}>{children}</li>
-    ),
-    img: ({ src, alt }) => <img src={src} alt={alt} />,
-  };
-
   const imageUrl = currentData?.attributes?.Image?.data[0]?.attributes?.url;
 
   return (
@@ -125,9 +116,9 @@ const BlogSingle = (props) => {
                       />
                     </div>
                   ) : (
-                    <p>
+                    <div>
                       <ShimmerThumbnail height={320} rounded />
-                    </p>
+                    </div>
                   )}
                 </div>
 
@@ -179,9 +170,9 @@ const BlogSingle = (props) => {
                     </div>
                   </div>
                 ) : (
-                  <p>
+                  <div>
                     <Skeleton count={30} />
-                  </p>
+                  </div>
                 )}
               </div>
 

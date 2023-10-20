@@ -23,7 +23,7 @@ const HighlightSingle = () => {
       })
       .catch((error) => {
         console.error(error);
-        setArticle(null); 
+        setArticle(null);
       });
   }, [slug]);
 
@@ -33,7 +33,7 @@ const HighlightSingle = () => {
     <Fragment>
       <Navbar />
       <PageTitle pageTitle={pageTitle} />
-      <HighlightDetails article={article} slug={slug} />
+      {article && <HighlightDetails article={article} slug={slug} />}
       <Footer />
       <Scrollbar />
     </Fragment>

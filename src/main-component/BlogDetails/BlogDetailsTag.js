@@ -27,17 +27,17 @@ const BlogDetailsTag = () => {
     fetchData();
   }, [slug]);
 
+  const pageTitle = data.map((item) => item?.attributes?.Title).find(Boolean);
+
   return (
     <Fragment>
       <Navbar />
-      <PageTitle
-        pageTitle={data.map((item) => item?.attributes?.Title).find(Boolean)}
-        pagesub={"Blog"}
-      />
+      <PageTitle pageTitle={pageTitle} pagesub={"Blog"} />
       <BlogSingleTag data={data} slug={slug} />
       <Footer />
       <Scrollbar />
     </Fragment>
   );
 };
+
 export default BlogDetailsTag;

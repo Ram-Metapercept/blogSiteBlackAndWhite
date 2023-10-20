@@ -1,11 +1,10 @@
 import React, { useMemo, useEffect } from "react";
-
 import BlogSidebar from "../../../components/BlogSidebar/BlogSidebar";
 import globalEnv from "../../../api/globalenv";
 import "./HighlightDetails.css";
 import { ShimmerThumbnail } from "react-shimmer-effects";
-
 import Skeleton from "react-loading-skeleton";
+
 const HighlightDetails = ({ article, blRight, blLeft }) => {
   const wordCount = useMemo(() => {
     return countWords(article?.attributes?.Description);
@@ -104,15 +103,16 @@ const HighlightDetails = ({ article, blRight, blLeft }) => {
                       </div>
                     </>
                   ) : (
-                    <p>
-                      <ShimmerThumbnail height={350} rounded />
-                      <Skeleton count={40} />
-                    </p>
+                    <div>
+                      <p>
+                        <ShimmerThumbnail height={350} rounded />
+                        <Skeleton count={40} />
+                      </p>
+                    </div>
                   )}
                 </div>
               </div>
             </div>
-
             <BlogSidebar blLeft={blLeft} />
           </div>
         </div>
