@@ -45,7 +45,7 @@ function GoogleLangPicker({ classes = "" }) {
   };
 
   useEffect(() => {
-    let lang = localStorage.getItem("currentLang") || "English";
+    let lang = localStorage.getItem("currentLang");
     window.onload = function () {
       translateLanguage(lang);
     };
