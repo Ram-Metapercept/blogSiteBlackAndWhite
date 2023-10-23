@@ -506,17 +506,19 @@ body {
 }
 @media screen and (max-width: 300px) {
 .wpo-breadcumb-wrap h2 font font {
-    max-width: 100px !important;
-
+  
+    word-break: normal;
+    overflow: hidden;
+    word-wrap: break-word !important;
   }
   h2 font font {
-  max-width: 100px !important;
+
   word-break: normal;
   overflow: hidden;
   word-wrap: break-word !important;
   }
   p font font {
-    max-width: 100px !important;
+
     word-break: normal;
     overflow: hidden;
     word-wrap: break-word !important;
