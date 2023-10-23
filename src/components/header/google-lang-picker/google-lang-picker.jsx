@@ -160,8 +160,10 @@ function GoogleLangPicker({ classes = "" }) {
               className="dropdown-option-image mr-10"
             />
           )}
-          <span className="dropdown-option-label" translate="no">
-            {selectedOption ? selectedOption.label : "en"}
+          {/* const capitalizeFirstLetter = title => title; */}
+
+          <span className="dropdown-option-label" translate="no" style={{color:"black"}}>
+            {selectedOption ? selectedOption.label.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') : "En"}
           </span>
           {/* <span className="dropdown-caret"></span> */}
           <ul
@@ -185,7 +187,7 @@ function GoogleLangPicker({ classes = "" }) {
                   alt={option.label}
                   className="dropdown-option-image mr-10"
                 />
-                <span className="dropdown-option-label">{option.label}</span>
+                <span className="dropdown-option-label" style={{color:"black"}}>{option.label.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</span>
               </li>
             ))}
           </ul>
