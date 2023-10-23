@@ -523,4 +523,9 @@ body {
     overflow: hidden;
     word-wrap: break-word !important;
     }
+    .ca-service__item-title1 {
+      color: #000 !important;
+      font-size: 24px;
+      word-wrap: break-word !important;
+  }
 }
