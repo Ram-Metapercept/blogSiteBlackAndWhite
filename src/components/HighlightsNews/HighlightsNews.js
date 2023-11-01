@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "../HighlightsNews/HighlightsNews.css"; // Import the CSS file for styling
+import "../HighlightsNews/HighlightsNews.css"; 
 import globalEnv from "../../api/globalenv.js";
 import "./HighlightsNews.css";
 import { AiOutlinePlus } from "react-icons/ai";
 import "react-loading-skeleton/dist/skeleton.css";
-import { ShimmerThumbnail,  ShimmerText,
-  ShimmerCategoryItem,
-  ShimmerButton } from "react-shimmer-effects";
- 
 
+import {
+  ShimmerThumbnail,
+  ShimmerText,
+  ShimmerCategoryItem,
+  ShimmerButton,
+} from "react-shimmer-effects";
+import NoImge from "../../images/noImage.jpg";
 const truncate = require("truncate");
 
 const HighlightsNews = (props) => {
@@ -18,10 +21,9 @@ const HighlightsNews = (props) => {
   const [category, setCategory] = useState([]);
   const [currentPage] = useState(1);
 
-
   const [visibleItems, setVisibleItems] = useState(6);
   const [loadMoreVisible, setLoadMoreVisible] = useState(true);
-   const [loading,setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const ClickHandler = () => {
     window.scrollTo(10, 0);
   };
@@ -33,8 +35,7 @@ const HighlightsNews = (props) => {
       .then((response) => response.json())
       .then((data) => {
         setArticles(data.data);
-        setLoading(false)
-     
+        setLoading(false);
       })
       .catch((error) => console.error(error));
   }, []);
@@ -43,24 +44,24 @@ const HighlightsNews = (props) => {
       .then((response) => response.json())
       .then((data) => {
         setCategory(data.data);
-        setLoading(false)
+        setLoading(false);
       })
       .catch((error) => console.error(error));
   }, []);
 
   useEffect(() => {
     fetch(
-      `${globalEnv.api}/api/articles?filters[Archived][$eq]=false&pagination[page]=1&pagination[pageSize]=6&sort[0]=createdAt:desc&populate=*`
+      `${globalEnv.api}/api/articles?filters[Archived][$eq]=false&sort[0]=createdAt:desc&populate=*`
     )
       .then((response) => response.json())
       .then((data) => {
         setLatest(data.data);
-        setLoading(false)
+        setLoading(false);
       })
       .catch((error) => console.error(error));
   }, [currentPage]);
 
-  const totalItems = articles?.length;
+  const totalItems = latest?.length;
 
   const uniqueTags = new Set();
   const objectsWithUniqueTags = [];
@@ -71,20 +72,6 @@ const HighlightsNews = (props) => {
       objectsWithUniqueTags.push(obj);
     }
   }
-  const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
 
   const loadMoreItems = () => {
     if (visibleItems + 6 >= totalItems) {
@@ -104,7 +91,7 @@ const HighlightsNews = (props) => {
     }
   }
 
-  const filteredItems = articles.slice(0, visibleItems);
+  const filteredItems = latest.slice(0, visibleItems);
 
   return (
     <>
@@ -128,132 +115,155 @@ const HighlightsNews = (props) => {
               <div className="wpo-blog-highlights-wrap">
                 <div className="wpo-blog-items">
                   <div className="row">
-                  {loading ? (
-           
-                
-                    [...Array(6)].map((_, index) => (
-                      <div className="col-lg-6 p-3 rounded-8" key={index}>
-                      <ShimmerThumbnail height={350} rounded />
-                      </div>
-                    ))
-                    
-                     
-                 
-                    ) : (
-                      filteredItems.map((item, i) => (
-                        <div key={i} className="col-lg-6 p-3">
-                          <div
-                            className="it-blog tp-lasted-blog mb-30 aos-init aos-animate it-blog-wrapper"
-                            data-aos="fade-up"
-                            data-aos-duration="1000"
-                          >
-                            <div className="it-blog__thumb w-img">
-                              <div className="fix">
-                                <img
-                                  src={`${globalEnv?.api}${item?.attributes?.Image?.data[0]?.attributes?.formats?.thumbnail?.url}`}
-                                  alt="them-pure"
-                                  effect="blur"
-                                  style={{
-                                    width: "100%",
-                                    height: "auto",
-                                    objectFit: "cover",
-                                    aspectRatio: "1.5 / 1",
-                                  }}
-                                />
-                              </div>
-
-                              <div className="it-blog-date">
-                                <span className="date">
-                                  <b>
-                                    {new Date(
-                                      item?.attributes?.createdAt
-                                    ).getDate()}
-                                  </b>
-                                  {
-                                    months[
-                                      new Date(
-                                        item?.attributes?.createdAt
-                                      ).getMonth()
-                                    ]
-                                  }
-                                </span>
-                              </div>
-                            </div>
-                            <div className="it-blog-info white-bg  ">
-                              <div>
-                                <button
-                                  style={{
-                                    border: `1px solid ${
-                                      item?.attributes?.Category?.data
-                                        ?.attributes?.Title
-                                        ? "#3756f7"
-                                        : "#fff"
-                                    }`,
-                                    padding: "2px 5px",
-                                    borderRadius: "25px",
-                                    marginBottom: "15px",
-                                    color: "black",
-                                    fontSize: "13px",
-                                    cursor: "default",
-                                  }}
-                                >
-                                  {
-                                    item?.attributes?.Category?.data?.attributes
-                                      ?.Title
-                                  }
-                                </button>
-                              </div>
-                              <div>
-                                <div
-                                  className="p-abosolute pt-3"
-                                  style={{
-                                    bottom: "10px",
-                                    maxHeight: "120px",
-                                    minHeight: "120px",
-                                  }}
-                                >
-                                  <h3
-                                    className="ca-service__item-title1 mb-30"
+                    {loading
+                      ? [...Array(6)].map((_, index) => (
+                          <div className="col-lg-6 p-3 rounded-8" key={index}>
+                            <ShimmerThumbnail height={350} rounded />
+                          </div>
+                        ))
+                      : filteredItems.map((item, i) => (
+                          <div key={i} className="col-lg-6 p-3">
+                            <div
+                              className="it-blog tp-lasted-blog mb-30 aos-init aos-animate it-blog-wrapper"
+                              data-aos="fade-up"
+                              data-aos-duration="1000"
+                            >
+                              <div className="it-blog__thumb w-img">
+                                <div className="fix">
+                                  <div
                                     style={{
-                                      maxHeight: "3em",
-                                      overflow: "hidden",
-                                      display: "-webkit-box",
-                                      WebkitLineClamp: 2,
-                                      WebkitBoxOrient: "vertical",
+                                      width: "100%",
+                                      height: "auto",
+                                      objectFit: "cover",
+                                      aspectRatio: "1.5/1",
                                     }}
                                   >
-                                    <Link
-                                      to={`/highlight-single/${item?.attributes?.Slug}`}
-                                      style={{ color: "#032B5F" }}
-                                    >
-                                      {item?.attributes?.Title.trim()}
-                                    </Link>
-                                  </h3>
+                                    <img
+                                      src={
+                                        item?.attributes?.Image?.data[0]
+                                          ?.attributes?.formats?.thumbnail?.url
+                                          ? `${globalEnv?.api}${item?.attributes?.Image?.data[0]?.attributes?.formats?.thumbnail?.url}`
+                                          : `${NoImge}`
+                                      }
+                                      onError={(e) => {
+                                        e.target.src = `${NoImge}`;
+                                        e.target.classList.add("error-image");
+                                      }}
+                                      alt={
+                                        item?.attributes?.Image.data[0].attributes.name
+                                          .replace(/\.[^.]+$/, "")
+                                          .slice(0, 30) + "..."
+                                      }
+                                      effect="blur"
+                                      style={{
+                                        width: "100%",
+                                        height: "auto",
+                                        objectFit: "cover",
+                                        aspectRatio: "1.5 / 1",
+                                      }}
+                                    />
+                                  </div>
                                 </div>
                               </div>
-                              <div
-                                className="tp-seo-full-btn"
-                                style={{
-                                  "--tp-theme-redical": "#3756f7",
-                                  position: "relative",
-                                }}
-                              >
-                                <Link
-                                  to={`/highlight-single/${item?.attributes?.Slug}`}
-                                  className="it-portfolio-item__btn"
+                              <div className="it-blog-info white-bg  ">
+                                <div
+                                  style={{
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                  }}
+                                  className="categoryButton"
                                 >
-                                  Read More
-                                  <span className="mt-1">
-                                    <i className="fal fa-long-arrow-right"></i>
-                                    <i className="fal fa-long-arrow-right"></i>
-                                  </span>
-                                </Link>
+                                  <button
+                                    style={{
+                                      border: `1px solid ${
+                                        item?.attributes?.Category?.data
+                                          ?.attributes?.Title
+                                          ? "#3756f7"
+                                          : "#fff"
+                                      }`,
+                                      padding: "2px 5px",
+                                      borderRadius: "25px",
+                                      marginBottom: "15px",
+                                      color: "black",
+                                      fontSize: "13px",
+                                      cursor: "default",
+                                    }}
+                                  >
+                                    {
+                                      item?.attributes?.Category?.data
+                                        ?.attributes?.Title
+                                    }
+                                  </button>
+                                  <div className="centeringDiv">
+                                    <i
+                                      className="fi flaticon-calendar"
+                                      style={{
+                                        fontSize: "13px",
+                                        marginRight: "3px",
+                                        marginTop: "2px",
+                                        color: "black",
+                                      }}
+                                    ></i>
+                                    <span
+                                      className="date"
+                                      style={{ color: "black" }}
+                                    >
+                                      {new Date(
+                                        item?.attributes?.createdAt
+                                      ).toLocaleDateString("en-GB")}{" "}
+                                    </span>
+                                  </div>
+                                </div>
+                                <div>
+                                  <div
+                                    className="p-abosolute pt-3"
+                                    style={{
+                                      bottom: "10px",
+                                      maxHeight: "120px",
+                                      minHeight: "120px",
+                                    }}
+                                  >
+                                    <h3
+                                      className="ca-service__item-title1 mb-30"
+                                      style={{
+                                        maxHeight: "3em",
+                                        overflow: "hidden",
+                                        display: "-webkit-box",
+                                        WebkitLineClamp: 2,
+                                        WebkitBoxOrient: "vertical",
+                                      }}
+                                    >
+                                      <Link
+                                        to={`/highlight-single/${item?.attributes?.Slug}`}
+                                        style={{ color: "#032B5F" }}
+                                      >
+                                        {item?.attributes?.Title.trim()}
+                                      </Link>
+                                    </h3>
+                                  </div>
+                                </div>
+                                <div
+                                  className="tp-seo-full-btn"
+                                  style={{
+                                    "--tp-theme-redical": "#3756f7",
+                                    position: "relative",
+                                  }}
+                                >
+                                  <Link
+                                    to={`/highlight-single/${item?.attributes?.Slug}`}
+                                    className="it-portfolio-item__btn"
+                                  >
+                                    Read More
+                                    <span className="mt-1">
+                                      <i className="fal fa-long-arrow-right"></i>
+                                      <i className="fal fa-long-arrow-right"></i>
+                                    </span>
+                                  </Link>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      ))
-                      )}
+                        ))}
                   </div>
                 </div>
               </div>
@@ -291,19 +301,21 @@ const HighlightsNews = (props) => {
                           />
                         ))}
                       </div>
-                    ) : (objectsWithUniqueCats.map((blog) => (
-                      <li key={blog?.id}>
-                        <Link
-                          onClick={ClickHandler}
-                          to={`/blog/category/${blog?.attributes?.Slug}`}
-                        >
-                          {truncate(blog.attributes.Title, 40)}
-                          <span style={{ fontSize: "20px", }}>
-                            ({blog?.attributes?.Articles?.data?.length})
-                          </span>
-                        </Link>
-                      </li>
-                    )))}
+                    ) : (
+                      objectsWithUniqueCats.map((blog) => (
+                        <li key={blog?.id}>
+                          <Link
+                            onClick={ClickHandler}
+                            to={`/blog/category/${blog?.attributes?.Slug}`}
+                          >
+                            {truncate(blog.attributes.Title, 40)}
+                            <span style={{ fontSize: "20px" }}>
+                              ({blog?.attributes?.Articles?.data?.length})
+                            </span>
+                          </Link>
+                        </li>
+                      ))
+                    )}
                   </ul>
                 </div>
                 <div className="widget recent-post-widget">
@@ -322,53 +334,89 @@ const HighlightsNews = (props) => {
                         />
                       ))
                     : latest.slice(0, 5).map((blog, bitem) => (
-                    <div className="posts" key={bitem}>
-                      <div className="post">
-                        <div className="img-holder">
-                          <img
-                            src={`${globalEnv.api}${blog?.attributes?.Image?.data[0]?.attributes?.formats?.thumbnail?.url}`}
-                            alt=""
-                          />
-                        </div>
-                        <div className="details">
-                          <i
-                            className="fi flaticon-calendar"
-                            style={{ fontSize: "13px", marginRight: "3px" }}
-                          ></i>
-                          <span className="date">
-                            {new Date(
-                              blog?.attributes?.createdAt
-                            ).toLocaleDateString("en-GB")}{" "}
-                          </span>
-                          <h4>
-                            <Link
-                              onClick={ClickHandler}
-                              to={`/highlight-single/${blog?.attributes?.Slug}`}
+                        <div className="posts" key={bitem}>
+                          <div className="post">
+                            <div
+                              className="img-holder"
+                              style={{ wordBreak: "break-word" }}
                             >
-                              <span className="cutofftext">
-                                {" "}
-                                {blog.attributes.Title}
+                              <img
+                                src={`${globalEnv.api}${blog?.attributes?.Image?.data[0]?.attributes?.formats?.thumbnail?.url}`}
+                                alt={
+                                  blog?.attributes?.Image.data[0].attributes.name
+                                    .replace(/\.[^.]+$/, "")
+                                    .slice(0, 20) + "..."
+                                }
+                                onError={(e) => {
+                                  e.target.src = `${NoImge}`;
+                                  e.target.classList.add("error-image");
+                                }}
+                              />
+                            </div>
+                            <div className="details">
+                              <i
+                                className="fi flaticon-calendar"
+                                style={{ fontSize: "13px", marginRight: "3px" }}
+                              ></i>
+                              <span className="date">
+                                {new Date(
+                                  blog?.attributes?.createdAt
+                                ).toLocaleDateString("en-GB")}{" "}
                               </span>
-                            </Link>
-                          </h4>
+                              <h4>
+                                <Link
+                                  onClick={ClickHandler}
+                                  to={`/highlight-single/${blog?.attributes?.Slug}`}
+                                >
+                                  <span className="cutofftext">
+                                    {" "}
+                                    {blog.attributes.Title}
+                                  </span>
+                                </Link>
+                              </h4>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                  ))}
+                      ))}
                 </div>
                 <div className="widget tag-widget">
                   <h3 style={{ fontWeight: "400", color: "#070707" }}>Tags</h3>
                   <ul className="highlightedTag">
-                    {loading ?<div><div style={{display:"flex", justifyContent:"space-around"}}> <ShimmerButton size="sm"/><ShimmerButton size="sm"/></div> <div style={{display:"flex", justifyContent:"space-around"}}> <ShimmerButton size="sm"/><ShimmerButton size="sm"/></div> </div>: (objectsWithUniqueTags.map((blog) => (
-                      <li key={blog.id}>
-                        <Link
-                          onClick={ClickHandler}
-                          to={`/blog/tag/${blog?.attributes?.Tag}`}
+                    {loading ? (
+                      <div>
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-around",
+                          }}
                         >
-                          {blog.attributes.Tag}
-                        </Link>
-                      </li>
-                    )))}
+                          {" "}
+                          <ShimmerButton size="sm" />
+                          <ShimmerButton size="sm" />
+                        </div>{" "}
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-around",
+                          }}
+                        >
+                          {" "}
+                          <ShimmerButton size="sm" />
+                          <ShimmerButton size="sm" />
+                        </div>{" "}
+                      </div>
+                    ) : (
+                      objectsWithUniqueTags.map((blog) => (
+                        <li key={blog.id}>
+                          <Link
+                            onClick={ClickHandler}
+                            to={`/blog/tag/${blog?.attributes?.Tag}`}
+                          >
+                            {blog.attributes.Tag}
+                          </Link>
+                        </li>
+                      ))
+                    )}
                   </ul>
                 </div>
               </div>

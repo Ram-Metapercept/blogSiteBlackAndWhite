@@ -60,14 +60,19 @@ function GoogleLangPicker({ classes = "" }) {
     <>
       <div className={`dropdownCustom ${classes}`}>
         <div className="dropdown-toggle" onClick={toggleDropdown}>
-          {selectedOption && (
+          {selectedOption ? (
             <img
               src={selectedOption.image}
               alt={selectedOption.label}
               width={20}
               className="dropdown-option-image mr-10"
             />
-          )}
+          ): <img
+          src={options[0].image}
+          alt={options[0].label}
+          width={20}
+          className="dropdown-option-image mr-10"
+        />}
 
           <span
             className="dropdown-option-label"
@@ -122,3 +127,8 @@ function GoogleLangPicker({ classes = "" }) {
 }
 
 export default GoogleLangPicker;
+
+
+
+
+

@@ -6,6 +6,7 @@ import "./BlogSidebar.css";
 import {  ShimmerText,
   ShimmerCategoryItem,
   ShimmerButton } from "react-shimmer-effects";
+  import NoImge from "../../images/noImage.jpg";
 const truncate = require("truncate");
 
 const ClickHandler = () => {
@@ -144,9 +145,17 @@ const BlogSidebar = (props) => {
                 <div className="img-holder">
                   <img
                     src={`${globalEnv.api}${blog?.attributes?.Image?.data[0]?.attributes?.formats?.thumbnail?.url}`}
-                    alt=""
+                    alt={
+                      blog?.attributes?.Image.data[0].attributes.name
+                        .replace(/\.[^.]+$/, "")
+                        .slice(0, 20) + "..."
+                    }
                     key={blog.id}
                     style={{ width: "70px", height: "70px" }}
+                    onError={(e) => {
+                      e.target.src = `${ NoImge}`;
+                      e.target.classList.add("error-image")
+                    }}
                   />
                 </div>
                 <div className="details">

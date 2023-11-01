@@ -4,7 +4,7 @@ import globalEnv from "../../../api/globalenv";
 import "./HighlightDetails.css";
 import { ShimmerThumbnail } from "react-shimmer-effects";
 import Skeleton from "react-loading-skeleton";
-
+import NoImge from "../../../images/noImage.jpg";
 const HighlightDetails = ({ article, blRight, blLeft }) => {
   const wordCount = useMemo(() => {
     return countWords(article?.attributes?.Description);
@@ -54,7 +54,8 @@ const HighlightDetails = ({ article, blRight, blLeft }) => {
                             }}
                             loading="lazy"
                             onError={(e) => {
-                              e.target.src = "/fallback-image.jpg";
+                              e.target.src = `${ NoImge}`;
+                              e.target.classList.add("error-image")
                             }}
                           />
                         ) : (

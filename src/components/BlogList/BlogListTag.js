@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import rehypeRaw from "rehype-raw";
+import NoImge from "../../images/noImage.jpg";
 import BlogSidebar from "../BlogSidebar/BlogSidebar.js";
 import globalEnv from "../../api/globalenv.js";
 import { AiOutlinePlus } from "react-icons/ai";
@@ -104,13 +102,21 @@ const BlogListTag = ({ slug, blRight }) => {
                     >
                       <img
                         src={`${globalEnv.api}${blog.attributes.Image.data[0].attributes.url}`}
-                        alt=""
+                        alt={
+                          blog?.attributes?.Image.data[0].attributes.name
+                            .replace(/\.[^.]+$/, "")
+                            .slice(0, 30) + "..."
+                        }
                         key={blog.id}
                         style={{
                           width: "100%",
                           height: "auto",
                           borderRadius: "10px",
                           maxHeight: "50vh !important",
+                        }}
+                        onError={(e) => {
+                          e.target.src = `${ NoImge}`;
+                          e.target.classList.add("error-image")
                         }}
                       />
                     </div>

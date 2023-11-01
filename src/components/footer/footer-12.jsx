@@ -110,7 +110,7 @@ const Footer = ({ tp_border }) => {
                 <div className="col-12 pb-20 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start">
                   <div className="bs-footer__top-logo">
                     <Link to={`${MainSiteUrl.url}`} target="_blank">
-                      <img src={footer_logo} alt="brand-logo" />
+                      <img src={footer_logo} alt="Metapecept_logo" />
                     </Link>
                   </div>
                 </div>

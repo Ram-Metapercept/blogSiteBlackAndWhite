@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import BlogSidebar from "../BlogSidebar/BlogSidebar.js";
-
+import NoImge from "../../images/noImage.jpg";
 import "./BlogSingle.css";
 import globalEnv from "../../api/globalenv.js";
 import Skeleton from "react-loading-skeleton";
@@ -100,7 +100,11 @@ const BlogSingle = (props) => {
                     >
                       <img
                         src={`${globalEnv?.api}${imageUrl}`}
-                        alt="them-pure"
+                        alt={
+                          currentData?.attributes?.Image.data[0].attributes.name
+                            .replace(/\.[^.]+$/, "")
+                            .slice(0, 30) + "..."
+                        }
                         effect="blur"
                         style={{
                           width: "100%",
@@ -111,7 +115,8 @@ const BlogSingle = (props) => {
                         }}
                         loading="lazy"
                         onError={(e) => {
-                          e.target.src = "/fallback-image.jpg";
+                          e.target.src = `${ NoImge}`;
+                          e.target.classList.add("error-image")
                         }}
                       />
                     </div>

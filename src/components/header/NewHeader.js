@@ -44,7 +44,6 @@ const NewHeader = (style_home_one) => {
             className={`tp-header__1-main header-border-button pl-105 pr-105  ${
               sticky ? "header-sticky" : ""
             }`}
-            // style={{height:'112px'}}
           >
             <div className="container-fluid">
               <div id="google_translate_element" className="d-none"></div>
@@ -55,15 +54,14 @@ const NewHeader = (style_home_one) => {
                     <div className="logo border-right">
                       <Link to={`${MainSiteUrl.url}`} target="_blank">
                         <img
-                          // src="/assets/img/header/Metapercept_Cube_logo2_48.svg"
                           src={Logo1}
-                          alt="logo"
+                          alt="Metapercept_logo"
                           style={{ maxWidth: "200px", minWidth: "150px" }}
                         />
                       </Link>
                     </div>
                   </div>
-                  {/* <div className="col-xxl-6 col-xl-6 d-none d-xl-block"> */}
+
                   <div className="col-xxl-7 col-xl-8 d-none d-xl-flex justify-content-center">
                     <div className="main-menu p-relative">
                       <nav id="mobile-menu">

@@ -529,3 +529,19 @@ body {
       word-wrap: break-word !important;
   }
 }
+
+@media screen and (max-width:300px) {
+  .categoryButton{
+    display:flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+  .centeringDiv{
+display: flex !important;
+justify-content: center !important;
+  }
+  
+}
+
+
+
