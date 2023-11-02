@@ -46,6 +46,7 @@ function GoogleLangPicker({ classes = "" }) {
 
   useEffect(() => {
     let lang = localStorage.getItem("currentLang");
+    console.log(lang)
     window.onload = function () {
       translateLanguage(lang);
     };
@@ -54,7 +55,7 @@ function GoogleLangPicker({ classes = "" }) {
     let tempSelected = options.filter((option) => option.language === lang);
     // console.log(tempSelected);
     selectOption(tempSelected[0]);
-  }, []);
+  },[]);
 
   return (
     <>

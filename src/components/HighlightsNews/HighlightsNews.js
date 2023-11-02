@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "../HighlightsNews/HighlightsNews.css"; 
+import "../HighlightsNews/HighlightsNews.css";
 import globalEnv from "../../api/globalenv.js";
 import "./HighlightsNews.css";
 import { AiOutlinePlus } from "react-icons/ai";
@@ -16,7 +16,6 @@ import NoImge from "../../images/noImage.jpg";
 const truncate = require("truncate");
 
 const HighlightsNews = (props) => {
-  const [articles, setArticles] = useState([]);
   const [latest, setLatest] = useState([]);
   const [category, setCategory] = useState([]);
   const [currentPage] = useState(1);
@@ -28,17 +27,6 @@ const HighlightsNews = (props) => {
     window.scrollTo(10, 0);
   };
 
-  useEffect(() => {
-    fetch(
-      `${globalEnv.api}/api/articles?filters[Archived][$eq]=false&populate=*`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setArticles(data.data);
-        setLoading(false);
-      })
-      .catch((error) => console.error(error));
-  }, []);
   useEffect(() => {
     fetch(`${globalEnv.api}/api/categories?populate=*`)
       .then((response) => response.json())
@@ -66,7 +54,7 @@ const HighlightsNews = (props) => {
   const uniqueTags = new Set();
   const objectsWithUniqueTags = [];
 
-  for (const obj of articles) {
+  for (const obj of latest) {
     if (!uniqueTags.has(obj?.attributes?.Tag)) {
       uniqueTags.add(obj?.attributes?.Tag);
       objectsWithUniqueTags.push(obj);
