@@ -7,7 +7,7 @@ import globalEnv from "../../api/globalenv.js";
 import NoImge from "../../images/noImage.jpg";
 import Skeleton from "react-loading-skeleton";
 import { ShimmerThumbnail } from "react-shimmer-effects";
-
+import Nodata from "../../images/no-data.png";
 const ClickHandler = () => {
   window.scrollTo(10, 0);
 };
@@ -43,6 +43,7 @@ const BlogList = ({ slug }, props) => {
   const totalItems = category.flatMap(
     (blog) => blog?.attributes?.Articles?.data
   );
+
   const loadMoreItems = () => {
     if (visibleItems + 2 >= totalItems.length) {
       setVisibleItems(totalItems.length);
@@ -80,7 +81,7 @@ const BlogList = ({ slug }, props) => {
                   ))}
                 </div>
               ) : (
-                currentArticles.map((blog) => (
+                currentArticles.length>0?currentArticles.map((blog) => (
                   <div className="post" key={blog.id}>
                     <div
                       className="entry-media video-holder"
@@ -176,7 +177,30 @@ const BlogList = ({ slug }, props) => {
                     </div>
                   </div>
                 ))
-              )}
+              : (
+                <div className="text-center no-data-message">
+                  <img
+                    src={Nodata}
+                    className="no-data-icon"
+                    style={{
+                      width: "40vh",
+                      height: "40vh",
+                      margin: "0 auto",
+                    }}
+                    alt="nodata"
+                  />
+
+                  {/* <center className="no-data-text">
+                    Oops! No Blog Posted yet  in this category.
+                  </center> */}
+                  <div className="blog-suite">
+  <center className="no-data-text">
+    🌟  Oops! No Blog Posted yet  in this category. 🌐🔍
+  </center>
+</div>
+
+                </div>
+              ))}
               <div className="pagination-wrapper">
                 {loadMoreVisible &&
                   hasMoreContent &&

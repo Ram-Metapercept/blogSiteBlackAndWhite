@@ -6429,7 +6429,7 @@ font-family: "Roboto", sans-serif !important;
 .wpo-blog-single-section .post h2 {
   font-size: 35px;
   font-size: 2.33333rem;
-  margin: -0.22em 0 0.7em;
+  /* margin: -0.22em 0 0.7em; */
   line-height: 1.3em;
 }
 
@@ -6447,9 +6447,9 @@ font-family: "Roboto", sans-serif !important;
   }
 }
 
-.wpo-blog-single-section .post p {
+/* .wpo-blog-single-section .post p {
   margin-bottom: 1.5em;
-}
+} */
 
 .wpo-blog-single-section .post h3 {
   font-size: 24px;

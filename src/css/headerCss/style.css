@@ -16219,8 +16219,8 @@ p.checkout-coupon input[type=text]:focus {
 .da-footer__top-social a {
   font-size: 16px;
   display: inline-block;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background-color: var(--tp-common-white);
   border: 2px solid var(--tp-border-6);
   text-align: center;

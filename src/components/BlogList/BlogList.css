@@ -25,3 +25,24 @@
   float: left;
   text-transform: none !important;
 }
+
+
+.no-data-icon {
+  font-size: 36px;
+  display: block;
+
+}
+
+.no-data-text {
+  font-size: 20px;
+  color: #555;
+  line-height: normal;
+}
+@media screen and(max-width:768px) {
+  .no-data-text {
+    font-size: 18px !important;
+    color: #555;
+    line-height: normal !important;
+  }
+  
+}

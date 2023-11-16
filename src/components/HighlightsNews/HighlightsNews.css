@@ -7,7 +7,9 @@ h4,
 Link,
 span {
   font-family: "Roboto", sans-serif !important;
+
 }
+
 .wpo-blog-highlights-section {
   padding: 40px 0;
 }
@@ -60,7 +62,7 @@ span {
 
 .wpo-blog-content p {
   font-size: 16px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .pagination-container {
@@ -543,5 +545,20 @@ justify-content: center !important;
   
 }
 
+.wpo-blog-content ul li:last-child {
+  margin-bottom: 1.2rem !important;
+}
+@media screen and (max-width:991px) {
 
+  .wpo-blog-content ul li:last-child {
+    margin-bottom: 0.8rem !important;
+  }
+  
+}
 
+.tp-footer__widget ul li{
+  list-style: none !important;
+}
+.tp-footer__widget ul li a strong{
+ font-weight: 400 !important;
+}
