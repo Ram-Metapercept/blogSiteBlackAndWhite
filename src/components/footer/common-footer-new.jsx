@@ -12,10 +12,10 @@ import { Link } from "react-router-dom";
 import MainSiteUrl from "../../api/MainSiteUrl";
 const footer_links = [
   {
-    id: 1,
+
     title: "Quick Links",
     col: "col-xl-2",
-   
+    id:"company",
     links: [
       { title: "About us", link: `${MainSiteUrl.url}/aboutus` },
  

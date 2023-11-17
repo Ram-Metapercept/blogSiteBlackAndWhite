@@ -7,8 +7,8 @@ import "./BlogSingle.css";
 import globalEnv from "../../api/globalenv.js";
 import Skeleton from "react-loading-skeleton";
 import { ShimmerThumbnail } from "react-shimmer-effects";
-
 import "react-loading-skeleton/dist/skeleton.css";
+
 const BlogSingle = (props) => {
   const { slug } = useParams();
   const [item, setItem] = useState([]);

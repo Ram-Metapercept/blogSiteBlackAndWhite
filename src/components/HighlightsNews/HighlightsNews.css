@@ -178,7 +178,7 @@ span {
 
   .wpo-blog-content p {
     font-size: 16px;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
   }
 
   .pagination-container {
