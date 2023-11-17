@@ -195,7 +195,7 @@ const BlogList = ({ slug }, props) => {
                   </center> */}
                   <div className="blog-suite">
   <center className="no-data-text">
-    🌟  Oops! No Blog Posted yet  in this category. 🌐🔍
+     Oops! No Blog Posted yet  in this category. 
   </center>
 </div>
 

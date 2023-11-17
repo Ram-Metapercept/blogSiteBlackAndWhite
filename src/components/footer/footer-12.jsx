@@ -62,9 +62,7 @@ const Footer = ({ tp_border }) => {
     if (count) {
       e.preventDefault();
     }
-    //  else {
-    //   localStorage.setItem("isSubscribed", true);
-    // }
+   
     return count ? false : true;
   };
 
@@ -100,22 +98,7 @@ const Footer = ({ tp_border }) => {
           style={{ backgroundColor: "rgb(248,252,252)" }}
         >
           <div className="container">
-            {/* <div className="bs-footer__top fotter-btn-bottom pt-25 pb-25 d-md-block">
-              <div className="row align-items-center">
-                <div className="col-12 pb-20 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start">
-                  <div className="bs-footer__top-logo">
-                    <Link href="/">
-                      <img src={footer_logo} alt="metapercept logo" />
-                    </Link>
-                  </div>
-                </div>
-                <div className="col-12 col-md-6 text-md-end d-flex align-items-center justify-content-center justify-content-md-end">
-                  <div className="bs-footer__top-social">
-                    <SocialLinks />
-                  </div>
-                </div>
-              </div>
-            </div> */}
+       
             <div className="bs-footer__main pb-10 pt-50 tp-border-bottom footerContent">
               <div className="row justify-content-center">
                 <div className="col-xl-4 col-md-6">
@@ -130,54 +113,15 @@ const Footer = ({ tp_border }) => {
                       className="pe-xl-0 pe-md-5"
                       // style={{ textAlign: "justify" }}
                     >
-                      {/* <p className="pr-40"> */}
-                      {/* <p className="pr-40" style={{ textAlign: "justify" }}> */}
+                    
                       {about_des}
                     </p>
                   </div>
 
-                  {/* <div className="tp-footer__widget pe-xl-0 pe-md-5 mb-40 subscribeDiv">
-                    <h3 className="tp-footer__widget-title mb-15">
-                      Subscribe Now
-                    </h3>
-
-                    <div className="tp-footer-from p-relative">
-                      <form
-                        method="post"
-                        action="https://cfed3d59.sibforms.com/serve/MUIFAAQuk_u9WnIQCnfRSQRDr6tsGW02CFsAaqR-YpfsGA1BPLNNRbGXRv0x9e4KlZsFmKI5FoLlPU1hHvmAdB8-T_blKEXpJ3tSaWPa-44duJsbdTcYQtXXO3jnTgLW_wn2Yd6_0vXAr9N-KCqb8mOwh53AaLspAPoA-xVKkJO3oTSXe4rS678QVt87n2qp6r-VxWNFuDHGvG2X"
-                        onSubmit={isFormValid}
-                      >
-                        <span>
-                          <i
-                            className="fas fa-envelope-open"
-                            style={{ color: "rgb(50, 77, 160)" }}
-                          ></i>
-                        </span>
-                        <input
-                          type="email"
-                          placeholder="Enter your email"
-                          id="EMAIL"
-                          name="EMAIL"
-                          autoComplete="off"
-                          required
-                          data-required="true"
-                          onBlur={SubscribeEmailValidation}
-                          onFocus={() => clearError("errorSubscribeEmail")}
-                        />
-                        <button type="submit" aria-label="subscribe">
-                          <i className="fas fa-paper-plane"></i>
-                        </button>
-                      </form>
-                    </div>
-                    <p className="errorMessage" id="errorSubscribeEmail">
-                      error div
-                    </p>
-                    <p className="tp-form-note p-0 mt-5 mb-30"></p>
-                  </div> */}
                 </div>
-                {/* Coommon Footer start */}
+          
                 <CommonFooter />
-                {/* Coommon Footer end */}
+            
 
                 <div className="col-xl-3 col-md-6">
                   <div className="tp-footer__widget  mb-40">
@@ -190,22 +134,18 @@ const Footer = ({ tp_border }) => {
                     <ul>
                       <li>
                         <a href="tel:8390905726">
-                          <strong>Consulting:</strong> +91-(839)-090-5726
+                          <span>Consulting:</span> +91-(839)-090-5726
                         </a>
                       </li>
                       <li>
                         <a href="tel:8173820346">
-                          <strong>Sales:</strong> +1-(817) 382-0346
+                          <span>Sales:</span> +1-(817) 382-0346
                         </a>
                       </li>
-                      {/* <li>
-                        <a href="tel:9860800135">
-                          <strong>Training:</strong> +91-986-080-0135
-                        </a>
-                      </li> */}
+                  
                       <li>
                         <a href="tel:02041291914">
-                          <strong>Main Line:</strong> +91-(020)-4129-1914
+                          <span>Main Line:</span> +91-(020)-4129-1914
                         </a>
                       </li>
                     </ul>
@@ -246,7 +186,7 @@ const Footer = ({ tp_border }) => {
                         {/* <img src={phone_icon} alt="" /> */}
                         <i
                           className="fa-solid fa-location-dot mr-20"
-                          style={{ color: "rgb(12,84,173)", fontSize: "2rem" }}
+                          style={{ color: "rgb(12,84,173)", fontSize: "2rem"}}
                         ></i>
                       </span>
                       <span>
@@ -258,10 +198,10 @@ const Footer = ({ tp_border }) => {
                           }}
                         >
                           <div translate="no">
-                            <strong>India:</strong> Pune, Maharashtra, India
+                            <span>India:</span> Pune, Maharashtra, India
                           </div>
                           <div translate="no">
-                            <strong>USA:</strong> Arlington, Texas, USA
+                            <span>USA:</span> Arlington, Texas, USA
                           </div>
                         </span>
                       </span>
