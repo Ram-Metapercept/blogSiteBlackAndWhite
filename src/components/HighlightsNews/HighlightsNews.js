@@ -290,20 +290,26 @@ const HighlightsNews = (props) => {
                         ))}
                       </div>
                     ) : (
-                      objectsWithUniqueCats.map((blog) => (
-                        <li key={blog?.id}>
-                          <Link
-                            onClick={ClickHandler}
-                            to={`/blog/category/${blog?.attributes?.Slug}`}
-                          >
-                            {truncate(blog.attributes.Title, 40)}
-                            <span style={{ fontSize: "20px" }}>
-                              ({blog?.attributes?.Articles?.data?.length})
-                            </span>
-                          </Link>
-                        </li>
-                      ))
-                    )}
+                      objectsWithUniqueCats.map((blog) => {
+                        if (blog?.attributes?.Articles?.data?.length !== 0) {
+                          return (
+                            <li key={blog?.id}>
+                              <Link
+                                onClick={ClickHandler}
+                                to={`/blog/category/${blog?.attributes?.Slug}`}
+                              >
+                                {truncate(blog.attributes.Title, 40)}
+                                {/* <span style={{ fontSize: "20px" }}>
+                                  ({blog?.attributes?.Articles?.data?.length})
+                                </span> */}
+                              </Link>
+                            </li>
+                          );
+                        }
+                        return null; 
+                
+                      
+                       } ))}
                   </ul>
                 </div>
                 <div className="widget recent-post-widget">
