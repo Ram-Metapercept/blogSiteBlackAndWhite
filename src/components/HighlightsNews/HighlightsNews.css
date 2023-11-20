@@ -322,7 +322,10 @@ span {
   border-radius: 10px !important;
   width: 100% !important;
   height: auto;
-  max-height: 50vh;
+  max-height: 100%;
+
+ /* display: block !important;
+margin: 0 auto !important; */
 }
 
 @media (max-width: 1200px) and (min-width: 995px) {
