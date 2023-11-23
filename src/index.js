@@ -8,6 +8,7 @@ import './css/flaticon.css';
 import './css/animate.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './sass/style.scss';
+import "./App.css"
 
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "./store/index";

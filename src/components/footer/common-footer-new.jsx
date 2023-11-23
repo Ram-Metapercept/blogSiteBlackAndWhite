@@ -35,7 +35,7 @@ const CommonFooter = () => {
   const generateLink = (link) => {
     if (link.link.startsWith("https")) {
       return (
-        <a href={link.link} target="_blank" rel="noreferrer">
+        <a href={link.link} target="_blank" rel="noreferrer" className="font-12">
           {link.title}
         </a>
       );
@@ -45,15 +45,7 @@ const CommonFooter = () => {
   };
   return (
     <>
-      <style jsx>
-        {`
-          @media (min-width: 767px) {
-            .tp-footer__widget ul#company li {
-              width: 100%;
-            }
-          }
-        `}
-      </style>
+     
       {footer_links.map((item, i) => (
         <div key={i} className={`${item.col} col-md-6`}>
           <div className="tp-footer__widget mb-40">
@@ -105,7 +97,7 @@ export const FooterCopyRight = ({ style_3, style_7, style_9 }) => {
                 style_3 ? "" : "text-center text-md-start"
               }`}
             >
-              <span>{copy_right_info}</span>
+              <span className="font-12">{copy_right_info}</span>
             </div>
           </div>
           {/* <div className="col-md-4 d-none d-md-block"> */}
@@ -113,7 +105,7 @@ export const FooterCopyRight = ({ style_3, style_7, style_9 }) => {
             {/* <div className="tp-footer-menu text-end"> */}
             <div className="tp-footer-menu text-center">
               {/* <ul> */}
-              <ul className="d-flex justify-content-center">
+              <ul className="d-flex justify-content-center font-12">
                 <li>
                   <Link href="/privacy-policy">Privacy Policy</Link>
                 </li>

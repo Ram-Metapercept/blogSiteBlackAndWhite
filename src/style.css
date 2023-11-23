@@ -35,3 +35,7 @@ p {
   /* Define styles for row hover effect */
   background-color: #e2e2e2;
 }
+
+.font-12{
+  font-size: 12px;
+}

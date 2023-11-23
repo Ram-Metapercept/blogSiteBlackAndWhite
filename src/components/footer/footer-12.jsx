@@ -3,11 +3,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CommonFooter, { FooterCopyRight } from "./common-footer-new";
 import Logo1 from "../../images/Metapercept_footer_logo2.svg";
-// import CommonFooter, { FooterCopyRight } from "./common-footer-new";
 
-// import { SubscribeEmailValidation, clearError } from "@/utils/FormValidation";
 
-// footer_links data
+
 const SubscribeEmailValidation = (e) => {
   let value = e.target.value;
   const errorMessage = document.getElementById("errorSubscribeEmail");
@@ -29,7 +27,7 @@ const clearError = (e) => {
   removeError.style.display = "none";
 };
 const footer_content = {
-  footer_logo: {Logo1},
+  footer_logo: "/assets/img/footer/Metapercept_footer_logo2.svg",
   about: "About Us",
   about_des: (
     <>
@@ -48,7 +46,6 @@ const footer_content = {
   phone: <>+91-(839)-090-5726</>,
   tel: "8390905726",
 };
-
 const {  about_des } =
   footer_content;
 
@@ -62,7 +59,7 @@ const Footer = ({ tp_border }) => {
     if (count) {
       e.preventDefault();
     }
-   
+
     return count ? false : true;
   };
 
@@ -81,6 +78,14 @@ const Footer = ({ tp_border }) => {
           .tp-footer-from form button:hover {
             background-color: rgb(108, 96, 254);
           }
+          .subscribeEmailBtn {
+            width: auto;
+            padding: 0 10px;
+          }
+          .subscribeDiv {
+            max-width: 350px;
+          }
+
           @media (max-width: 768px) {
             //.footerContent {
             //   text-align: center;
@@ -98,118 +103,143 @@ const Footer = ({ tp_border }) => {
           style={{ backgroundColor: "rgb(248,252,252)" }}
         >
           <div className="container">
-       
-            <div className="bs-footer__main pb-10 pt-50 tp-border-bottom footerContent">
+     
+            <div className="bs-footer__main pb-10 pt-25 tp-border-bottom footerContent">
               <div className="row justify-content-center">
-                <div className="col-xl-4 col-md-6">
-                  <div className="tp-footer__widget mb-40">
+                <div className="col-xl-5 col-md-6">
+                  <div className="tp-footer__widget mb-10">
                     {/* <h3 className="tp-footer__widget-title mb-35">{about}</h3> */}
-                    <div className="bs-footer__top-logo mb-20">
+                    <div className="bs-footer__top-logo mb-10">
                       <Link href="/">
-                        <img src={Logo1} alt="metapercept logo" />
+                        <img
+                          src={Logo1}
+                          alt="metapercept logo"
+                          style={{ width: "200px" }}
+                        />
                       </Link>
                     </div>
                     <p
-                      className="pe-xl-0 pe-md-5"
-                      // style={{ textAlign: "justify" }}
+                      className="pe-xl-0 pe-md-5 font-12 mb-0"
+                      style={{ lineHeight: "18px" }}
                     >
-                    
+                      {/* <p className="pr-40"> */}
+                      {/* <p className="pr-40" style={{ textAlign: "justify" }}> */}
                       {about_des}
                     </p>
                   </div>
 
+                  <div className="tp-footer__widget pe-xl-0 pe-md-5  subscribeDiv">
+                    <div className="tp-footer-from p-relative">
+                      <form
+                        method="post"
+                        action="https://cfed3d59.sibforms.com/serve/MUIFAAQuk_u9WnIQCnfRSQRDr6tsGW02CFsAaqR-YpfsGA1BPLNNRbGXRv0x9e4KlZsFmKI5FoLlPU1hHvmAdB8-T_blKEXpJ3tSaWPa-44duJsbdTcYQtXXO3jnTgLW_wn2Yd6_0vXAr9N-KCqb8mOwh53AaLspAPoA-xVKkJO3oTSXe4rS678QVt87n2qp6r-VxWNFuDHGvG2X"
+                        onSubmit={isFormValid}
+                      >
+                        <span>
+                          <i
+                            className="fas fa-envelope-open"
+                            style={{ color: "rgb(50, 77, 160)" }}
+                          ></i>
+                        </span>
+                        <input
+                          type="email"
+                          placeholder="Enter your email"
+                          id="EMAIL"
+                          name="EMAIL"
+                          autoComplete="off"
+                          required
+                          data-required="true"
+                          onBlur={SubscribeEmailValidation}
+                          onFocus={() => clearError("errorSubscribeEmail")}
+                        />
+                        <button
+                          type="submit"
+                          aria-label="subscribe"
+                          className="subscribeEmailBtn"
+                        >
+                          {/* <i className="fas fa-paper-plane"></i> */}
+                          subscribe
+                        </button>
+                      </form>
+                    </div>
+                    <p className="errorMessage" id="errorSubscribeEmail">
+                      error div
+                    </p>
+                    <p className="tp-form-note p-0 mt-5 mb-30"></p>
+                  </div>
                 </div>
-          
+         
                 <CommonFooter />
-            
+               
 
-                <div className="col-xl-3 col-md-6">
-                  <div className="tp-footer__widget  mb-40">
-                    <h3 className="tp-footer__widget-title mb-20">
+                <div className="col-xl-2 col-md-6">
+                  <div className="tp-footer__widget  mb-20">
+                    <h3 className="tp-footer__widget-title mb-10">
                       Contact Details
                     </h3>
-                    <p style={{ color: "rgb(12,84,173)", marginBottom: "4px" }}>
-                      Contact Numbers
-                    </p>
+             
                     <ul>
                       <li>
-                        <a href="tel:8390905726">
-                          <span>Consulting:</span> +91-(839)-090-5726
+                        <a href="tel:8390905726" className="font-12">
+                          <strong>Line 1:</strong> +91-(839)-090-5726
                         </a>
                       </li>
                       <li>
-                        <a href="tel:8173820346">
-                          <span>Sales:</span> +1-(817) 382-0346
+                        <a href="tel:7420965726" className="font-12">
+                          <strong>Line 2:</strong> +91-(742)-096-5726
                         </a>
                       </li>
-                  
-                      <li>
-                        <a href="tel:02041291914">
-                          <span>Main Line:</span> +91-(020)-4129-1914
-                        </a>
-                      </li>
+              
                     </ul>
-                    <p
-                      style={{
-                        color: "rgb(12,84,173)",
-                        marginBottom: "4px",
-                      }}
-                    >
-                      Emails
-                    </p>
+                  
                     <ul translate="no">
                       <li>
-                        <a href="mailto:sales@metapercept.com">
+                        <a
+                          href="mailto:sales@metapercept.com"
+                          className="font-12"
+                        >
                           sales@metapercept.com
                         </a>
                       </li>
                       <li>
-                        <a href="mailto:info@metapercept.com">
+                        <a
+                          href="mailto:info@metapercept.com"
+                          className="font-12"
+                        >
                           info@metapercept.com
                         </a>
                       </li>
-                      {/* <li>
-                        <a href="mailto:training@metapercept.com">
-                          training@metapercept.com
-                        </a>
-                      </li> */}
+               
                     </ul>
                   </div>
                 </div>
 
                 <div className="col-xl-3 col-md-6">
-                  <div className="tp-footer__widget  mb-40 locationDiv">
-                    {/* <h3 className="tp-footer__widget-title mb-35">Location</h3> */}
+                  <div className="tp-footer__widget  mb-0 locationDiv">
+                    <h3 className="tp-footer__widget-title mb-10">Offices</h3>
 
-                    <div className="tp-footer-cta d-flex align-items-center  justify-content-start mb-20">
-                      <span className="call-icon">
-                        {/* <img src={phone_icon} alt="" /> */}
-                        <i
-                          className="fa-solid fa-location-dot mr-20"
-                          style={{ color: "rgb(12,84,173)", fontSize: "2rem"}}
-                        ></i>
-                      </span>
+                    <div className="tp-footer-cta d-flex align-items-center  justify-content-start mb-10">
+                
                       <span>
                         <span
-                          className="d-block mb-0"
+                          className="d-block mb-0 font-12"
                           style={{
                             color: "rgb(119, 119, 119)",
-                            fontSize: "16px",
                           }}
                         >
                           <div translate="no">
-                            <span>India:</span> Pune, Maharashtra, India
+                            <strong>India:</strong> Pune, Maharashtra, India
                           </div>
                           <div translate="no">
-                            <span>USA:</span> Arlington, Texas, USA
+                            <strong>USA:</strong> Arlington, Texas, USA
                           </div>
                         </span>
                       </span>
                     </div>
-                    <div className="bs-footer__top-social  mb-30">
+                    <div className="bs-footer__top-social  mb-10">
                       <SocialLinks />
                     </div>
-                    <div className="tp-footer__widget pe-xl-0 pe-md-5 mb-40 subscribeDiv">
+                    {/* <div className="tp-footer__widget pe-xl-0 pe-md-5 mb-0 subscribeDiv">
                       <h3 className="tp-footer__widget-title mb-15">
                         Subscribe Now
                       </h3>
@@ -246,7 +276,7 @@ const Footer = ({ tp_border }) => {
                         error div
                       </p>
                       <p className="tp-form-note p-0 mt-5 mb-30"></p>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

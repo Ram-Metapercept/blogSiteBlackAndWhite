@@ -16323,7 +16323,7 @@ p.checkout-coupon input[type=text]:focus {
   color:#070707
 }
 .tp-footer__widget ul li a {
-  font-size: 16px;
+  font-size: 12px;
   margin-bottom: 4px;
   display: inline-block;
   color: var(--tp-grey-1);
@@ -16361,7 +16361,7 @@ p.checkout-coupon input[type=text]:focus {
 }
 .tp-footer__widget p {
   color: var(--tp-grey-1);
-  font-size: 16px;
+  font-size: 12px;
   margin-bottom: 30px;
 }
 @media (max-width: 767px) {
@@ -16424,9 +16424,9 @@ p.checkout-coupon input[type=text]:focus {
 }
 
 .tp-footer-from form input {
-  height: 60px;
+  height: 40px;
   padding-left: 50px;
-  padding-right: 75px;
+  padding-right: 95px;
   width: 100%;
   border: 2px solid var(--tp-border-8);
   border-radius: 8px;
@@ -16444,8 +16444,9 @@ p.checkout-coupon input[type=text]:focus {
   color: var(--tp-grey-1);
 }
 .tp-footer-from form button {
-  height: 50px;
-  width: 50px;
+  height: 30px;
+  /* width: 30px; */
+  font-size: 14px;
   position: absolute;
   top: 50%;
   right: 5px;
@@ -16531,19 +16532,26 @@ p.checkout-coupon input[type=text]:focus {
 }
 
 .tp-footer-menu {
-  font-size: 16px;
+  
   font-weight: 400;
   color: var(--tp-common-black);
 }
 .tp-footer-menu ul li {
+
+  font-size: 12px !important;
   display: inline-block;
   margin-right: 30px;
 }
+.tp-footer-menu ul li a{
+  color:#070707 !important;
+}
+
+
 .tp-footer-menu ul li:last-child {
   margin-right: 0;
 }
 .tp-footer-menu ul li:hover a {
-  color: var(--tp-theme-redical);
+  color: var(--tp-theme-redical) !important;
 }
 
 @media (max-width: 767px), only screen and (min-width: 576px) and (max-width: 767px), only screen and (min-width: 768px) and (max-width: 991px) {
