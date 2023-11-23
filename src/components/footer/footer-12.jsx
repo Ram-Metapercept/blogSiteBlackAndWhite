@@ -228,10 +228,10 @@ const Footer = ({ tp_border }) => {
                           }}
                         >
                           <div translate="no">
-                            <strong>India:</strong> Pune, Maharashtra, India
+                            <span>India:</span> Pune, Maharashtra, India
                           </div>
                           <div translate="no">
-                            <strong>USA:</strong> Arlington, Texas, USA
+                            <span>USA:</span> Arlington, Texas, USA
                           </div>
                         </span>
                       </span>
