@@ -4,7 +4,7 @@ import BlogSidebar from "../BlogSidebar/BlogSidebar.js";
 import "./BlogSingleTag.css";
 import globalEnv from "../../api/globalenv.js";
 import { ShimmerThumbnail } from "react-shimmer-effects";
-import Skeleton from "react-loading-skeleton";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import NoImge from "../../images/noImage.jpg";
 const BlogSingleTag = ({ data, ...props }) => {
   const { slug } = useParams();
@@ -112,7 +112,12 @@ const BlogSingleTag = ({ data, ...props }) => {
                     />
                   ) : (
                     <div>
-                      <ShimmerThumbnail height={300} rounded />
+                            <div>
+                   
+                        <ShimmerThumbnail height={350} rounded />
+                  
+                     
+                    </div>
                     </div>
                   )}
                 </div>
@@ -161,7 +166,14 @@ const BlogSingleTag = ({ data, ...props }) => {
                   </div>
                 ) : (
                   <p>
-                    <Skeleton count={30} />
+                    <SkeletonTheme
+                            baseColor="#202020"
+                            highlightColor="#444"
+                          >
+                            <p>
+                              <Skeleton count={30} />
+                            </p>
+                          </SkeletonTheme>
                   </p>
                 )}
               </div>

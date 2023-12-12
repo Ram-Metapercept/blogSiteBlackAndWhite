@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import globalEnv from "../../api/globalenv.js";
 import { Col } from "react-bootstrap";
 import "./BlogSidebar.css";
-import {  ShimmerText,
+import { 
   ShimmerCategoryItem,
   ShimmerButton } from "react-shimmer-effects";
+  import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
   import NoImge from "../../images/noImage.jpg";
 const truncate = require("truncate");
 
@@ -98,19 +99,18 @@ const BlogSidebar = (props) => {
     <Col lg={4} xs={12} className={`col col-lg-4 col-12 ${props.blLeft}`}>
       <div className="blog-sidebar">
         <div className="widget category-widget">
-          <h3 style={{ fontWeight: "400", color: "#070707" }}>
+          <h3 style={{ fontWeight: "400"}}>
             Post Categories
           </h3>
           <ul>
             {loading ? (
               <div>
                 {[...Array(5)].map((_, index) => (
-                  <ShimmerText
-                    key={index}
-                    className={`line${index + 1}`}
-                    line={1}
-                    gap={10}
-                  />
+                   <SkeletonTheme baseColor="#202020" highlightColor="#444" >
+                   <p>
+                     <Skeleton animation="gradientPulse" />
+                   </p>
+                 </SkeletonTheme>
                 ))}
               </div>
             ) :objectsWithUniqueCats.map((blog) => {
@@ -135,7 +135,7 @@ const BlogSidebar = (props) => {
           </ul>
         </div>
         <div className="widget recent-post-widget">
-          <h3 style={{ fontWeight: "400", color: "#070707" }}>Latest Posts</h3>
+          <h3 style={{ fontWeight: "400" }}>Latest Posts</h3>
           {loading
             ? [...Array(5)].map((_, index) => (
                 <ShimmerCategoryItem
@@ -190,7 +190,7 @@ const BlogSidebar = (props) => {
           ))}
         </div>
         <div className="widget tag-widget">
-          <h3 style={{ fontWeight: "700", color: "#070707" }}>Tags</h3>
+          <h3 style={{ fontWeight: "700"}}>Tags</h3>
           <ul className="highlightedTag">
             {loading ?<div><div style={{display:"flex", justifyContent:"space-around"}}> <ShimmerButton size="sm"/><ShimmerButton size="sm"/></div> <div style={{display:"flex", justifyContent:"space-around"}}> <ShimmerButton size="sm"/><ShimmerButton size="sm"/></div> </div>:objectsWithUniqueTags.map((blog) => (
               <li key={blog.id}>

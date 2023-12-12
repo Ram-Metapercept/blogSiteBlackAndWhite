@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import NavMenu from "./nav-menu-new";
-import Logo1 from "../../images/Metapercept_footer_logo2.svg";
+import Logo1 from "../../images/Metapercept_footer_logo2-black.svg";
 import Sidebar from "./sidebar-new";
 import "../../css/mainHeader.css";
 import { useState, useEffect } from "react";
@@ -44,16 +44,18 @@ const NewHeader = (style_home_one) => {
             className={`tp-header__1-main header-border-button pl-105 pr-105  ${
               sticky ? "header-sticky" : ""
             }`}
+            // style={{height:'112px'}}
           >
             <div className="container-fluid">
               <div id="google_translate_element" className="d-none"></div>
               <div className="mega-menu-wrapper">
                 <div className="row align-items-center">
-                  {/* <div className="col-xxl-3 col-xl-3 col-6"> */}
+            
                   <div className="col-xxl-3 col-xl-2 col-6">
                     <div className="logo border-right">
                       <Link to={`${MainSiteUrl.url}`} target="_blank">
                         <img
+                  
                           src={Logo1}
                           alt="Metapercept_logo"
                           style={{ maxWidth: "200px", minWidth: "150px" }}
@@ -61,7 +63,6 @@ const NewHeader = (style_home_one) => {
                       </Link>
                     </div>
                   </div>
-
                   <div className="col-xxl-7 col-xl-8 d-none d-xl-flex justify-content-center">
                     <div className="main-menu p-relative">
                       <nav id="mobile-menu">
@@ -70,22 +71,9 @@ const NewHeader = (style_home_one) => {
                     </div>
                   </div>
                   <div className="col-xxl-2 col-xl-2 col-md-6 col-6">
-                    {/* <div className="col-xxl-4 col-xl-3 d-xl-block col-md-6 col-6" style={{display:'block !important'}}> */}
+                
                     <div className="tp-header__1-right d-flex justify-content-end align-items-center">
-                      {/* <div className="header-mail-info  d-xl-block">
-                        <a
-                          href="mailto:info@metapercept.com"
-                          style={{
-                            textTransform: "lowercase",
-                            fontSize: "18px",
-                            fontWeight:400,
-                            color: "#070707",
-                          }}
-                        >
-                          <i className="fas fa-envelope-open "></i>
-                          info@metapercept.com
-                        </a>
-                      </div> */}
+                    
                       <GoogleLangPicker classes="d-none d-xl-block" />
 
                       <div className="tp-header-search-nav d-flex justify-content-end d-xl-none">

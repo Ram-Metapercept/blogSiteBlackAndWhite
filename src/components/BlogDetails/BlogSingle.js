@@ -5,7 +5,7 @@ import BlogSidebar from "../BlogSidebar/BlogSidebar.js";
 import NoImge from "../../images/noImage.jpg";
 import "./BlogSingle.css";
 import globalEnv from "../../api/globalenv.js";
-import Skeleton from "react-loading-skeleton";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { ShimmerThumbnail } from "react-shimmer-effects";
 import "react-loading-skeleton/dist/skeleton.css";
 
@@ -175,9 +175,16 @@ const BlogSingle = (props) => {
                     </div>
                   </div>
                 ) : (
-                  <div>
-                    <Skeleton count={30} />
-                  </div>
+                  <p>
+                  <SkeletonTheme
+                          baseColor="#202020"
+                          highlightColor="#444"
+                        >
+                          <p>
+                            <Skeleton count={30} />
+                          </p>
+                        </SkeletonTheme>
+                </p>
                 )}
               </div>
 

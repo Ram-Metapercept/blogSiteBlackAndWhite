@@ -33,7 +33,9 @@ const HighlightSingle = () => {
     <Fragment>
       <Navbar />
       <PageTitle pageTitle={pageTitle} />
-      {article && <HighlightDetails article={article} slug={slug} />}
+      <div className="theme-bg-black">
+      <HighlightDetails article={article} slug={slug} />
+      </div>
       <Footer />
       <Scrollbar />
     </Fragment>

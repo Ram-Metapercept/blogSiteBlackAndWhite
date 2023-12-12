@@ -4243,7 +4243,7 @@ input[type=color] {
   left: 0;
   width: 100%;
   z-index: 999;
-  background-color: #fff;
+  background-color: black !important;
   animation: 300ms ease-in-out 0s normal none 1 running fadeInDown;
   box-shadow: 0px 16px 32px 0px rgba(0, 0, 0, 0.06);
 }
@@ -4356,7 +4356,7 @@ input[type=color] {
   max-width: 125px;
   font-size: 16px;
   font-weight: 400;
-  color: var(--tp-common-black);
+  color: #fff ;
   padding: 43px 0;
   text-transform: uppercase;
 }
@@ -4435,8 +4435,8 @@ input[type=color] {
   transform: translateY(-50%) rotate(-90deg);
 }
 .main-menu ul li a:hover{
-  font-weight: 700 !important;
-  color: #005A9C!important;
+
+  color: var(--tp-theme-red)!important;
 }
 .main-menu ul li .submenu li a {
   position: relative;
@@ -4662,7 +4662,7 @@ input[type=color] {
 }
 
 .header-border-button {
-  border-bottom: 1px solid var(--tp-border-2);
+  border-bottom: 1px solid black;
 }
 
 @media only screen and (min-width: 1500px) and (max-width: 1700px) {
@@ -12853,6 +12853,7 @@ xloading-bar
 .tp-job-item__title a {
   background-image: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff);
   display: inline;
+  
   background-size: 0% 1px, 0 1px;
   background-position: 100% 100%, 0 100%;
   background-repeat: no-repeat;
@@ -14352,7 +14353,7 @@ xloading-bar
   color: var(--tp-common-black);
 }
 .tp-lasted-blog .it-blog-info {
-  border: 2px solid #f6f6f6;
+  /* border: 2px solid #f6f6f6; */
   border-top: 0;
 }
 .tp-lasted-blog span b {
@@ -14376,7 +14377,7 @@ xloading-bar
 }
 .tp-lasted-blog .it-portfolio-item__btn:hover {
   color: var(--tp-common-white);
-  background-color: var(--tp-theme-redical);
+  background-color: #324DA0;
 }
 .tp-lasted-blog .it-portfolio-item__btn span {
   color: var(--tp-theme-seagreen);
@@ -16320,7 +16321,6 @@ p.checkout-coupon input[type=text]:focus {
 .tp-footer__widget-title {
   font-size: 16px;
   font-weight: 400;
-  color:#070707
 }
 .tp-footer__widget ul li a {
   font-size: 12px;
@@ -16334,6 +16334,13 @@ p.checkout-coupon input[type=text]:focus {
   -o-transition: all 0.3s ease-out 0s;
   transition: all 0.3s ease-out 0s;
 }
+.tp-footer__widget ul li a:hover {
+ color: var(--tp-theme-red) !important;
+ transition: all 0.3s ease-out 0s;
+}
+
+
+
 .tp-footer__widget ul li a::after {
   content: "";
   position: absolute;
@@ -16543,15 +16550,17 @@ p.checkout-coupon input[type=text]:focus {
   margin-right: 30px;
 }
 .tp-footer-menu ul li a{
-  color:#070707 !important;
+  color:#fff !important;
 }
 
-
+.tp-copyrigh-text a:hover {
+  color: var(--tp-theme-red) !important;
+}
 .tp-footer-menu ul li:last-child {
   margin-right: 0;
 }
-.tp-footer-menu ul li:hover a {
-  color: var(--tp-theme-redical) !important;
+.tp-footer-menu ul li a:hover  {
+  color: var(--tp-theme-red) !important;
 }
 
 @media (max-width: 767px), only screen and (min-width: 576px) and (max-width: 767px), only screen and (min-width: 768px) and (max-width: 991px) {

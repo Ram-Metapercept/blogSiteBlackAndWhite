@@ -11,9 +11,14 @@ const BlogPageTag = () => {
 
   return (
     <Fragment>
+      <div className="theme-bg-black">
       <Navbar />
+      </div>
       <PageTitle pageTitle={`Tag/${slug}`} pagesub={"Blog"} />
+   
+      <div className="theme-bg-black">
       <BlogListTag slug={slug} />
+      </div>
       <Footer />
       <Scrollbar />
     </Fragment>

@@ -5,10 +5,11 @@ import globalEnv from "../../api/globalenv.js";
 import "./HighlightsNews.css";
 import { AiOutlinePlus } from "react-icons/ai";
 import "react-loading-skeleton/dist/skeleton.css";
+import ShimmerUiCard from "../../utils/ShimmerUiCard";
 
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import {
-  ShimmerThumbnail,
-  ShimmerText,
   ShimmerCategoryItem,
   ShimmerButton,
 } from "react-shimmer-effects";
@@ -106,7 +107,7 @@ const HighlightsNews = (props) => {
                     {loading
                       ? [...Array(6)].map((_, index) => (
                           <div className="col-lg-6 p-3 rounded-8" key={index}>
-                            <ShimmerThumbnail height={350} rounded />
+                            <ShimmerUiCard />
                           </div>
                         ))
                       : filteredItems.map((item, i) => (
@@ -153,7 +154,10 @@ const HighlightsNews = (props) => {
                                   </div>
                                 </div>
                               </div>
-                              <div className="it-blog-info white-bg  ">
+                              <div
+                                className="it-blog-info white-bg  "
+                                style={{ backgroundColor: "#1e2222" }}
+                              >
                                 <div
                                   style={{
                                     display: "flex",
@@ -163,16 +167,16 @@ const HighlightsNews = (props) => {
                                 >
                                   <button
                                     style={{
-                                      border: `1px solid ${
+                                      border: `2px solid ${
                                         item?.attributes?.Category?.data
                                           ?.attributes?.Title
-                                          ? "#3756f7"
-                                          : "#fff"
+                                          ? "#17348d"
+                                          : "#000"
                                       }`,
                                       padding: "2px 5px",
                                       borderRadius: "25px",
                                       marginBottom: "15px",
-                                      color: "black",
+
                                       fontSize: "13px",
                                       cursor: "default",
                                     }}
@@ -189,13 +193,9 @@ const HighlightsNews = (props) => {
                                         fontSize: "13px",
                                         marginRight: "3px",
                                         marginTop: "2px",
-                                        color: "black",
                                       }}
                                     ></i>
-                                    <span
-                                      className="date"
-                                      style={{ color: "black" }}
-                                    >
+                                    <span className="date">
                                       {new Date(
                                         item?.attributes?.createdAt
                                       ).toLocaleDateString("en-GB")}{" "}
@@ -214,16 +214,18 @@ const HighlightsNews = (props) => {
                                     <h3
                                       className="ca-service__item-title1 mb-30"
                                       style={{
+                                        color: "#00ff00 !important",
                                         maxHeight: "3em",
                                         overflow: "hidden",
                                         display: "-webkit-box",
                                         WebkitLineClamp: 2,
                                         WebkitBoxOrient: "vertical",
                                       }}
+                                
                                     >
                                       <Link
                                         to={`/highlight-single/${item?.attributes?.Slug}`}
-                                        style={{ color: "#032B5F" }}
+                           
                                       >
                                         {item?.attributes?.Title.trim()}
                                       </Link>
@@ -274,19 +276,19 @@ const HighlightsNews = (props) => {
             <div className={`col-12 col-lg-4 ${props.hideClass}`}>
               <div className="blog-sidebar">
                 <div className="widget category-widget">
-                  <h3 style={{ fontWeight: "400", color: "#070707" }}>
-                    Post Categories
-                  </h3>
+                  <h3 style={{ fontWeight: "400" }}>Post Categories</h3>
                   <ul>
                     {loading ? (
                       <div>
                         {[...Array(5)].map((_, index) => (
-                          <ShimmerText
-                            key={index}
-                            className={`line${index + 1}`}
-                            line={1}
-                            gap={10}
-                          />
+                          <SkeletonTheme
+                            baseColor="#202020"
+                            highlightColor="#444"
+                          >
+                            <p>
+                              <Skeleton animation="gradientPulse" />
+                            </p>
+                          </SkeletonTheme>
                         ))}
                       </div>
                     ) : (
@@ -306,16 +308,13 @@ const HighlightsNews = (props) => {
                             </li>
                           );
                         }
-                        return null; 
-                
-                      
-                       } ))}
+                        return null;
+                      })
+                    )}
                   </ul>
                 </div>
                 <div className="widget recent-post-widget">
-                  <h3 style={{ fontWeight: "400", color: "#070707" }}>
-                    Latest Post
-                  </h3>
+                  <h3 style={{ fontWeight: "400" }}>Latest Post</h3>
                   {loading
                     ? [...Array(5)].map((_, index) => (
                         <ShimmerCategoryItem
@@ -374,7 +373,7 @@ const HighlightsNews = (props) => {
                       ))}
                 </div>
                 <div className="widget tag-widget">
-                  <h3 style={{ fontWeight: "400", color: "#070707" }}>Tags</h3>
+                  <h3 style={{ fontWeight: "400" }}>Tags</h3>
                   <ul className="highlightedTag">
                     {loading ? (
                       <div>
@@ -395,7 +394,7 @@ const HighlightsNews = (props) => {
                           }}
                         >
                           {" "}
-                          <ShimmerButton size="sm" />
+                          <ShimmerButton size="sm" color="black" />
                           <ShimmerButton size="sm" />
                         </div>{" "}
                       </div>

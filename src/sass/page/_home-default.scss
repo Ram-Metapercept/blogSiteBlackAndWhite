@@ -270,9 +270,10 @@
 .wpo-blog-highlights-section {
 
     .wpo-blog-highlights-wrap {
+        border-radius: 8px !important;
         position: relative;
         z-index: 1;
-        border: 1px solid $border-color;
+        border: 2px solid $border-color;
         padding: 30px;
 
         @media(max-width:767px) {

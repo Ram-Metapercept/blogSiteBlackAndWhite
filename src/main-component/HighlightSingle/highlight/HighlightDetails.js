@@ -1,14 +1,11 @@
-import React, { useMemo, useEffect } from "react";
+import React, {useEffect } from "react";
 import BlogSidebar from "../../../components/BlogSidebar/BlogSidebar";
 import globalEnv from "../../../api/globalenv";
 import "./HighlightDetails.css";
 import { ShimmerThumbnail } from "react-shimmer-effects";
-import Skeleton from "react-loading-skeleton";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import NoImge from "../../../images/noImage.jpg";
 const HighlightDetails = ({ article, blRight, blLeft }) => {
-  const wordCount = useMemo(() => {
-    return countWords(article?.attributes?.Description);
-  }, [article]);
 
   function countWords(str) {
     return str?.trim().split(/\s+/).length;
@@ -28,10 +25,19 @@ const HighlightDetails = ({ article, blRight, blLeft }) => {
             <div className={`col col-lg-8 col-12 ${blRight}`}>
               <div className="wpo-blog-content">
                 <div className="post format-standard-image">
-                  {article ? (
-                    <>
+                  <div
+                    className="entry-media"
+                    style={{
+                      width: "100%",
+                      maxWidth: "100%",
+                      height: "auto",
+                      maxHeight: "50vh",
+                      overflow: "hidden",
+                      borderRadius: "10px",
+                    }}
+                  >
+                    {imageUrl ? (
                       <div
-                        className="entry-media"
                         style={{
                           width: "100%",
                           maxWidth: "100%",
@@ -41,30 +47,37 @@ const HighlightDetails = ({ article, blRight, blLeft }) => {
                           borderRadius: "10px",
                         }}
                       >
-                        {imageUrl ? (
-                          <img
-                            src={`${globalEnv?.api}${imageUrl}`}
-                            alt="them-pure"
-                            effect="blur"
-                            style={{
-                              width: "100%",
-                              height: "100%",
-                              objectFit: "cover",
-                              borderRadius: "10px",
-                            }}
-                            loading="lazy"
-                            onError={(e) => {
-                              e.target.src = `${ NoImge}`;
-                              e.target.classList.add("error-image")
-                            }}
-                          />
-                        ) : (
-                          <ShimmerThumbnail style={{ height: "5vh" }} rounded />
-                        )}
+                        <img
+                          src={`${globalEnv?.api}${imageUrl}`}
+                          alt={
+                            article?.attributes?.Image.data[0].attributes.name
+                              .replace(/\.[^.]+$/, "")
+                              .slice(0, 30) + "..."
+                          }
+                          effect="blur"
+                          style={{
+                            width: "100%",
+                            height: "auto",
+                            objectFit: "cover",
+                            borderRadius: "10px",
+                            maxHeight: "50vh !important",
+                          }}
+                          loading="lazy"
+                          onError={(e) => {
+                            e.target.src = `${NoImge}`;
+                            e.target.classList.add("error-image");
+                          }}
+                        />
                       </div>
+                    ) : (
+                      <ShimmerThumbnail height={350} rounded />
+                    )}
+                  </div>
 
+                  {article ? (
+                    <div>
                       <div className="entry-meta">
-                        <ul>
+                        <ul style={{ listStyle: "none !important" }}>
                           {article?.attributes?.Author?.data[0]?.attributes
                             ?.fullname && (
                             <li>
@@ -80,14 +93,18 @@ const HighlightDetails = ({ article, blRight, blLeft }) => {
                             <i className="fi flaticon-calendar"></i>{" "}
                             {new Date(
                               article?.attributes?.createdAt
-                            ).toLocaleDateString("en-GB")}
+                            ).toLocaleDateString("en-GB")}{" "}
                           </li>
                           <li>
                             <i className="fa-regular fa-clock"></i>&nbsp;
-                            {Math.ceil(wordCount / 200)} min read
+                            {Math.ceil(
+                              countWords(article?.attributes?.Description) / 200
+                            )}{" "}
+                            min read
                           </li>
                         </ul>
                       </div>
+
                       <div className="custom-list">
                         <div
                           dangerouslySetInnerHTML={{
@@ -102,14 +119,15 @@ const HighlightDetails = ({ article, blRight, blLeft }) => {
                           }}
                         ></div>
                       </div>
-                    </>
-                  ) : (
-                    <div>
-                      <p>
-                        <ShimmerThumbnail height={350} rounded />
-                        <Skeleton count={40} />
-                      </p>
                     </div>
+                  ) : (
+                    <p>
+                      <SkeletonTheme baseColor="#202020" highlightColor="#444">
+                        <p>
+                          <Skeleton count={30} />
+                        </p>
+                      </SkeletonTheme>
+                    </p>
                   )}
                 </div>
               </div>

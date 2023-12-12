@@ -4,7 +4,7 @@ import NoImge from "../../images/noImage.jpg";
 import BlogSidebar from "../BlogSidebar/BlogSidebar.js";
 import globalEnv from "../../api/globalenv.js";
 import { AiOutlinePlus } from "react-icons/ai";
-import Skeleton from "react-loading-skeleton";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { ShimmerThumbnail } from "react-shimmer-effects";
 
 const ClickHandler = () => {
@@ -81,7 +81,16 @@ const BlogListTag = ({ slug, blRight }) => {
                       <div style={{ marginBottom: "50px" }}>
                         <ShimmerThumbnail height={300} rounded />
 
-                        <Skeleton count={7} />
+                        <p>
+                    <SkeletonTheme
+                            baseColor="#202020"
+                            highlightColor="#444"
+                          >
+                            <p>
+                              <Skeleton count={7} />
+                            </p>
+                          </SkeletonTheme>
+                  </p>
                       </div>
                     </div>
                   ))}

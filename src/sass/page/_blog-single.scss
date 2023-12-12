@@ -7,7 +7,7 @@
 .wpo-blog-single-section {
 
 	.entry-meta {
-		
+		color:white !important;
 		list-style: none;
 		overflow: hidden;
 		margin: 35px 25px 0px 0px;
@@ -415,8 +415,10 @@
 
 	/*** more-posts ***/
 	.more-posts {
+		border-radius: 8px !important;
+		background-color: #1E2222 !important;
 		overflow: hidden;
-	    border: 1px solid $border-color-s2;
+	    border: 2px solid $border-color-s2;
 	    padding: 0 25px;
 
 		> div {
@@ -444,14 +446,14 @@
 
 		.next-post {
 			text-align: right;
-		    border-left: 1px solid $border-color-s2;
+		    border-left: 2px solid $border-color-s2;
 		    padding-left: 15px;
 		    padding-right: 5px;
 
 		    @include media-query(767px) {
 				border-left: 0;
 				text-align: left;
-				border-top: 1px solid $border-color-s2;
+				border-top: 2px solid $border-color-s2;
 			}
 
 			.post-control-link {

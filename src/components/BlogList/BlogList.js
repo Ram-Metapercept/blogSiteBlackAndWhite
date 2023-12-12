@@ -5,7 +5,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import "./BlogList.css";
 import globalEnv from "../../api/globalenv.js";
 import NoImge from "../../images/noImage.jpg";
-import Skeleton from "react-loading-skeleton";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { ShimmerThumbnail } from "react-shimmer-effects";
 import Nodata from "../../images/no-data.png";
 const ClickHandler = () => {
@@ -75,7 +75,16 @@ const BlogList = ({ slug }, props) => {
                     <div key={index} className="col-lg-12 rounded-8">
                       <div style={{ marginBottom: "50px" }}>
                         <ShimmerThumbnail height={300} rounded />
-                        <Skeleton count={7} />
+                        <p>
+                    <SkeletonTheme
+                            baseColor="#202020"
+                            highlightColor="#444"
+                          >
+                            <p>
+                              <Skeleton count={7} />
+                            </p>
+                          </SkeletonTheme>
+                  </p>
                       </div>
                     </div>
                   ))}

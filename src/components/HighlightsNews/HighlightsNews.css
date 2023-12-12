@@ -15,7 +15,14 @@ span {
 }
 .tp-lasted-blog {
   margin-bottom: 0px !important;
+ border-radius: 10px !important;
+ border:2px solid #3d3d3d !important;
 }
+.tp-lasted-blog:hover {
+ border:2px solid #324DA0 !important; 
+ border-radius: 10px;
+}
+
 
 .thumb {
   position: absolute;
@@ -27,13 +34,20 @@ span {
   border-radius: 4px;
 }
 .cutoffText {
+
   --max-lines: 2;
   display: -webkit-box;
   overflow: hidden;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: var(--max-lines);
 }
-
+#container {
+  width: 500px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 #cutoffText1 {
   --max-lines: 5;
   display: -webkit-box;
@@ -116,14 +130,15 @@ span {
   text-decoration: none;
 }
 
-.widget a:hover {
-  color: #4caf50;
-}
+/* .widget a:hover {
+  color: #324DA0 !important;
+} */
 
 .widget span {
   padding: 2px 0px;
   /* margin-left: 5px; */
   border-radius: 4px;
+  color: #c9c9ce !important;
 }
 
 /* Styling for the pagination container */
@@ -272,12 +287,12 @@ span {
   padding: 12px 15px !important;
   border-radius: 8px;
   display: inline-block;
-  background-color: #3856f7 !important;
+  background-color: #324DA0 !important;
 }
 .tp-common-btn:hover,
 .tp-pf-btn-group button.active {
   color: #fff;
-  background-color: #f47f21 !important;
+  background-color: #17348d !important;
   overflow: hidden;
 }
 
@@ -293,9 +308,12 @@ span {
   justify-content: center !;
   align-items: center !important;
   padding: 0px 0px !important;
+
 }
+
 .image img {
   border-radius: 10px !important;
+  width:100% !important;
 }
 
 .ca-service__item-title1 {
@@ -304,14 +322,14 @@ span {
 }
 
 .ca-service__item-title1 a {
-  background-image: linear-gradient(#000, #000), linear-gradient(#000, #000) !important;
+  background-image: linear-gradient(#c9c9ce, #c9c9ce), linear-gradient(#c9c9ce, #c9c9ce) !important;
   display: inline;
   background-size: 0% 1px, 0 1px;
   background-position: 100% 100%, 0 100%;
   background-repeat: no-repeat;
   transition: background-size 0.4s linear;
-  color: #070707;
   font-weight: 400;
+  color: #c9c9ce !important;
 }
 .ca-service__item-title1 a:hover {
   background-size: 0% 1px, 100% 1px;
@@ -561,6 +579,9 @@ justify-content: center !important;
 
 .tp-footer__widget ul li{
   list-style: none !important;
+}
+.tp-footer__widget ul li a span:hover{
+color:red !important;
 }
 .tp-footer__widget ul li a strong{
  font-weight: 400 !important;

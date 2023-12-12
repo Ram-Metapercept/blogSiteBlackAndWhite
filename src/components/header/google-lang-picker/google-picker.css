@@ -21,6 +21,7 @@
 
 
 .dropdownCustom .dropdown-toggle {
+
   box-sizing: border-box !important;
   display: inline-block;
   border: 2px solid #c2e7ff;
@@ -45,6 +46,7 @@
 }
 
 .dropdownCustom .dropdown-menu-custom {
+  color:black !important;
   position: absolute;
   bottom: -2px;
   left: 1px;
@@ -64,8 +66,8 @@
   padding: 5px 10px;
   cursor: pointer;
   margin-left: 0px !important;
-  background-color: white;
-  color:black
+  background-color: black !important;
+ 
 }
 .dropdownCustom .dropdown-menu-custom li:not(:last-child) {
   border-bottom: 1px solid rgb(224, 224, 224);

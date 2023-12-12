@@ -20,9 +20,14 @@ const BlogPage = () => {
   const finalTitle = title.replace(/-/g, " ");
   return (
     <Fragment>
+   <div className="theme-bg-black">
       <Navbar />
+      </div>
       <PageTitle pageTitle={`Category/${finalTitle}`} pagesub={"Blog"} />
+
+      <div className="theme-bg-black">
       <BlogList slug={slug} />
+      </div>
       <Footer />
       <Scrollbar />
     </Fragment>

@@ -2,7 +2,7 @@ import SocialLinks from "./social-links-new";
 import React from "react";
 import { Link } from "react-router-dom";
 import CommonFooter, { FooterCopyRight } from "./common-footer-new";
-import Logo1 from "../../images/Metapercept_footer_logo2.svg";
+import Logo1 from "../../images/Metapercept_footer_logo2-black.svg";
 
 
 
@@ -97,10 +97,10 @@ const Footer = ({ tp_border }) => {
         `}
       </style>
 
-      <footer className="HideHeaderFooter">
+      <footer className="HideHeaderFooter theme-bg-black">
         <div
           className={`bs-footer ${tp_border && "tp-border-top"}`}
-          style={{ backgroundColor: "rgb(248,252,252)" }}
+          style={{backgroundColor:"rgb(30, 34, 34)"}}
         >
           <div className="container">
      
@@ -181,12 +181,12 @@ const Footer = ({ tp_border }) => {
                     <ul>
                       <li>
                         <a href="tel:8390905726" className="font-12">
-                          <strong>Line 1:</strong> +91-(839)-090-5726
+                          <span>Line 1:</span> +91-(839)-090-5726
                         </a>
                       </li>
                       <li>
                         <a href="tel:7420965726" className="font-12">
-                          <strong>Line 2:</strong> +91-(742)-096-5726
+                          <span>Line 2:</span> +91-(742)-096-5726
                         </a>
                       </li>
               
@@ -222,11 +222,9 @@ const Footer = ({ tp_border }) => {
                 
                       <span>
                         <span
-                          className="d-block mb-0 font-12"
-                          style={{
-                            color: "rgb(119, 119, 119)",
-                          }}
-                        >
+                          className="d-block mb-0 font-12 "
+                          style={{color:"white"}}>
+                        
                           <div translate="no">
                             <span>India:</span> Pune, Maharashtra, India
                           </div>
@@ -239,44 +237,7 @@ const Footer = ({ tp_border }) => {
                     <div className="bs-footer__top-social  mb-10">
                       <SocialLinks />
                     </div>
-                    {/* <div className="tp-footer__widget pe-xl-0 pe-md-5 mb-0 subscribeDiv">
-                      <h3 className="tp-footer__widget-title mb-15">
-                        Subscribe Now
-                      </h3>
-
-                      <div className="tp-footer-from p-relative">
-                        <form
-                          method="post"
-                          action="https://cfed3d59.sibforms.com/serve/MUIFAAQuk_u9WnIQCnfRSQRDr6tsGW02CFsAaqR-YpfsGA1BPLNNRbGXRv0x9e4KlZsFmKI5FoLlPU1hHvmAdB8-T_blKEXpJ3tSaWPa-44duJsbdTcYQtXXO3jnTgLW_wn2Yd6_0vXAr9N-KCqb8mOwh53AaLspAPoA-xVKkJO3oTSXe4rS678QVt87n2qp6r-VxWNFuDHGvG2X"
-                          onSubmit={isFormValid}
-                        >
-                          <span>
-                            <i
-                              className="fas fa-envelope-open"
-                              style={{ color: "rgb(50, 77, 160)" }}
-                            ></i>
-                          </span>
-                          <input
-                            type="email"
-                            placeholder="Enter your email"
-                            id="EMAIL"
-                            name="EMAIL"
-                            autoComplete="off"
-                            required
-                            data-required="true"
-                            onBlur={SubscribeEmailValidation}
-                            onFocus={() => clearError("errorSubscribeEmail")}
-                          />
-                          <button type="submit" aria-label="subscribe">
-                            <i className="fas fa-paper-plane"></i>
-                          </button>
-                        </form>
-                      </div>
-                      <p className="errorMessage" id="errorSubscribeEmail">
-                        error div
-                      </p>
-                      <p className="tp-form-note p-0 mt-5 mb-30"></p>
-                    </div> */}
+                   
                   </div>
                 </div>
               </div>

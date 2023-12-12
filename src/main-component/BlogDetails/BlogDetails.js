@@ -24,13 +24,18 @@ const BlogDetails = () => {
 
   return (
     <Fragment>
+    
+      <div className="theme-bg-black">
       <Navbar />
+      </div>
       <PageTitle 
         pageTitle={data.map((item) => item?.attributes?.Title).find(Boolean)}
         pagesub={"Blog"}
       />
-
+<div className="theme-bg-black">
       <BlogSingle data={data} />
+      </div>
+
       <Footer />
       <Scrollbar />
     </Fragment>

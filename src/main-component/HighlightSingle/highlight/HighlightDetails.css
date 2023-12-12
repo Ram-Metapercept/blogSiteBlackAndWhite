@@ -37,3 +37,8 @@ tr {
     position: relative;
 }
 }
+
+
+.table td {
+  background-color: #1E2222 !important;
+}

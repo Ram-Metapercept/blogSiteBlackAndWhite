@@ -16,7 +16,16 @@ a {
   color: #232f4b;
   margin: 0.7em 0 0;
 }
-
+p img {
+  border-radius: 10px !important;
+  /* width: 100% !important; */
+  max-width: 100%;
+  height: auto !important;
+  max-height: 100%;
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+}
 
 
 tbody,

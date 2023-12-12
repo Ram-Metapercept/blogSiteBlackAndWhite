@@ -12,11 +12,16 @@ const HomePage = () => {
   }, []);
   return (
     <Fragment>
-      <Navbar hclass={"wpo-header-style-1"} topbarNone={"topbar-none"} />
+         <div className="theme-bg-black">
+         <Navbar hclass={"wpo-header-style-1"} topbarNone={"topbar-none"} />
+      </div>
+
       <Hero />
-      <Container>
+      <div className="theme-bg-black">
+      <Container >
         <HighlightsNews />
       </Container>
+      </div>
       <Footer />
       <Scrollbar />
     </Fragment>
